@@ -45,3 +45,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.opensdf
+csc215/CSC215/CSC215.sdf
+*.suo
