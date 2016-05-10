@@ -48,3 +48,12 @@ Temporary Items
 *.opensdf
 csc215/CSC215/CSC215.sdf
 *.suo
+*.tlog
+csc215/CSC215/CSC215/Debug/main.obj
+*.exe
+csc215/CSC215/CSC215/Debug/CSC215.Build.CppClean.log
+*.obj
+*.pdb
+csc215/CSC215/Debug/CSC215.ilk
+*.log
+csc215/CSC215/CSC215/Debug/vc120.idb
