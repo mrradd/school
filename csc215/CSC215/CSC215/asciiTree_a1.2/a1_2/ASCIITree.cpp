@@ -32,6 +32,7 @@ void ASCIITree::loop()
   /** Seed random using current system time. */
   srand (time(NULL));
   ASCIITree tree;
+
   while(true)
     {
     std::string terminalVal = "";
@@ -47,24 +48,14 @@ void ASCIITree::loop()
     /** Draw the tree. */
     int row = n;
     int i = 1;
-    while(row > 0)
+    for(int row = n; row > 0; row--)
       {
-      /** Draw blank space. */
-      for (int k = row; k > 0; k--)
-        std::cout << ' ';
-
-      /** Draw character i times. */
-      for (int j = 0; j < i; j++)
-        std::cout << tree.mSymbol[0];
-
-      std::cout << std::endl;
-
-      i+=2;
-      row--;
+      std::cout << std::setw(row) << std::left << std::setfill(' ') << "" << std::setw(i) << std::right << std::setfill(tree.mSymbol[0]) << "" << std::endl;
+      i += 2;
       }
 
     /** See if the user wants to go again. */
-    std::cout << "[Y] to make another tree.\n[N] to quit." << std::endl;
+    std::cout << "\n[Y] to make another tree.\n[N] to quit." << std::endl;
     std::cin  >> terminalVal;
     for(;;)
       {
