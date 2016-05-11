@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <sstream>
 
 
 /******************************************************************************
@@ -14,19 +15,18 @@ class BMICalculator
   {
   /** Data Members. */
   private:
-    float mHeightFeet;
     float mHeightInches;
     float mWeight;
     float mBMI;
 
   /** CTOR/DTOR */
   public:
-    BMICalculator() { mHeightFeet = 0.0f; mHeightInches = 0.0f; mWeight = 0.0f;};
+    BMICalculator() { mHeightInches = 66.0f; mWeight = 300.0f;};
     ~BMICalculator(){};
 
   /** Methods */
   public:
     static void loop();
-        
+  
   };
 
