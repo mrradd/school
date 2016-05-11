@@ -1,22 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Ass-1_1">
-      <UniqueIdentifier>{d13d7b50-9f9f-45d3-8c9f-17e940961e97}</UniqueIdentifier>
+    <Filter Include="a1_1">
+      <UniqueIdentifier>{3feb21d8-dd91-4a5e-8f24-369250896930}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Ass-1_2">
+    <Filter Include="a1_2">
       <UniqueIdentifier>{f4802f98-1aef-4ad5-8dc6-ebca84868ce4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BMICalculator.cpp">
-      <Filter>Ass-1_1</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="a1_1\BMICalculator.cpp">
+      <Filter>a1_1</Filter>
+    </ClCompile>
+    <ClCompile Include="a1_2\ASCIITree.cpp">
+      <Filter>a1_2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BMICalculator.h">
-      <Filter>Ass-1_1</Filter>
+    <ClInclude Include="a1_1\BMICalculator.h">
+      <Filter>a1_1</Filter>
+    </ClInclude>
+    <ClInclude Include="a1_2\ASCIITree.h">
+      <Filter>a1_2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

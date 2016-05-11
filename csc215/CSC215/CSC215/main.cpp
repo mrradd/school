@@ -1,7 +1,6 @@
-#include "BMICalculator.h"
+#include "a1_2/ASCIITree.h"
 
 int main(int argc, char* argv[])
   {
-  BMICalculator::loop();
   return 0;
   }
