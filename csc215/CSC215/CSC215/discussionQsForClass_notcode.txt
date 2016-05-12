@@ -1,0 +1,38 @@
+Discussion 2.1
+What are the important components in Arrays in C++? How do you create one? What are the issues that make arrays predisposed to errors?
+
+Discussion 2.2
+What is function overloading? Give a code example and comment every line.
+
+Discussion 2.3
+What is a bubble sort? When is it best to use one? Give a coding example.
+
+-------------------------------------------------------------------------------
+
+Discussion 3.1
+What are pointers and how can we use them? Explain with both text and code examples.
+
+Discussion 3.2
+What is the relationship between Arrays and Pointers? Are they the same? Explain with both text and code examples.
+
+Discussion 3.3
+How is debugging going? Now that you are adding pointers, has you code become more or less complex? Has your code become easier or harder to produce?
+
+-------------------------------------------------------------------------------
+
+Discussion 4.1
+What are constructors and how can we use them? Explain with both text and code examples.
+
+Discussion 4.2
+What is the relationship between Constructors and Destructors? Are they the same?
+
+Discussion 4.3
+What is operator Overloading? Give one example that has not already been used in the discussion.
+
+-------------------------------------------------------------------------------
+
+Discussion 5.1
+Should you override and second guess your compiler? Does your compiler know best? Why or why not? Can you give an example?
+
+Discussion 5.2
+Polymorphism promotes extensibility. How is this so? Provide an explanation and a code snippet.
