@@ -57,3 +57,7 @@ csc215/CSC215/CSC215/Debug/CSC215.Build.CppClean.log
 csc215/CSC215/Debug/CSC215.ilk
 *.log
 csc215/CSC215/CSC215/Debug/vc120.idb
+*.ilk
+csc215/ASCIITree/ASCIITree/Debug/vc120.idb
+*.sdf
+*.sln

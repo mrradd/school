@@ -36,19 +36,32 @@ void ASCIITree::loop()
   while(true)
     {
     std::string terminalVal = "";
-      
-    /** Generate a random number between 10 and 20. */
-    int n = rand() % 20 + 10;
+
+    /** Number rows user wants to print. */
+    int userRows = -1;
 
     /** Get a single char from user input. */
     std::cout << "Enter a single alphanumeric, or special, character." << std::endl;
     std::cin  >> tree.mSymbol;
     std::cout << std::endl;
 
+    /** Ask user for number of rows to print. */
+    std::string litmus;
+    std::cout << "Enter a number of rows to print." << std::endl;
+    std::cin  >> litmus;
+    std::cout << std::endl;
+    userRows = isdigit(litmus.c_str()[0]) > 0 ? atoi(litmus.c_str()) : -1;
+
+    if (userRows <= 0)
+      {
+      std::cout << "Random it is then." << std::endl;
+      /** Generate a random number between 10 and 20. */
+      userRows = rand() % 20 + 10;
+      }
+
     /** Draw the tree. */
-    int row = n;
     int i = 1;
-    for(int row = n; row > 0; row--)
+    for(int row = userRows; row > 0; row--)
       {
       std::cout << std::setw(row) << std::left << std::setfill(' ') << "" << std::setw(i) << std::right << std::setfill(tree.mSymbol[0]) << "" << std::endl;
       i += 2;

@@ -1,4 +1,4 @@
-#include "a1_2/ASCIITree.h"
+#include "ASCIITree.h"
 
 /**
 Conrad Horton
