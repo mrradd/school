@@ -61,3 +61,5 @@ csc215/CSC215/CSC215/Debug/vc120.idb
 csc215/ASCIITree/ASCIITree/Debug/vc120.idb
 *.sdf
 *.sln
+*.idb
+csc215/Arrays/Debug/Arrays.exp
