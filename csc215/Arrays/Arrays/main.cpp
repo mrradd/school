@@ -53,17 +53,17 @@ int main(int argc, char* argv[])
   srand (time(NULL));
 
   
-  /** Enter values until finished. */
-  while (true)
+  /** Enter values until user quits. */
+  while (!term())
     {
-    double arr1[]   = {0,0,0,0};
-    double arr2[]   = {0,0,0,0};
-    double arr3[]   = {0,0,0,0};
+    double arrayOfDoubles1[]   = {0,0,0,0};
+    double arrayOfDoubles2[]   = {0,0,0,0};
+    double arrayOfDoubles3[]   = {0,0,0,0};
 
     print("You will now be asked to enter 8 floating point numbers.\n");
 
     /** Ask user for number if they want to generate random numbers for
-        array 1 and 2. */
+        arrays 1 and 2. */
     std::string q;
     std::cout << "[Y] to generate random values." << std::endl;
     std::cin  >> q;
@@ -72,29 +72,26 @@ int main(int argc, char* argv[])
       {
       for (int n = 0; n < 4; n++)
         {
-        arr1[n] = rand() % 100 + 1;
-        arr2[n] = rand() % 100 + 1;
-        printArray(arr1, "arr1");
-        printArray(arr2, "arr2");
+        arrayOfDoubles1[n] = rand() % 100 + 1;
+        arrayOfDoubles2[n] = rand() % 100 + 1;
+        printArray(arrayOfDoubles1, "arrayOfDoubles1");
+        printArray(arrayOfDoubles2, "arrayOfDoubles2");
         }
       }
     else
       {
-      /** Enter the values, then sum all values from arr1 and arr2, and put them in arr3. */
-      takeInput(arr1, "arr1");
-      takeInput(arr2, "arr2");
+      /** Enter the values, then sum all values from arrayOfDoubles1 and arrayOfDoubles2, and put them in arrayOfDoubles3. */
+      takeInput(arrayOfDoubles1, "arrayOfDoubles1");
+      takeInput(arrayOfDoubles2, "arrayOfDoubles2");
       }
     
-    sumArrays(arr1, arr2, arr3);
+    sumArrays(arrayOfDoubles1, arrayOfDoubles2, arrayOfDoubles3);
 
     print("\nPrinting final arrays");
-    printArray(arr1, "arr1");
-    printArray(arr2, "arr2");
-    printArray(arr3, "arr3");
+    printArray(arr1, "arrayOfDoubles1");
+    printArray(arr2, "arrayOfDoubles2");
+    printArray(arr3, "arrayOfDoubles3");
 
-    /** Check termination. */
-    if (term())
-      break;
     }
 
   system("pause");
@@ -156,7 +153,7 @@ void printArray(double arr[], const string& arrName)
     if ((i+1) < 4)
       printC(",\t");
     }
-  print(" ];");
+  print(" ]");
   }
 
 /** Sum of matching indices in add1 and add2 are placed into matching index in
@@ -200,25 +197,33 @@ void takeInput(double arr[], const string& arrName)
 bool term(void)
   {
   std::string terminalVal = "";
+  bool validInput         = false;
+  bool terminateProgram   = false;
   
   /** See if the user wants to go again. */
   std::cout << "\n[Y] to go again.\n[N] to quit." << std::endl;
   std::cin  >> terminalVal;
-  for(;;)
+  
+  /** When we receive valid input (y or n) the method will return to the caller, otherwise valid input will be false. */
+  while(!validInput)
     {
+    validInput = true;
+    
     /** Quit the program. */
     if (tolower(terminalVal[0]) == 'n')
-      return true;
+      terminateProgram = true;
 
-    /** Make another tree. */
+    /** Make more arrays. */
     else if (tolower(terminalVal[0]) == 'y')
-      return false;
+      terminateProgram = false;
 
     /** Incorrect input. */
     else
       {
+      validInput = false;
       std::cout << "[Y] to go again.\n[N] to quit." << std::endl;
       std::cin  >> terminalVal;
       }
     }
+  return validInput;
   }
