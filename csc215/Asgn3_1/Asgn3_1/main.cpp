@@ -77,17 +77,23 @@ using namespace std;
 int main()
   {
   
-  
-
   do 
     {
-    const double* ptrDouble1 = getDouble();
-    const string& oper       = getOperator();
-    const double* ptrDouble2 = getDouble();
+    double* ptrDouble1 = new double(0);
+    double* ptrDouble2 = new double(0);
+    string  oper;
+
+    *ptrDouble1 = *getDouble(); //I could have just done return by value, but I wanted to do this.
+    oper        = getOperator();
+    *ptrDouble2 = *getDouble();
 
     doMath(oper, ptrDouble1, ptrDouble2);
+
+    delete ptrDouble1;
+    delete ptrDouble2;
     }
   while(!terminateProgram());
+
 
   system("pause");
   return 1;
@@ -128,12 +134,12 @@ void doMath(const std::string& strRefOperator, const double* ptrDouble1, const d
 *
 * @ returns pointer to a valid double that was enterred by user.
 ******************************************************************************/
-const double* getDouble()
+double* getDouble()
   {
   string buffer;
   cout << "\nEnter a number..." << endl;
   
-  double* ptrDouble = nullptr;
+  double d = -1;
 
   getline(cin, buffer, '\n');
 
@@ -143,14 +149,11 @@ const double* getDouble()
     char *garbage = nullptr;
 
     /** strtod gives val if good, and 0.0 if bad. */
-    double d = strtod(buffer.c_str(), &garbage);
+    d = strtod(buffer.c_str(), &garbage);
     d = *garbage == '\0' && errno != ERANGE ? d : 0;
-    
-    ptrDouble = &d;
-    
     }
 
-  return ptrDouble;
+  return &d;
   }
 
 /******************************************************************************
@@ -161,7 +164,7 @@ const double* getDouble()
 *
 * @returns an operation character string reference that was enterred by user.
 ******************************************************************************/
-const std::string& getOperator()
+const std::string getOperator()
   {
   string buffer;
   cout << "\nEnter an operator..." << endl;
@@ -190,11 +193,11 @@ bool terminateProgram()
     {
     /** Go again. */
     if (tolower(terminalVal[0]) == 'n')
-      return true;
+      return false;
 
     /** Exit. */
     else if (tolower(terminalVal[0]) == 'y')
-      return false;
+      return true;
 
     /** Incorrect input. */
     else
