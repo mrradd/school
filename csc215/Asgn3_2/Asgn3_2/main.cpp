@@ -64,29 +64,8 @@
 * $ If not, it will display "Sorry, Title not found."
 ******************************************************************************/
 
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <algorithm>
+#include "funcs.h"
 
-using namespace std;
-
-vector<string> vecBookCollection;
-vector<string> vecDisplayCollection;
-
-void addBook();
-void alphabetizeBooks();
-void clearStringVectors(vector<vector<string>*> ptrVec);
-const string& enterBookName();
-void handleMenu();
-void printBooks();
-void printDisplayCollection();
-void printMenu();
-void readFromFile();
-void removeBook();
-void writeToFile();
 
 int main()
   {
@@ -99,28 +78,40 @@ int main()
 /******************************************************************************
 * addBook */
 /**
-* Adds string to the vector of books.
+* Adds string to the passed in vector.
 *
-* @param  bookName   Name of book to add.
+* @param  ptrVec  Pointer to vector of strings
 ******************************************************************************/
-void addBook()
+void addBook(vector<string>* ptrVec)
   {
   string bookName = "";
   cout << "Enter a book title..." << endl;
   getline(cin, bookName, '\n');
 
-  vecBookCollection.push_back(bookName);
+  ptrVec->push_back(bookName);
   }
 
 /******************************************************************************
 * alphabetizeBooks */
 /**
-* Alphabetize both string vectors.
+* Alphabetize a single vector.
+*
+* @param  vecPtrVec  Vector of ptrs to string vectors.
 ******************************************************************************/
-void alphabetizeBooks()
+void alphabetizeBooks(vector<string>* ptrVec)
   {
-  stable_sort(vecBookCollection.begin(),    vecBookCollection.end());
-  stable_sort(vecDisplayCollection.begin(), vecDisplayCollection.end());
+  stable_sort(ptrVec->begin(),ptrVec->end());
+  }
+/**
+* Alphabetize each vector contained in the passed in vector.
+*
+* @param  vecPtrVec  Vector of ptrs to string vectors.
+******************************************************************************/
+void alphabetizeBooks(vector<vector<string>*> vecPtrVec)
+  {
+  vector<vector<string>*>::iterator iter;
+  for(iter = vecPtrVec.begin(); iter != vecPtrVec.end(); iter++)
+    alphabetizeBooks(*iter);
   }
 
 /******************************************************************************
@@ -128,23 +119,13 @@ void alphabetizeBooks()
 /**
 * Clear the vectors contained in the passed in vector.
 *
-* @param  ptrVec  Vector of ptrs to string vectors.
+* @param  vecPtrVec  Vector of ptrs to string vectors.
 ******************************************************************************/
-void clearStringVectors(vector<vector<string>*> ptrVec)
+void clearStringVectors(vector<vector<string>*> vecPtrVec)
   {
   vector<vector<string>*>::iterator iter;
-  for(iter = ptrVec.begin(); iter != ptrVec.end(); iter++)
+  for(iter = vecPtrVec.begin(); iter != vecPtrVec.end(); iter++)
     (*iter)->clear();
-  }
-
-/******************************************************************************
-* enterBookName */
-/**
-* Ask user if they wish to terminate the program. 
-******************************************************************************/
-const string& enterBookName()
-  {
-  return string("derp");
   }
 
 /******************************************************************************
@@ -157,6 +138,9 @@ void handleMenu()
   string userEntry = "";
 
   bool quit = false;
+  
+  vector<string> vecBookCollection;
+  vector<string> vecDisplayCollection;
 
   do
     {
@@ -165,22 +149,22 @@ void handleMenu()
 
     /** Add book. */
     if (tolower(userEntry[0]) == 'a')
-      addBook();
+      addBook(&vecBookCollection);
 
     /** Remove book. */
     else if (tolower(userEntry[0]) == 'r')
-      removeBook();
+      removeBook(&vecBookCollection);
 
     /** Display books. */
     else if (tolower(userEntry[0]) == 'd')
-      printBooks();
+      printBooks(&vecBookCollection);
 
     /** Export book collection to file. */
     else if (tolower(userEntry[0]) == 'e')
       {
-      writeToFile();
-      readFromFile();
-      printDisplayCollection();
+      writeToFile(&vecBookCollection);
+      readFromFile(&vecDisplayCollection);
+      printDisplayCollection(&vecDisplayCollection);
       userEntry.clear();
       
       /** Check if Quit. */
@@ -218,15 +202,17 @@ void handleMenu()
 * printBooks */
 /**
 * Prints out the vector vecBookCollection vector.
+*
+* @param  ptrVec  Pointer to a vector.
 ******************************************************************************/
-void printBooks()
+void printBooks(vector<string>* ptrVec)
   {
   int i = 1;
   stringstream ss;
   
   cout << "Titles in your collection:" << endl;
   vector<string>::iterator iter;
-  for(iter = vecBookCollection.begin(); iter != vecBookCollection.end(); iter++)
+  for(iter = ptrVec->begin(); iter != ptrVec->end(); iter++)
     {
     ss << "[" << i << "] " << *iter;
 
@@ -240,16 +226,16 @@ void printBooks()
 /******************************************************************************
 * printDisplayCollection */
 /**
-* Prints out the vecDisplayCollection vector.
+* Prints out the passed in vector.
+*
+* @param  ptrVec  Pointer to a vector.
 ******************************************************************************/
-void printDisplayCollection()
+void printDisplayCollection(vector<string>* ptrVec)
   {
   cout << "Titles saved:" << endl;
   vector<string>::iterator iter;
-  for(iter = vecDisplayCollection.begin(); iter != vecDisplayCollection.end(); iter++)
-    {
+  for(iter = ptrVec->begin(); iter != ptrVec->end(); iter++)
     cout << *iter << endl;
-    }
   }
 
 /******************************************************************************
@@ -269,25 +255,25 @@ void printMenu()
 /******************************************************************************
 * readFromFile */
 /**
-* Reads list of books from file into vector to display books.
+* Reads list of books from file into the passed in vector.
+*
+* @param  ptrVec  Pointer to a vector to use for display book names.
 ******************************************************************************/
-void readFromFile()
+void readFromFile(vector<string>* ptrVec)
   {
-  fstream myfile;
-  myfile.open("books.dat");
-  
+  ifstream myfile;
+  myfile.open("./books.dat");
 
   /** If the file is open, clear the display list, and loop through the file
       adding each line to the vector. */
   if (myfile.is_open())
     {
-    vecDisplayCollection.clear();
+    ptrVec->clear();
     string book;
-    vector<string>::iterator iter = vecDisplayCollection.begin();
-    while ( getline(myfile,book) )
-      {
-      vecDisplayCollection.push_back(book);
-      }
+    vector<string>::iterator iter = ptrVec->begin();
+    while (getline(myfile,book))
+      ptrVec->push_back(book);
+
     }
   else
     cout << "Could not open file to read." << endl;
@@ -299,10 +285,12 @@ void readFromFile()
 * removeBook */
 /**
 * Lets the user select whether they  want to choose book by number or title,
-* then iterates over the collection and erases the book if the bookname is
-* found.
+* then iterates over the passed in vector and erases the book if the bookname
+* is found, or if its number is found.
+*
+* @param  ptrVec  Pointer to a vector whose books should be removed.
 ******************************************************************************/
-void removeBook()
+void removeBook(vector<string>* ptrVec)
   {
   bool   byNumber   = false;
   int    counter    = 1;
@@ -320,24 +308,24 @@ void removeBook()
   /** Ask to enter name/number. */  
   message = byNumber ? "Enter a book number..." : "Enter a book name...";
   cout << message << endl;
-  printBooks();
+  printBooks(ptrVec);
   getline(cin, find, '\n');
   cin.clear();
 
   /** If the number was out of range. */
-  if(byNumber && stoi(find) > vecBookCollection.size())
+  if(byNumber && stoi(find) > ptrVec->size())
     {
     cout << "Value is out of range." << endl;
     return;
     }
 
   /** Find book. */
-  vector<string>::iterator iter = vecBookCollection.begin();
-  while(iter != vecBookCollection.end())
+  vector<string>::iterator iter = ptrVec->begin();
+  while(iter != ptrVec->end())
     {
     if (!found && ((!byNumber && *iter == find) || (byNumber && counter == stoi(find))))
       {
-      iter  = vecBookCollection.erase(iter);
+      iter  = ptrVec->erase(iter);
       cout << *(iter) << " removed" << endl;
       found = true;
       }
@@ -348,34 +336,38 @@ void removeBook()
       }
     }
 
+  if (!found)
+    cout << "Nothing removed." << endl;
+
   message.clear();
-  printBooks();
+  printBooks(ptrVec);
   }
 
 /******************************************************************************
 * writeToFile */
 /**
-* Write book collection to file.
+* Write passed in vector to file.
+*
+* @param  ptrVec  Pointer to a vector whose constents we should save.
 ******************************************************************************/
-void writeToFile()
+void writeToFile(vector<string>* ptrVec)
   {
-  fstream file;
-  file.open ("books.dat");
+  ofstream file;
+  file.open ("./books.dat");
 
   cout << "Attempting to write to file books.dat...." << endl; 
   if (file.is_open())
     {
-    alphabetizeBooks();
+    alphabetizeBooks(ptrVec);
+
     vector<string>::iterator iter;
-    for(iter = vecBookCollection.begin(); iter != vecBookCollection.end(); iter++)
+    for(iter = ptrVec->begin(); iter != ptrVec->end(); iter++)
       file << (*iter) << endl;
 
     file.close();
     }
   else
-    {
     cout << "There was an error writing to file books.dat!" << endl; 
-    }
 
   file.close();
   }
