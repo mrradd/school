@@ -1,7 +1,7 @@
 /******************************************************************************
 * Conrad Horton
 * CSC215 May 2016
-* 05292016
+* 20160529 revised 20160601
 * Asgn 3.2 Vector Bookcase
 *******************************************************************************
 * Book Collection and File
@@ -65,7 +65,6 @@
 ******************************************************************************/
 
 #include "funcs.h"
-
 
 int main()
   {
@@ -264,6 +263,8 @@ void readFromFile(vector<string>* ptrVec)
   ifstream myfile;
   myfile.open("./books.dat");
 
+  cout << "Attempting to read from file books.dat...." << endl; 
+  
   /** If the file is open, clear the display list, and loop through the file
       adding each line to the vector. */
   if (myfile.is_open())
@@ -273,7 +274,6 @@ void readFromFile(vector<string>* ptrVec)
     vector<string>::iterator iter = ptrVec->begin();
     while (getline(myfile,book))
       ptrVec->push_back(book);
-
     }
   else
     cout << "Could not open file to read." << endl;

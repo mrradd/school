@@ -1,7 +1,7 @@
 /******************************************************************************
 * Conrad Horton
 * CSC215 May 2016
-* 05292016
+* 20160529 revised 20160601
 * Asgn 3.1 5 Function Calculator.
 *******************************************************************************
 *
@@ -83,7 +83,7 @@ int main()
     double* ptrDouble2 = new double(0);
     string  oper;
 
-    *ptrDouble1 = *getDouble(); //I could have just done return by value, but I wanted to do this.
+    *ptrDouble1 = *getDouble(); //I could have just done return by value, but I wanted to do this because reasons.
     oper        = getOperator();
     *ptrDouble2 = *getDouble();
 
@@ -171,7 +171,14 @@ const std::string getOperator()
 
   getline(cin, buffer, '\n');
 
-  if (buffer.empty() || (!buffer.empty() && !(buffer == "+" || buffer == "-" || buffer == "*" || buffer == "/")))
+  /**
+  By applying De Morgan's Laws https://en.wikipedia.org/wiki/De_Morgan%27s_laws
+  
+  !(buffer == "+" || buffer == "-" || buffer == "*" || buffer == "/")
+  is the same as
+  buffer != "+" && buffer != "-" && buffer != "*" && buffer != "/"
+  **/
+  if (buffer.empty() || !(buffer == "+" || buffer == "-" || buffer == "*" || buffer == "/"))
     buffer = "+";
 
   return buffer;
@@ -203,7 +210,7 @@ bool terminateProgram()
     else
       {
       std::cout << "\n[Y] to terminate.\n[N] to go again. You have " << i << " more tries until exit." << std::endl;
-      std::cin  >> terminalVal;
+      getline(cin, terminalVal, '\n');
       }
     }
 
