@@ -17,9 +17,15 @@
 * $Provide member functions multiply, divide, and modulus.
 ******************************************************************************/
 
+#include <iostream>
+
 #include "HugeInteger.h"
+using namespace std;
 
 int main()
   {
+  HugeInteger hugeInt;
   
+  system("pause");
+  return 1;
   }
