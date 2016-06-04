@@ -19,12 +19,13 @@
 
 #include <iostream>
 
-#include "HugeInteger.h"
+#include "BigInt.h"
 using namespace std;
 
 int main()
   {
-  HugeInteger hugeInt;
+  BigInt hugeInt1;
+  BigInt hugeInt2;
   
   system("pause");
   return 1;

@@ -64,10 +64,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="HugeInteger.h" />
+    <ClInclude Include="BigInt.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HugeInteger.cpp" />
+    <ClCompile Include="BigInt.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
