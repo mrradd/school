@@ -24,8 +24,6 @@ using namespace std;
 
 int main()
   {
-  BigInt hugeInt1;
-  BigInt hugeInt2;
   
   system("pause");
   return 1;

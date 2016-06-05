@@ -1,28 +1,46 @@
 #pragma once
 
+#include <iostream>
+#include <cstdlib>
+#include <sstream>
 #include <string>
 #include <vector>
+
 #define MAXSIZE 40
+#define BADVALUE 9001
+
+using namespace std;
 
 class BigInt
   {
   private:
-    /** Data memebers. */
+    /** Data Members. */
+    /** Enums */
+    enum { eMaxSize = 40, eMaxIndex = 39, eNullValue = 9001 };
+
+    /** Properties. */
     /** Array where each element is a single digit. */
-    unsigned int mDigits[MAXSIZE];
+    int mDigits[eMaxSize];
+
+    /** Name of object. Mainly for testing. */
+    string mName;
 
     /** Position in the array. */
-    unsigned int mPosition;
+    int mPosition;
 
     /** Used elements in the array. */
-    unsigned int mSize;    
+    int mSize;
 
   public:
+    
     /** CTOR/DTOR */
-    BigInt();
+    BigInt(const string name = "");
     virtual ~BigInt();
     
-    /** Methods. */
+    /** Setters/Getters. */
+    const unsigned int getIndexOfLeadingDigit() const;
+    unsigned int getSize();
+
     /** Comparison. */
     bool isEqualTo             (const BigInt& rhs);
     bool isGreaterThan         (const BigInt& rhs);
@@ -30,10 +48,15 @@ class BigInt
     bool isLessThan            (const BigInt& rhs);
     bool isLessThanOrEqualTo   (const BigInt& rhs);
     bool isNotEqualTo          (const BigInt& rhs);
-    bool isZero                (const BigInt& rhs);
-
+    bool isZero                ();
+    
+    /** Methods. */
     void add     (const BigInt& rhs);
+    void input   ();
+    void output  ();
     void pushInt (const int i);
+    void subtract(const BigInt& rhs);
+    vector<int> borrow(vector<int> vec, int index);
     void test();
   };
 
