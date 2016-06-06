@@ -66,20 +66,24 @@ unsigned int BigInt::getSize()
 ******************************************************************************/
 bool BigInt::isEqualTo(const BigInt& rhs)
   {
-
+  bool result = true;
+  
   /** If leading non 0 digit is the same index, potential for equality. */
   if(getIndexOfLeadingDigit() == rhs.getIndexOfLeadingDigit())
     for(int i = eMaxIndex; i >= 0; i--)
       {
       /** Check both valid values, and digits aren't equal. */
-      if (this->mDigits[i] != eNullValue && rhs.mDigits[i] != eNullValue && this->mDigits[i] != rhs.mDigits[i])
-        return false;
+      if (this->mDigits[i] != eNullValue && rhs.mDigits[i] != eNullValue &&
+          this->mDigits[i] != rhs.mDigits[i])
+        result = false;
       }
   else
-    return false;
+    result = false;
+
+  //cout << mName << " == " << rhs.mName << " = " << result << endl;
 
   /** Passed verification. */
-  return true;
+  return result;
   }
 
 /******************************************************************************
@@ -92,13 +96,15 @@ bool BigInt::isEqualTo(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isGreaterThan(const BigInt& rhs)
   {
+  bool result = true;
+  
   /** If leading non 0 digit is higher index, this is bigger. */
   if(getIndexOfLeadingDigit() < rhs.getIndexOfLeadingDigit())
-    return true;
+    result = true;
 
   /** This has higher leading int index. */
   else if(getIndexOfLeadingDigit() > rhs.getIndexOfLeadingDigit())
-    return false;
+    result = false;
 
   /** Leading integer has the same index, so length is equal. */
   for(int i = getIndexOfLeadingDigit(); i <= eMaxIndex; i++)
@@ -108,13 +114,22 @@ bool BigInt::isGreaterThan(const BigInt& rhs)
       {
       /** Greater than. */
       if (this->mDigits[i] > rhs.mDigits[i])
-        return true;
+        {
+        result = true;
+        break;
+        }
+        
       /** Less than. */
       else if (this->mDigits[i] < rhs.mDigits[i])
-        return false;
+        {
+        result = false;
+        break;
+        }
       }
     }
-  return true;
+    
+  //cout << mName << " > " << rhs.mName << " = " << result << endl;
+  return result;
   }
 
 /******************************************************************************
@@ -125,7 +140,11 @@ bool BigInt::isGreaterThan(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isGreaterThanOrEqualTo(const BigInt& rhs)
   {
-  return isGreaterThan(rhs) || isEqualTo(rhs);
+  bool result = isGreaterThan(rhs) || isEqualTo(rhs);
+  
+  //cout << mName << " >= " << rhs.mName << " = " << result << endl;  
+  
+  return result;
   }
 
 /******************************************************************************
@@ -136,7 +155,11 @@ bool BigInt::isGreaterThanOrEqualTo(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isLessThan(const BigInt& rhs)
   {
-  return !isGreaterThan(rhs);
+  bool result = !isGreaterThan(rhs);
+  
+  //cout << mName << " < " << rhs.mName << " = " << result << endl;  
+  
+  return result;
   }
 
 /******************************************************************************
@@ -147,7 +170,11 @@ bool BigInt::isLessThan(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isLessThanOrEqualTo(const BigInt& rhs)
   {
-  return isLessThan(rhs) || isEqualTo(rhs);
+  bool result = isLessThan(rhs) || isEqualTo(rhs);
+  
+  //cout << mName << " <= " << rhs.mName << " = " << result << endl;
+  
+  return result;
   }
 
 /******************************************************************************
@@ -158,7 +185,11 @@ bool BigInt::isLessThanOrEqualTo(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isNotEqualTo(const BigInt& rhs)
   {
-  return !isEqualTo(rhs);
+  bool result = !isEqualTo(rhs);
+  
+  //cout << mName << " != " << rhs.mName << " = " << result << endl;
+  
+  return result;
   }
 
 /******************************************************************************
@@ -168,7 +199,11 @@ bool BigInt::isNotEqualTo(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isZero()
   {
-  return getIndexOfLeadingDigit() < eMaxIndex;
+  bool result = mDigits[getIndexOfLeadingDigit()] == 0;
+  
+  //cout << mName << " == 0 = " << result << endl;
+  
+  return result;
   }
 
 /******************************************************************************
@@ -215,7 +250,7 @@ void BigInt::add(const BigInt& rhs)
 void BigInt::input ()
   {
   string buffer;
-  unsigned int i = 9001;
+  int i = 9001;
   cout << "Enter a # between 0 and 9 inclusive...";
   
   getline(cin, buffer, '\n');
@@ -224,15 +259,21 @@ void BigInt::input ()
     errno = 0;
     char *garbage = nullptr;
 
-    /** strtod gives val if good, and 0.0 if bad. */
-    i = stoul(buffer);
+    /** strtol gives val if good, and 0.0 if bad. */
+    i = strtol(buffer.c_str(), &garbage, 10);
 
-    if(*garbage == '\0' && errno != ERANGE && (i <= 9 && i >= 0))
+    if(i <= 9 && i >= 0)
       pushInt(i);
+    else
+      {
+      cout << "1? Okay, 1 it is..." << endl;
+      pushInt(1);
+      }
+    
     }
-  else if(buffer.empty() || i > 9 || i < 0)
+  else if(buffer.empty())
     {
-    cout << "1? Okay, 1 it is..." << endl;
+    cout << "0? Okay, 0 it is..." << endl;
     pushInt(0);
     }
   }
@@ -248,15 +289,11 @@ void BigInt::output ()
   cout << mName << "::output() \t";
 
   /** Print all the good values. */
-  for(int i = 0; i <= eMaxIndex; i++)
-    if (mDigits[i] > 0)
-      {
-      for(int j = i; j <= eMaxIndex; j++)
-        cout << mDigits[j];
+  for(int i = getIndexOfLeadingDigit(); i <= eMaxIndex; i++)
+    cout << mDigits[i];
 
-      cout << endl;
-      return;
-      }
+  cout << endl;
+  return;
   }
 
 /******************************************************************************
@@ -271,7 +308,7 @@ void BigInt::pushInt (const int i)
   {
   /** Passed in value is 0-9, array size is in parameters, and the current
       location is a bad value (able to be written to). */
-  if (i > 0 && i < 10 && mSize < eMaxSize)
+  if (i >= 0 && i <= 9 && mSize < eMaxSize)
     {
     mDigits[eMaxIndex - mSize] = i;
     mSize++;
@@ -294,7 +331,7 @@ void BigInt::subtract(const BigInt& rhs)
   vector<int> vecDiff;
   vector<int> vecLarger;
   vector<int> vecSmaller;
-  int borrowVal = 0;
+  int borrowVal       = 0;
   string negativeSign = "";
 
   /** We want to find the larger array, so we subtract the smaller one from it. */
@@ -310,11 +347,12 @@ void BigInt::subtract(const BigInt& rhs)
     vecSmaller = vector<int>(rhs.mDigits, rhs.mDigits + sizeof rhs.mDigits / sizeof rhs.mDigits[0]);    
     }
     
+  int rhsLeadIndex = rhs.getIndexOfLeadingDigit();
   for(int i = vecLarger.size() - 1; i > -1; i--)
     {
-    int result    = vecLarger[i] - vecSmaller[i] - borrowVal;
+    int result = vecLarger[i] - vecSmaller[i] - borrowVal;
     vecDiff.insert(vecDiff.begin(), (result < 0 ? result + 10 : result));
-    borrowVal     = result < 0 ? 1 : 0;
+    borrowVal  = result < 0 ? 1 : 0;
     }
 
   cout << "difference = " << negativeSign;
@@ -328,27 +366,5 @@ void BigInt::subtract(const BigInt& rhs)
       cout << endl;
       return;
       }
-  }
-
-/******************************************************************************
-* borrow */
-/***
-* Recursively loops through the vector to try and find the nex non 0
-* value to borrow from.
-*
-* @param  vec    Vector to iterate through.
-* @param  index  Index value to try to borrow from.
-* @returns  new value for the index position.
-******************************************************************************/
-vector<int> borrow(vector<int> vec, int index)
-  {
-  if (index > -1 && vec[index] == 0)
-    vec = borrow(vec, --index);
-
-  return vec;
-  }
-
-void BigInt::test()
-  {
   }
 

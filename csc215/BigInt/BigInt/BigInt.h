@@ -56,7 +56,5 @@ class BigInt
     void output  ();
     void pushInt (const int i);
     void subtract(const BigInt& rhs);
-    vector<int> borrow(vector<int> vec, int index);
-    void test();
   };
 
