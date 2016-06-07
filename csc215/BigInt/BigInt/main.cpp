@@ -130,8 +130,6 @@ void handleMenu()
       {
       userEntry.clear();
       std::cout << "\nInvalid entry\n" << std::endl;
-      printMenu();
-      getline(cin, userEntry, '\n');
       }
 
     cin.clear();

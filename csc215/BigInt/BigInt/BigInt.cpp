@@ -58,9 +58,11 @@ bool BigInt::isEqualTo(const BigInt& rhs)
     for(int i = eMaxIndex; i >= 0; i--)
       {
       /** Check both valid values, and digits aren't equal. */
-      if (this->mDigits[i] != eNullValue && rhs.mDigits[i] != eNullValue &&
-          this->mDigits[i] != rhs.mDigits[i])
+      if (this->mDigits[i] != rhs.mDigits[i])
+        {
         result = false;
+        break;
+        }
       }
   else
     result = false;
@@ -79,7 +81,7 @@ bool BigInt::isEqualTo(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isGreaterThan(const BigInt& rhs)
   {
-  bool result = true;
+  bool result = false;
   
   /** If leading non 0 digit is higher index, this is bigger. */
   if(getIndexOfLeadingDigit() < rhs.getIndexOfLeadingDigit())
@@ -135,7 +137,9 @@ bool BigInt::isGreaterThanOrEqualTo(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isLessThan(const BigInt& rhs)
   {
-  bool result = !isGreaterThan(rhs);
+  bool x = isGreaterThan(rhs);
+  bool y = isEqualTo(rhs);
+  bool result = !x && !y;
     
   return result;
   }
@@ -148,8 +152,9 @@ bool BigInt::isLessThan(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isLessThanOrEqualTo(const BigInt& rhs)
   {
-  bool result = isLessThan(rhs) || isEqualTo(rhs);
-    
+  bool x = isLessThan(rhs);
+  bool y = isEqualTo(rhs);
+  bool result = x || y;
   return result;
   }
 
@@ -161,7 +166,9 @@ bool BigInt::isLessThanOrEqualTo(const BigInt& rhs)
 ******************************************************************************/
 bool BigInt::isNotEqualTo(const BigInt& rhs)
   {
-  bool result = !isEqualTo(rhs);
+  bool x = isLessThan(rhs);
+  bool y = isGreaterThan(rhs);
+  bool result = x || y;
   
   return result;
   }
@@ -333,8 +340,11 @@ void BigInt::subtract(const BigInt& rhs)
   int rhsLeadIndex = rhs.getIndexOfLeadingDigit();
   for(int i = vecLarger.size() - 1; i > -1; i--)
     {
-    int result = vecLarger[i] - vecSmaller[i] - borrowVal;
-    vecDiff.insert(vecDiff.begin(), (result < 0 ? result + 10 : result));
+    int l      = vecLarger[i];
+    int s      = vecSmaller[i];
+    int result = l - s - borrowVal;
+    result     = result < 0 ? result + 10 : result;
+    vecDiff.insert(vecDiff.begin(), (result));
     borrowVal  = result < 0 ? 1 : 0;
     }
 
@@ -344,7 +354,7 @@ void BigInt::subtract(const BigInt& rhs)
     if (*iter > 0)
       {
       for (vector<int>::iterator it = iter; it != vecDiff.end(); it++)
-        cout << *it;
+        cout << negativeSign << *it;
         
       cout << endl;
       return;
