@@ -46,40 +46,37 @@ void handleMenu()
   
   bool quit = false;
   
+
   do
     {
     printMenu();
     getline(cin, userEntry, '\n');
 
     /** Add to BigInt1. */
-    if (userEntry == "1")
+    if (tolower(userEntry[0]) == 'a')
       { bigInt1.input(); }
 
     /** Add to BigInt2. */
-    else if (userEntry == "2")
+    else if (tolower(userEntry[0]) == 'd')
       { bigInt2.input(); }
 
     /** Print BigInts. */
-    else if (userEntry == "3")
+    else if (tolower(userEntry[0]) == 'p')
       {
       bigInt1.output();
       bigInt2.output();
       }
 
     /** BigInt1 is 0. */
-    else if (userEntry == "4")
-      {
-      cout << "BigInt1 == 0 = " << bigInt1.isZero() << endl;
-      }
+    else if (tolower(userEntry[0]) == 'i')
+      { bigInt1.isZero(); }
       
     /** BigInt2 is 0. */
-    else if (userEntry == "5")
-      {
-      cout << "BigInt2 == 0 = " << bigInt2.isZero() << endl;
-      }
+    else if (tolower(userEntry[0]) == 'n')
+      { bigInt2.isZero(); }
       
     /** Compare BigInt1 to BigInt2. */
-    else if (userEntry == "6")
+    else if (tolower(userEntry[0]) == 'c')
       {
       cout << "BigInt1 == BigInt2 = " << bigInt1.isEqualTo(bigInt2)              << endl;
       cout << "BigInt1 >  BigInt2 = " << bigInt1.isGreaterThan(bigInt2)          << endl;
@@ -91,7 +88,7 @@ void handleMenu()
       }
 
     /** Compare BigInt2 to BigInt1. */
-    else if (userEntry == "7")
+    else if (tolower(userEntry[0]) == 'o')
       {
       cout << "BigInt2 == BigInt1 = " << bigInt2.isEqualTo(bigInt1)              << endl;
       cout << "BigInt2 >  BigInt1 = " << bigInt2.isGreaterThan(bigInt1)          << endl;
@@ -103,19 +100,19 @@ void handleMenu()
       }
       
     /** Sum of BigInt1 to BigInt2. */
-    else if (userEntry == "8")
+    else if (tolower(userEntry[0]) == 's')
       { bigInt1.add(bigInt2); }
       
     /** Subtract of BigInt1 from BigInt2. */
-    else if (userEntry == "9")
+    else if (tolower(userEntry[0]) == 'u')
       { bigInt2.subtract(bigInt1); }
       
     /** Subtract of BigInt2 from BigInt1. */
-    else if (userEntry == "10")
+    else if (tolower(userEntry[0]) == 'b')
       { bigInt1.subtract(bigInt2); }
       
     /** Reset BigInts. */
-    else if (userEntry == "11")
+    else if (tolower(userEntry[0]) == 'r')
       {
       bigInt1 = BigInt("BigInt1");
       bigInt2 = BigInt("BigInt2");
@@ -148,17 +145,17 @@ void handleMenu()
 void printMenu()
   {
   cout << "\n**********************************************************\n" << endl;
-  cout << "[1]Enter numbers into BigInt1." << endl;
-  cout << "[2]Enter numbers into BigInt2." << endl;
-  cout << "[3]Print BigInts." << endl;
-  cout << "[4]BigInt2 is 0?" << endl;
-  cout << "[5]BigInt2 is 0?" << endl;
-  cout << "[6]Compare BigInt1 to BigInt2." << endl;
-  cout << "[7]Compare BigInt2 to BigInt1." << endl;
-  cout << "[8]Sum of BigInt1 and BigInt2." << endl;
-  cout << "[9]Subtract BigInt1 from BigInt2." << endl;
-  cout << "[10]Subtract BigInt2 from BigInt1." << endl;
-  cout << "[11]Reset BigInts." << endl;
+  cout << "[A]dd numbers to BigInt1." << endl;
+  cout << "A[D]d numbers to BigInt2." << endl;
+  cout << "[P]rint BigInts." << endl;
+  cout << "Big[I]nt2 is 0?" << endl;
+  cout << "BigI[N]t2 is 0?" << endl;
+  cout << "[C]ompare BigInt1 to BigInt2." << endl;
+  cout << "C[O]mpare BigInt2 to BigInt1." << endl;
+  cout << "[S]um of BigInt1 and BigInt2." << endl;
+  cout << "S[U]btract BigInt1 from BigInt2." << endl;
+  cout << "Su[B]tract BigInt2 from BigInt1." << endl;
+  cout << "[R]eset BigInts." << endl;
   cout << "[Q]uit." << endl;
   }
   

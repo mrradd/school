@@ -6,18 +6,23 @@
 ******************************************************************************/
 BigInt::BigInt(const string name)
   {
+  mSize = 0;
   mName = name;
 
   /** Init the digit array. */
   for(int i = 0; i < eMaxSize; i++)
     mDigits[i] = 0;
+
+  mPosition = eMaxIndex;
   }
 
 /******************************************************************************
 * DTOR */
 /***
 ******************************************************************************/
-BigInt::~BigInt(){}
+BigInt::~BigInt()
+  {
+  }
 
 /******************************************************************************
 * Setters/Getters
@@ -36,7 +41,17 @@ const unsigned int BigInt::getIndexOfLeadingDigit() const
 
   return iMaxIndex;
   }
-  
+
+/******************************************************************************
+* getSize */
+/***
+* @returns  Number of good indexes.
+******************************************************************************/
+unsigned int BigInt::getSize()
+  {
+  return mSize;
+  }
+
 /******************************************************************************
 * Logical Comparisons
 ******************************************************************************/
@@ -64,6 +79,8 @@ bool BigInt::isEqualTo(const BigInt& rhs)
       }
   else
     result = false;
+
+  //cout << mName << " == " << rhs.mName << " = " << result << endl;
 
   /** Passed verification. */
   return result;
@@ -111,6 +128,7 @@ bool BigInt::isGreaterThan(const BigInt& rhs)
       }
     }
     
+  //cout << mName << " > " << rhs.mName << " = " << result << endl;
   return result;
   }
 
@@ -124,6 +142,8 @@ bool BigInt::isGreaterThanOrEqualTo(const BigInt& rhs)
   {
   bool result = isGreaterThan(rhs) || isEqualTo(rhs);
   
+  //cout << mName << " >= " << rhs.mName << " = " << result << endl;  
+  
   return result;
   }
 
@@ -136,7 +156,9 @@ bool BigInt::isGreaterThanOrEqualTo(const BigInt& rhs)
 bool BigInt::isLessThan(const BigInt& rhs)
   {
   bool result = !isGreaterThan(rhs);
-    
+  
+  //cout << mName << " < " << rhs.mName << " = " << result << endl;  
+  
   return result;
   }
 
@@ -149,7 +171,9 @@ bool BigInt::isLessThan(const BigInt& rhs)
 bool BigInt::isLessThanOrEqualTo(const BigInt& rhs)
   {
   bool result = isLessThan(rhs) || isEqualTo(rhs);
-    
+  
+  //cout << mName << " <= " << rhs.mName << " = " << result << endl;
+  
   return result;
   }
 
@@ -163,6 +187,8 @@ bool BigInt::isNotEqualTo(const BigInt& rhs)
   {
   bool result = !isEqualTo(rhs);
   
+  //cout << mName << " != " << rhs.mName << " = " << result << endl;
+  
   return result;
   }
 
@@ -175,12 +201,11 @@ bool BigInt::isZero()
   {
   bool result = mDigits[getIndexOfLeadingDigit()] == 0;
   
+  //cout << mName << " == 0 = " << result << endl;
+  
   return result;
   }
 
-/******************************************************************************
-* Methods
-******************************************************************************/
 /******************************************************************************
 * Add */
 /***
@@ -190,6 +215,7 @@ bool BigInt::isZero()
 ******************************************************************************/
 void BigInt::add(const BigInt& rhs)
   {
+  
   /** Vector for sum of legit values. */
   vector<int> vecSum;
   int carryVal = 0;
@@ -212,73 +238,43 @@ void BigInt::add(const BigInt& rhs)
   cout << "Sum = ";
 
   for (vector<int>::iterator iter = vecSum.begin(); iter != vecSum.end(); iter++)
-    if (*iter > 0)
-      {
-      for (vector<int>::iterator it = iter; it != vecSum.end(); it++)
-        cout << *it;
-        
-      cout << endl;
-      return;
-      }
+    cout << *iter;
 
   cout << endl;
   }
 
 /******************************************************************************
-* clear */
-/***
-* Clears the digit array--makes all 0.
-******************************************************************************/
-void BigInt::clear()
-  {
-  for(int i = 0; i < eMaxIndex; i++)
-    mDigits[i] = 0;
-  }
-
-/******************************************************************************
 * input */
 /***
-* User enters up to 40 digits into the array. Checks for bad data.
 ******************************************************************************/
 void BigInt::input ()
   {
-  string      buffer;
-  vector<int> vecTempDigits;
-
-  cout << "Enter a number up to 40 digits long...";
+  string buffer;
+  int i = 9001;
+  cout << "Enter a # between 0 and 9 inclusive...";
   
   getline(cin, buffer, '\n');
-  
-  /** Validate size of number. */
-  if(buffer.length()>40)
+  if (!buffer.empty())
     {
-    cout << "\n" << buffer << " is too large...";
-    return;
-    }
+    errno = 0;
+    char *garbage = nullptr;
 
-  /** Add the digits from string to array from back to front. Also validates
-      each char of the string to ensure they are all digits. */
-  for(int strLen = buffer.length()-1; strLen > -1; strLen--)
-    {
-    if(!isdigit(buffer.c_str()[strLen]))
+    /** strtol gives val if good, and 0.0 if bad. */
+    i = strtol(buffer.c_str(), &garbage, 10);
+
+    if(i <= 9 && i >= 0)
+      pushInt(i);
+    else
       {
-      cout << buffer << "contains at least one non-numeric character...";
-      return;
+      cout << "1? Okay, 1 it is..." << endl;
+      pushInt(1);
       }
-
-    /** Convert to int. */
-    char c = buffer.c_str()[strLen];
-    int  x = (int)c - '0';
-    vecTempDigits.insert(vecTempDigits.begin(), x);
+    
     }
-
-  /** Everything went okay. Clear mDigits, and load it with the values of the temp vector. */
-  clear();
-  int j = eMaxIndex;
-  for(int i = vecTempDigits.size()-1; i > -1; i--)
+  else if(buffer.empty())
     {
-    mDigits[j] = vecTempDigits[i];
-    j--;
+    cout << "0? Okay, 0 it is..." << endl;
+    pushInt(0);
     }
   }
 
@@ -288,7 +284,7 @@ void BigInt::input ()
 * Prints the contents of the indexes with good values. Prints a list of all
 * the indexes with bad values.
 ******************************************************************************/
-void BigInt::output()
+void BigInt::output ()
   {
   cout << mName << "::output() \t";
 
@@ -298,6 +294,27 @@ void BigInt::output()
 
   cout << endl;
   return;
+  }
+
+/******************************************************************************
+* pushInt */
+/***
+* Pushes an int onto the next available element from the back and increments
+* size.
+*
+* @param  i  Integer to push onto the array.  
+******************************************************************************/
+void BigInt::pushInt (const int i)
+  {
+  /** Passed in value is 0-9, array size is in parameters, and the current
+      location is a bad value (able to be written to). */
+  if (i >= 0 && i <= 9 && mSize < eMaxSize)
+    {
+    mDigits[eMaxIndex - mSize] = i;
+    mSize++;
+    }
+  else
+    cout << mName << "::pushInt()\tDidn't insert "<< i << " to [" << eMaxIndex - mSize << "]." << endl;
   }
 
 /******************************************************************************

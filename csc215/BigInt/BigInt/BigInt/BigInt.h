@@ -25,6 +25,12 @@ class BigInt
     /** Name of object. Mainly for testing. */
     string mName;
 
+    /** Position in the array. */
+    int mPosition;
+
+    /** Used elements in the array. */
+    int mSize;
+
   public:
     
     /** CTOR/DTOR */
@@ -33,6 +39,7 @@ class BigInt
     
     /** Setters/Getters. */
     const unsigned int getIndexOfLeadingDigit() const;
+    unsigned int getSize();
 
     /** Comparison. */
     bool isEqualTo             (const BigInt& rhs);
@@ -45,9 +52,9 @@ class BigInt
     
     /** Methods. */
     void add     (const BigInt& rhs);
-    void clear   ();
     void input   ();
     void output  ();
+    void pushInt (const int i);
     void subtract(const BigInt& rhs);
   };
 
