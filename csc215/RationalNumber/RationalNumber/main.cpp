@@ -15,7 +15,16 @@ void handleMenu();
 
 int main()
   {
-  handleMenu();
+  //handleMenu();
+  string s("4/3");
+  RationalNumber rat(s);
+  
+  s = "4/d";
+  RationalNumber rat1(s);
+  
+  s = "///";
+  RationalNumber rat2(s);
+  
   system("pause");
   return 1;
   }
