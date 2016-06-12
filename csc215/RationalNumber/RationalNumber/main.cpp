@@ -40,14 +40,71 @@ void handleMenu()
   int  i      = 0;
   bool quit   = false;
   
+  RationalNumber fraction1;
+  RationalNumber fraction2;
+  
   do
     {
     printMenu();
     getline(cin, userEntry, '\n');
+    
     i = isdigit(stoi(userEntry)) ? stoi(userEntry) : -1;
     
+    cin.clear();
+    userEntry.clear();
     
-    
+    switch(i)
+      {
+      /** Make fraction1 */
+      case 1:
+        cout << "Enter a fraction (e.g. 2/3)." << endl;
+        getline(cin, userEntry, '\n');
+        fraction1 = RationalNumber(userEntry);
+      break;
+      /** Make fraction2 */
+      case 2:
+        cout << "Enter a fraction (e.g. 4/6)." << endl;
+        getline(cin, userEntry, '\n');
+        fraction2 = RationalNumber(userEntry);
+      break;
+      
+      /** Print fractions. */
+      case 3:
+      break;
+      
+      /** Compare fractions. */
+      case 4:
+      break;
+      
+      /** Sum of fractions. */
+      case 5:
+      break;
+      
+      /** Difference of fractions. */
+      case 6:
+      break;
+
+      /** Product of fractions. */      
+      case 7:
+      break;
+
+      /** Dividend of fractions. */      
+      case 8:
+      break;
+
+      /** Reset fractions. */      
+      case 9:
+      break;
+      
+      /** Quit. */      
+      case 10:
+        quit = true;
+      break;
+      
+      /** Bad input. */
+      default:
+      break;
+      }
      
     cin.clear();
     userEntry.clear();
