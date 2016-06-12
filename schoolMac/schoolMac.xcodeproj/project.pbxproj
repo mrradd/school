@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA28DD921D050795006B736A /* BigInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA28DD8F1D050795006B736A /* BigInt.cpp */; };
-		EA28DD931D050795006B736A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA28DD911D050795006B736A /* main.cpp */; };
+		EA53DA121D0CEF0D00BF196F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53DA0F1D0CEF0D00BF196F /* main.cpp */; };
+		EA53DA131D0CEF0D00BF196F /* RationalNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53DA101D0CEF0D00BF196F /* RationalNumber.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +25,9 @@
 
 /* Begin PBXFileReference section */
 		EA28DD871D050740006B736A /* schoolCmdLine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = schoolCmdLine; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA28DD8F1D050795006B736A /* BigInt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BigInt.cpp; path = ../csc215/BigInt/BigInt/BigInt.cpp; sourceTree = "<group>"; };
-		EA28DD901D050795006B736A /* BigInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BigInt.h; path = ../csc215/BigInt/BigInt/BigInt.h; sourceTree = "<group>"; };
-		EA28DD911D050795006B736A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../csc215/BigInt/BigInt/main.cpp; sourceTree = "<group>"; };
+		EA53DA0F1D0CEF0D00BF196F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../csc215/RationalNumber/RationalNumber/main.cpp; sourceTree = "<group>"; };
+		EA53DA101D0CEF0D00BF196F /* RationalNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RationalNumber.cpp; path = ../csc215/RationalNumber/RationalNumber/RationalNumber.cpp; sourceTree = "<group>"; };
+		EA53DA111D0CEF0D00BF196F /* RationalNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RationalNumber.h; path = ../csc215/RationalNumber/RationalNumber/RationalNumber.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,9 +44,9 @@
 		EA28DD791D0505F2006B736A = {
 			isa = PBXGroup;
 			children = (
-				EA28DD8F1D050795006B736A /* BigInt.cpp */,
-				EA28DD901D050795006B736A /* BigInt.h */,
-				EA28DD911D050795006B736A /* main.cpp */,
+				EA53DA0F1D0CEF0D00BF196F /* main.cpp */,
+				EA53DA101D0CEF0D00BF196F /* RationalNumber.cpp */,
+				EA53DA111D0CEF0D00BF196F /* RationalNumber.h */,
 				EA28DD891D050740006B736A /* schoolCmdLine */,
 				EA28DD881D050740006B736A /* Products */,
 			);
@@ -122,8 +122,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA28DD931D050795006B736A /* main.cpp in Sources */,
-				EA28DD921D050795006B736A /* BigInt.cpp in Sources */,
+				EA53DA131D0CEF0D00BF196F /* RationalNumber.cpp in Sources */,
+				EA53DA121D0CEF0D00BF196F /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +242,7 @@
 				EA28DD8E1D050740006B736A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
