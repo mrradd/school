@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA353FFC1D0E017B00DB9E12 /* Bike.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA353FF51D0E017B00DB9E12 /* Bike.cpp */; };
+		EA353FFD1D0E017B00DB9E12 /* Building.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA353FF71D0E017B00DB9E12 /* Building.cpp */; };
+		EA353FFE1D0E017B00DB9E12 /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA353FF91D0E017B00DB9E12 /* Car.cpp */; };
 		EA53DA121D0CEF0D00BF196F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53DA0F1D0CEF0D00BF196F /* main.cpp */; };
-		EA53DA131D0CEF0D00BF196F /* RationalNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53DA101D0CEF0D00BF196F /* RationalNumber.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +27,14 @@
 
 /* Begin PBXFileReference section */
 		EA28DD871D050740006B736A /* schoolCmdLine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = schoolCmdLine; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA353FF51D0E017B00DB9E12 /* Bike.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bike.cpp; path = ../csc215/Final_2/Bike.cpp; sourceTree = "<group>"; };
+		EA353FF61D0E017B00DB9E12 /* Bike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bike.h; path = ../csc215/Final_2/Bike.h; sourceTree = "<group>"; };
+		EA353FF71D0E017B00DB9E12 /* Building.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Building.cpp; path = ../csc215/Final_2/Building.cpp; sourceTree = "<group>"; };
+		EA353FF81D0E017B00DB9E12 /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Building.h; path = ../csc215/Final_2/Building.h; sourceTree = "<group>"; };
+		EA353FF91D0E017B00DB9E12 /* Car.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Car.cpp; path = ../csc215/Final_2/Car.cpp; sourceTree = "<group>"; };
+		EA353FFA1D0E017B00DB9E12 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Car.h; path = ../csc215/Final_2/Car.h; sourceTree = "<group>"; };
+		EA353FFB1D0E017B00DB9E12 /* CarbonFootPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarbonFootPrint.h; path = ../csc215/Final_2/CarbonFootPrint.h; sourceTree = "<group>"; };
 		EA53DA0F1D0CEF0D00BF196F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../csc215/RationalNumber/RationalNumber/main.cpp; sourceTree = "<group>"; };
-		EA53DA101D0CEF0D00BF196F /* RationalNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RationalNumber.cpp; path = ../csc215/RationalNumber/RationalNumber/RationalNumber.cpp; sourceTree = "<group>"; };
-		EA53DA111D0CEF0D00BF196F /* RationalNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RationalNumber.h; path = ../csc215/RationalNumber/RationalNumber/RationalNumber.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,8 +52,13 @@
 			isa = PBXGroup;
 			children = (
 				EA53DA0F1D0CEF0D00BF196F /* main.cpp */,
-				EA53DA101D0CEF0D00BF196F /* RationalNumber.cpp */,
-				EA53DA111D0CEF0D00BF196F /* RationalNumber.h */,
+				EA353FF51D0E017B00DB9E12 /* Bike.cpp */,
+				EA353FF61D0E017B00DB9E12 /* Bike.h */,
+				EA353FF71D0E017B00DB9E12 /* Building.cpp */,
+				EA353FF81D0E017B00DB9E12 /* Building.h */,
+				EA353FF91D0E017B00DB9E12 /* Car.cpp */,
+				EA353FFA1D0E017B00DB9E12 /* Car.h */,
+				EA353FFB1D0E017B00DB9E12 /* CarbonFootPrint.h */,
 				EA28DD891D050740006B736A /* schoolCmdLine */,
 				EA28DD881D050740006B736A /* Products */,
 			);
@@ -122,7 +134,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA53DA131D0CEF0D00BF196F /* RationalNumber.cpp in Sources */,
+				EA353FFD1D0E017B00DB9E12 /* Building.cpp in Sources */,
+				EA353FFC1D0E017B00DB9E12 /* Bike.cpp in Sources */,
+				EA353FFE1D0E017B00DB9E12 /* Car.cpp in Sources */,
 				EA53DA121D0CEF0D00BF196F /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
