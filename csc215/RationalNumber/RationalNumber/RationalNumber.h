@@ -1,5 +1,4 @@
 
-
 /******************************************************************************
 * RationalNumber */
 /***
@@ -21,7 +20,9 @@ class RationalNumber
     RationalNumber();
     RationalNumber(string fraction);
     ~RationalNumber(){};
-    
-    void print() { cout << mNumerator << "/" << mDenominator << endl; }
-    void split(string fraction);
+
+    int  findCommonDenominator(int val, int remainder);
+    void print () { cout << mNumerator << "/" << mDenominator << endl; }
+    void reduce();
+    void split (string fraction);
   };

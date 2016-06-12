@@ -17,6 +17,41 @@ RationalNumber::RationalNumber(string fraction)
   }
 
 /******************************************************************************
+* findCommonDenominator */
+/***
+* Recursively finds the Greatest Common Denominator by using taking the passed
+* in value and modding it by the remainder.
+*
+* @param  val        Int to check against
+* @param  remainder  Remainder of the modulus.
+******************************************************************************/  
+int RationalNumber::findCommonDenominator(int val, int remainder)
+  {
+	if(remainder == 0)
+		return(val);
+	else 
+    return(findCommonDenominator(remainder,val%remainder));
+  }
+
+/******************************************************************************
+* reduce */
+/***
+* Reduce the fraction.
+******************************************************************************/
+void RationalNumber::reduce()
+  {
+	int multiple = 0;
+  
+	if(mDenominator > mNumerator)
+		multiple = findCommonDenominator(mDenominator,mNumerator);
+	else
+		multiple = findCommonDenominator(mNumerator,  mDenominator);
+
+	mNumerator   /= multiple;
+	mDenominator /= multiple;
+  }
+
+/******************************************************************************
 * split */
 /***
 * Takes a stringified fraction, parses out and sets the numerator and
@@ -24,7 +59,7 @@ RationalNumber::RationalNumber(string fraction)
 * one is provided for user.
 *
 * @param  fraction  Stringified fraction.
-******************************************************************************/  
+******************************************************************************/
 void RationalNumber::split(string fraction)
   {
   stringstream        ss(fraction);
