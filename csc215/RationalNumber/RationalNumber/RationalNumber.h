@@ -1,15 +1,20 @@
 #pragma once
+
+/******************************************************************************
+* RationalNumber */
+/***
+* Represents a fraction and its mathematical functionality.
+******************************************************************************/
+#include <string>
+using namespace std;
 class RationalNumber
   {
   private:
-    /** Data memebers. */
-  
-  public:
+    int mNumerator;
+    int mDenominator;
     
-    /** CTOR/DTOR */
+  public:
     RationalNumber();
-    virtual ~RationalNumber();
-
-    /** Methods. */
+    RationalNumber(string fraction);
+    ~RationalNumber();
   };
-
