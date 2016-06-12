@@ -34,6 +34,16 @@ int RationalNumber::findCommonDenominator(int val, int remainder)
   }
 
 /******************************************************************************
+* print */
+/***
+* Prints the fractoin.
+******************************************************************************/
+void RationalNumber::print()
+  {
+  cout << mNumerator << "/" << mDenominator << endl;
+  }
+
+/******************************************************************************
 * reduce */
 /***
 * Reduce the fraction.
@@ -77,6 +87,57 @@ void RationalNumber::split(string fraction)
     cout << "Invalid fraction enterred. I'm setting it to 2/3.";
     }
   }
+
+/******************************************************************************
+* OPERATOR OVERLOADS
+******************************************************************************/  
+RationalNumber RationalNumber::operator +(const RationalNumber& rhs)
+  {
+  RationalNumber tempRN;
+  tempRN = *this;
+  tempRN.mNumerator   = (tempRN.mNumerator * rhs.mDenominator) + (rhs.mNumerator * tempRN.mDenominator);
+  tempRN.mDenominator = rhs.mDenominator * tempRN.mDenominator;
+  tempRN.reduce();
+  return tempRN;
+  }
+  
+RationalNumber RationalNumber::operator -(const RationalNumber& rhs)
+  {
+  RationalNumber tempRN;
+  tempRN = *this;
+  
+  tempRN.mNumerator = (tempRN.mNumerator * rhs.mDenominator) - (rhs.mNumerator * tempRN.mDenominator);
+  tempRN.mDenominator = rhs.mDenominator * tempRN.mDenominator;
+    
+  tempRN.reduce();
+  return tempRN;
+  }
+
+RationalNumber RationalNumber::operator *(const RationalNumber& rhs)
+  {
+  RationalNumber tempRN;
+  tempRN = *this;
+  
+  tempRN.mNumerator   = tempRN.mNumerator   * rhs.mNumerator;
+  tempRN.mDenominator = tempRN.mDenominator * rhs.mDenominator;
+  
+  tempRN.reduce();
+  return tempRN;
+  }
+
+RationalNumber RationalNumber::operator /(const RationalNumber& rhs)
+  {
+  RationalNumber tempRN;
+  tempRN = *this;
+
+  tempRN.mDenominator = tempRN.mDenominator * rhs.mNumerator;
+  tempRN.mNumerator   = tempRN.mNumerator   * rhs.mDenominator;
+    
+  tempRN.reduce();
+  return tempRN;
+  } 
+  
+  
   
   
   

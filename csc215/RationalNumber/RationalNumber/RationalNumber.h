@@ -22,7 +22,12 @@ class RationalNumber
     ~RationalNumber(){};
 
     int  findCommonDenominator(int val, int remainder);
-    void print () { cout << mNumerator << "/" << mDenominator << endl; }
-    void reduce();
-    void split (string fraction);
+    void print     ();
+    void reduce    ();
+    void split     (string fraction);
+    
+    RationalNumber operator +(const RationalNumber& rhs);
+    RationalNumber operator -(const RationalNumber& rhs);
+    RationalNumber operator *(const RationalNumber& rhs);
+    RationalNumber operator /(const RationalNumber& rhs);
   };
