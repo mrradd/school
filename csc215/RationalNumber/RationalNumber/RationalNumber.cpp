@@ -5,7 +5,11 @@
 * CTOR */
 /***
 ******************************************************************************/
-RationalNumber::RationalNumber(){}
+RationalNumber::RationalNumber()
+  {
+  mNumerator   = 0;
+  mDenominator = 0;
+  }
 /***
 * Takes a stringified fraction and parses out the numerator and den
 *
@@ -25,7 +29,7 @@ RationalNumber::RationalNumber(string fraction)
 * @param  val        Int to check against
 * @param  remainder  Remainder of the modulus.
 ******************************************************************************/  
-int RationalNumber::findCommonDenominator(int val, int remainder)
+long RationalNumber::findCommonDenominator(long val, long remainder)
   {
 	if(remainder == 0)
 		return(val);
@@ -34,13 +38,15 @@ int RationalNumber::findCommonDenominator(int val, int remainder)
   }
 
 /******************************************************************************
-* print */
+* toString */
 /***
-* Prints the fractoin.
+* Stringifies the fraction.
 ******************************************************************************/
-void RationalNumber::print()
+string RationalNumber::toString()
   {
-  cout << mNumerator << "/" << mDenominator << endl;
+  ostringstream oss;
+  oss << mNumerator << "/" << mDenominator;
+  return oss.str();
   }
 
 /******************************************************************************
@@ -50,7 +56,7 @@ void RationalNumber::print()
 ******************************************************************************/
 void RationalNumber::reduce()
   {
-	int multiple = 0;
+	long multiple = 0;
   
 	if(mDenominator > mNumerator)
 		multiple = findCommonDenominator(mDenominator,mNumerator);
@@ -72,19 +78,36 @@ void RationalNumber::reduce()
 ******************************************************************************/
 void RationalNumber::split(string fraction)
   {
-  stringstream        ss(fraction);
-  string              item;
+  stringstream ss(fraction);
+  string       item;
+  vector<long>  vecElems;
+
+  /** Parse out the numbers from the fraction and verify they are good. */
+  for(long i = 0; i < 2; i++)
+    {
+    char* garbage = nullptr;
+
+    getline(ss, item, '/');
+    long x = strtol(item.c_str(), &garbage, 10);
+    
+    if(*garbage == '\0' && errno != ERANGE)
+      vecElems.push_back(x);
+    else
+      vecElems.push_back(0);
+    }
   
-  getline(ss, item, '/');
-  mNumerator   = isdigit(stoi(item)) ? stoi(item) : 0;
-  getline(ss, item, '/');
-  mDenominator = isdigit(stoi(item)) ? stoi(item) : 0;
-  
-  if(mNumerator <= 0 || mDenominator <= 0)
+  /** Bad fraction values. Set to a good value. */
+  if(vecElems[0] <= 0 || vecElems[1] <= 0)
     {
     mNumerator   = 2;
     mDenominator = 3;
-    cout << "Invalid fraction enterred. I'm setting it to 2/3.";
+    cout << fraction << " is not acceptable. I'm setting it to 2/3." << endl;
+    }
+  /** Fraction values okay. */
+  else
+    {
+    mNumerator   = vecElems[0];
+    mDenominator = vecElems[1];
     }
   }
 
@@ -108,6 +131,7 @@ RationalNumber RationalNumber::operator -(const RationalNumber& rhs)
   tempRN.mNumerator   = (tempRN.mNumerator * rhs.mDenominator) - (rhs.mNumerator * tempRN.mDenominator);
   tempRN.mDenominator = rhs.mDenominator * tempRN.mDenominator;
   tempRN.reduce();
+
   return tempRN;
   }
 

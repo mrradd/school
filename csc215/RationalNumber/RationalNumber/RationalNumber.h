@@ -13,18 +13,18 @@ using namespace std;
 class RationalNumber
   {
   private:
-    int mNumerator;
-    int mDenominator;
+    long mNumerator;
+    long mDenominator;
     
   public:
     RationalNumber();
     RationalNumber(string fraction);
     ~RationalNumber(){};
 
-    int  findCommonDenominator(int val, int remainder);
-    void print     ();
-    void reduce    ();
-    void split     (string fraction);
+    long   findCommonDenominator(long val, long remainder);
+    string toString();
+    void   reduce  ();
+    void   split   (string fraction);
     
     RationalNumber operator+ (const RationalNumber& rhs);
     RationalNumber operator- (const RationalNumber& rhs);

@@ -15,15 +15,7 @@ void handleMenu();
 
 int main()
   {
-  //handleMenu();
-  string s("4/3");
-  RationalNumber rat(s);
-  
-  s = "4/d";
-  RationalNumber rat1(s);
-  
-  s = "///";
-  RationalNumber rat2(s);
+  handleMenu();
   
   system("pause");
   return 1;
@@ -48,7 +40,8 @@ void handleMenu()
     printMenu();
     getline(cin, userEntry, '\n');
     
-    i = isdigit(stoi(userEntry)) ? stoi(userEntry) : -1;
+    char* garbage = nullptr;
+    long i        = strtol(userEntry.c_str(), &garbage, 10);
     
     cin.clear();
     userEntry.clear();
@@ -61,6 +54,7 @@ void handleMenu()
         getline(cin, userEntry, '\n');
         fraction1 = RationalNumber(userEntry);
       break;
+
       /** Make fraction2 */
       case 2:
         cout << "Enter a fraction (e.g. 4/6)." << endl;
@@ -70,30 +64,52 @@ void handleMenu()
       
       /** Print fractions. */
       case 3:
+        cout << "fraction1 = " << fraction1.toString() << endl;
+        cout << "fraction2 = " << fraction2.toString() << endl;
       break;
       
       /** Compare fractions. */
       case 4:
+        cout << fraction1.toString() << " == " << fraction2.toString() << " = " << (fraction1 == fraction2) << endl;
+        cout << fraction1.toString() << " >  " << fraction2.toString() << " = " << (fraction1 >  fraction2) << endl;
+        cout << fraction1.toString() << " >= " << fraction2.toString() << " = " << (fraction1 >= fraction2) << endl;
+        cout << fraction1.toString() << " <  " << fraction2.toString() << " = " << (fraction1 <  fraction2) << endl;
+        cout << fraction1.toString() << " <= " << fraction2.toString() << " = " << (fraction1 <= fraction2) << endl;
+        cout << fraction1.toString() << " != " << fraction2.toString() << " = " << (fraction1 != fraction2) << endl;
+
+        cout << fraction2.toString() << " == " << fraction1.toString() << " = " << (fraction2 == fraction1) << endl;
+        cout << fraction2.toString() << " >  " << fraction1.toString() << " = " << (fraction2 >  fraction1) << endl;
+        cout << fraction2.toString() << " >= " << fraction1.toString() << " = " << (fraction2 >= fraction1) << endl;
+        cout << fraction2.toString() << " <  " << fraction1.toString() << " = " << (fraction2 <  fraction1) << endl;
+        cout << fraction2.toString() << " <= " << fraction1.toString() << " = " << (fraction2 <= fraction1) << endl;
+        cout << fraction2.toString() << " != " << fraction1.toString() << " = " << (fraction2 != fraction1) << endl;
       break;
       
       /** Sum of fractions. */
       case 5:
+        cout << fraction1.toString() << " + " << fraction2.toString() << " = " << (fraction1 + fraction2).toString() << endl;
       break;
       
       /** Difference of fractions. */
       case 6:
+        cout << fraction1.toString() << " - " << fraction2.toString() << " = " << (fraction1 - fraction2).toString() << endl;
+        cout << fraction2.toString() << " - " << fraction1.toString() << " = " << (fraction2 - fraction1).toString() << endl;
       break;
 
       /** Product of fractions. */      
       case 7:
+        cout << fraction1.toString() << " * " << fraction2.toString() << " = " << (fraction1 * fraction2).toString() << endl;
       break;
 
       /** Dividend of fractions. */      
       case 8:
+        cout << fraction1.toString() << " / " << fraction2.toString() << " = " << (fraction1 / fraction2).toString() << endl;
       break;
 
       /** Reset fractions. */      
       case 9:
+        fraction1 = RationalNumber();
+        fraction2 = RationalNumber();
       break;
       
       /** Quit. */      
@@ -129,6 +145,6 @@ void printMenu()
   cout << "[7]Product of fractions." << endl;
   cout << "[8]Dividend of fractions." << endl;
   cout << "[9]Reset fractions." << endl;
-  cout << "[10]uit." << endl;
+  cout << "[10]Quit." << endl;
   }
   
