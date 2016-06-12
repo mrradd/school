@@ -37,14 +37,18 @@ int main()
 void handleMenu()
   {
   string userEntry = "";
-  
-  bool quit = false;
+  int  i      = 0;
+  bool quit   = false;
   
   do
     {
     printMenu();
     getline(cin, userEntry, '\n');
-
+    i = isdigit(stoi(userEntry)) ? stoi(userEntry) : -1;
+    
+    
+    
+     
     cin.clear();
     userEntry.clear();
     }
@@ -59,17 +63,15 @@ void handleMenu()
 void printMenu()
   {
   cout << "\n**********************************************************\n" << endl;
-  cout << "[1]Enter numbers into BigInt1." << endl;
-  cout << "[2]Enter numbers into BigInt2." << endl;
-  cout << "[3]Print BigInts." << endl;
-  cout << "[4]BigInt2 is 0?" << endl;
-  cout << "[5]BigInt2 is 0?" << endl;
-  cout << "[6]Compare BigInt1 to BigInt2." << endl;
-  cout << "[7]Compare BigInt2 to BigInt1." << endl;
-  cout << "[8]Sum of BigInt1 and BigInt2." << endl;
-  cout << "[9]Subtract BigInt1 from BigInt2." << endl;
-  cout << "[10]Subtract BigInt2 from BigInt1." << endl;
-  cout << "[11]Reset BigInts." << endl;
-  cout << "[Q]uit." << endl;
+  cout << "[1]Enter fraction1." << endl;
+  cout << "[2]Enter fraction2." << endl;
+  cout << "[3]Print fractions." << endl;
+  cout << "[4]Compare fractions." << endl;
+  cout << "[5]Sum of fractions." << endl;
+  cout << "[6]Difference of fractions." << endl;
+  cout << "[7]Product of fractions." << endl;
+  cout << "[8]Dividend of fractions." << endl;
+  cout << "[9]Reset fractions." << endl;
+  cout << "[10]uit." << endl;
   }
   

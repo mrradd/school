@@ -26,8 +26,14 @@ class RationalNumber
     void reduce    ();
     void split     (string fraction);
     
-    RationalNumber operator +(const RationalNumber& rhs);
-    RationalNumber operator -(const RationalNumber& rhs);
-    RationalNumber operator *(const RationalNumber& rhs);
-    RationalNumber operator /(const RationalNumber& rhs);
+    RationalNumber operator+ (const RationalNumber& rhs);
+    RationalNumber operator- (const RationalNumber& rhs);
+    RationalNumber operator* (const RationalNumber& rhs);
+    RationalNumber operator/ (const RationalNumber& rhs);
+    bool           operator==(const RationalNumber& rhs);
+    bool           operator!=(const RationalNumber& rhs);
+    bool           operator> (const RationalNumber& rhs);
+    bool           operator< (const RationalNumber& rhs);
+    bool           operator>=(const RationalNumber& rhs);
+    bool           operator<=(const RationalNumber& rhs);
   };

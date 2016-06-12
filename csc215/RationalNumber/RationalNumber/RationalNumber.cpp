@@ -105,10 +105,8 @@ RationalNumber RationalNumber::operator -(const RationalNumber& rhs)
   {
   RationalNumber tempRN;
   tempRN = *this;
-  
-  tempRN.mNumerator = (tempRN.mNumerator * rhs.mDenominator) - (rhs.mNumerator * tempRN.mDenominator);
+  tempRN.mNumerator   = (tempRN.mNumerator * rhs.mDenominator) - (rhs.mNumerator * tempRN.mDenominator);
   tempRN.mDenominator = rhs.mDenominator * tempRN.mDenominator;
-    
   tempRN.reduce();
   return tempRN;
   }
@@ -117,10 +115,8 @@ RationalNumber RationalNumber::operator *(const RationalNumber& rhs)
   {
   RationalNumber tempRN;
   tempRN = *this;
-  
   tempRN.mNumerator   = tempRN.mNumerator   * rhs.mNumerator;
   tempRN.mDenominator = tempRN.mDenominator * rhs.mDenominator;
-  
   tempRN.reduce();
   return tempRN;
   }
@@ -129,16 +125,39 @@ RationalNumber RationalNumber::operator /(const RationalNumber& rhs)
   {
   RationalNumber tempRN;
   tempRN = *this;
-
   tempRN.mDenominator = tempRN.mDenominator * rhs.mNumerator;
   tempRN.mNumerator   = tempRN.mNumerator   * rhs.mDenominator;
-    
   tempRN.reduce();
   return tempRN;
   } 
   
+bool RationalNumber::operator ==(const RationalNumber& rhs)
+  {
+  return mDenominator == rhs.mDenominator && mNumerator == rhs.mDenominator;
+  }
   
+bool RationalNumber::operator !=(const RationalNumber& rhs)
+  {
+  return !(*this == rhs);
+  }
   
-  
-  
-  
+bool RationalNumber::operator >(const RationalNumber& rhs)
+  {
+  return *this != rhs && (mDenominator < rhs.mDenominator || (mDenominator == rhs.mDenominator && mNumerator > rhs.mNumerator));
+  }
+
+bool RationalNumber::operator <(const RationalNumber& rhs)
+  {
+  return *this != rhs && (mDenominator > rhs.mDenominator || (mDenominator == rhs.mDenominator && mNumerator < rhs.mNumerator));
+  }
+
+bool RationalNumber::operator >=(const RationalNumber& rhs)
+  {
+  return *this > rhs || *this == rhs;
+  }
+
+bool RationalNumber::operator <=(const RationalNumber& rhs)
+  {
+  return *this < rhs || *this == rhs;
+  }
+
