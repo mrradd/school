@@ -8,9 +8,9 @@
 class CarbonFootPrint
   {
   public:
-    CarbonFootPrint();
+    CarbonFootPrint(){};
     virtual ~CarbonFootPrint(){};
-  
+    
     virtual float calculateCarbonFootPrint()=0;
     virtual void  displayStats()=0;
   };

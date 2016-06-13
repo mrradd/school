@@ -7,13 +7,23 @@ using namespace std;
 ******************************************************************************/
 Building::Building()
   {
+
   }
 /***
+* @param  name          Name of object.
 * @param  natGasTherms  Therms of natural gas used.
 * @param  kwh           Kilowatt hours used.
-* @param  oilGal        Oils
+* @param  oilGal        Oil used.
+* @param  propaan       Propane used.
 ******************************************************************************/
-Building(float natGasTherms, float kwh, float oilGal, float propane){}
+Building::Building(string name, float natGasTherms, float kwh, float oilGal, float propane)
+  {
+  mName                = name;
+  mNatGasThermsMonthly = natGasTherms;
+  mKWHMonthly          = kwh;
+  mOilGalMonthly       = oilGal;
+  mPropaneGalMonthly   = propane;
+  }
 
 /******************************************************************************
 * calculateCarbonFootPrint */
@@ -22,19 +32,26 @@ Building(float natGasTherms, float kwh, float oilGal, float propane){}
 ******************************************************************************/  
 float Building::calculateCarbonFootPrint()
   {
-  return 1;//;
+  float gas     = mNatGasThermsMonthly * mEFNaturalGasTherm * 12;
+  float elec    = mKWHMonthly          * mEFactorValueInCA  * 12;
+  float oil     = mOilGalMonthly       * mEFFuelOilGallon   * 12;
+  float propane = mPropaneGalMonthly   * mEFPropane         * 12;
+  return gas + elec + oil + propane;
   }
 
 /******************************************************************************
 * displayStats */
 /***
 * Display environmental stats.
-******************************************************************************/  
+******************************************************************************/
 void Building::displayStats()
   {
-  cout << "********************" << endl;
-  cout << "Type: Car" << endl;
-  cout << "MPG: " <<  << endl;
-  cout << "Miles Driven Weekly: " <<  << endl;
-  cout << "Carbon Footprint: " << calculateCarbonFootPrint() << " pounds CO2/year." << endl;
+  cout << "*********************************************************************" << endl;
+  cout << "Type                    : Building" << endl;
+  cout << "Name                    : "         << mName                      << endl;
+  cout << "Natural Gas Therms/Month: "         << mNatGasThermsMonthly       << endl;
+  cout << "Kilowatt Hours/Month    : "         << mKWHMonthly                << endl;
+  cout << "Gallons of Oil/Month    : "         << mOilGalMonthly             << endl;
+  cout << "Gallons Propane/Month   : "         << mPropaneGalMonthly         << endl;
+  cout << "Carbon Footprint        : "         << calculateCarbonFootPrint() << " pounds CO2/year." << endl;
   }

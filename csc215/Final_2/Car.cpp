@@ -12,11 +12,13 @@ Car::Car()
   {
   }
 /***
+* @param  name               Name of object.
 * @param  milesDrivenWeekly  Number of miles driven per week.
 * @param  mpg                Miles per gallon for car.
 ******************************************************************************/
-Car::Car(float milesDrivenWeekly, float mpg)
+Car::Car(string name, float milesDrivenWeekly, float mpg)
   {
+  mName              = name;
   mMilesDrivenWeekly = milesDrivenWeekly;
   mMilesPerGallon    = mpg;
   }
@@ -38,11 +40,12 @@ float Car::calculateCarbonFootPrint()
 ******************************************************************************/  
 void Car::displayStats()
   {
-  cout << "********************" << endl;
-  cout << "Type: Car" << endl;
-  cout << "MPG: " << mMilesPerGallon << endl;
-  cout << "Miles Driven Weekly: " << mMilesDrivenWeekly << endl;
-  cout << "Carbon Footprint: " << calculateCarbonFootPrint() << " pounds CO2/year." << endl;
+  cout << "*********************************************************************" << endl;
+  cout << "Type               : Car" << endl;
+  cout << "Name               : "    << mName                      << endl;
+  cout << "MPG                : "    << mMilesPerGallon            << endl;
+  cout << "Miles Driven Weekly: "    << mMilesDrivenWeekly         << endl;
+  cout << "Carbon Footprint   : "    << calculateCarbonFootPrint() << " pounds CO2/year." << endl;
   }
   
   
