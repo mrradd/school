@@ -10,6 +10,18 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Bike.cpp" />
+    <ClCompile Include="Building.cpp" />
+    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bike.h" />
+    <ClInclude Include="Building.h" />
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="CarbonFootPrint.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CF1ADF05-C238-4131-99C2-B8B400E10DF1}</ProjectGuid>
     <RootNamespace>Final2</RootNamespace>
@@ -63,18 +75,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Final_2\Bike.cpp" />
-    <ClCompile Include="..\..\Final_2\Building.cpp" />
-    <ClCompile Include="..\..\Final_2\Car.cpp" />
-    <ClCompile Include="..\..\Final_2\main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Final_2\Bike.h" />
-    <ClInclude Include="..\..\Final_2\Building.h" />
-    <ClInclude Include="..\..\Final_2\Car.h" />
-    <ClInclude Include="..\..\Final_2\CarbonFootPrint.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
