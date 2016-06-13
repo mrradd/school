@@ -20,8 +20,9 @@ class Bike : public CarbonFootPrint
 
   public:
     Bike();
-    Bike(std::string name, float milesRidden);
+    Bike(std::string name, float milesRidden=0.0f);
     virtual ~Bike(){};
     virtual float calculateCarbonFootPrint();
     virtual void  displayStats();
+    static  Bike* make();
   };

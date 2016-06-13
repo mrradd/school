@@ -22,8 +22,9 @@ class Car : public CarbonFootPrint
 
   public:
     Car();
-    Car(std::string name, float milesDrivenWeekly, float mpg);
+    Car(std::string name, float milesDrivenWeekly=0.0f, float mpg=0.0f);
     virtual ~Car(){};
     virtual float calculateCarbonFootPrint();
     virtual void  displayStats();
+    static  Car*  make();
   };

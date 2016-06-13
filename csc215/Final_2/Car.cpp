@@ -48,4 +48,35 @@ void Car::displayStats()
   cout << "Carbon Footprint   : "    << calculateCarbonFootPrint() << " pounds CO2/year." << endl;
   }
   
+/******************************************************************************
+* make */
+/***
+* Asks for data from user, builds a car.
+*
+* @returns  Car pointer.
+******************************************************************************/
+Car* Car::make()
+  {
+  Car * c = new Car();
+  string buffer;
   
+  cout << "\nName of car?" << endl;
+  getline(cin, buffer, '\n');
+  c->mName = buffer;
+  cin   .clear();
+  buffer.clear();
+
+  cout << "\nMiles driven per week?" << endl;
+  getline(cin, buffer, '\n');
+  c->mMilesDrivenWeekly = getFloat(buffer);
+  cin   .clear();
+  buffer.clear();
+  
+  cout << "\nMiles per gallon for car?" << endl;
+  getline(cin, buffer, '\n');
+  c->mMilesPerGallon = getFloat(buffer);
+  cin   .clear();
+  buffer.clear();
+
+  return c;
+  }  

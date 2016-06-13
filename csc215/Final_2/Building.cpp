@@ -55,3 +55,48 @@ void Building::displayStats()
   cout << "Gallons Propane/Month   : "         << mPropaneGalMonthly         << endl;
   cout << "Carbon Footprint        : "         << calculateCarbonFootPrint() << " pounds CO2/year." << endl;
   }
+  
+/******************************************************************************
+* make */
+/***
+* Asks for data from user, builds a Building.
+*
+* @returns  Building pointer.
+******************************************************************************/
+Building* Building::make()
+  {
+  Building * b = new Building();
+  string buffer;
+  
+  cout << "\nName of Building?" << endl;
+  getline(cin, buffer, '\n');
+  b->mName = buffer;
+  cin   .clear();
+  buffer.clear();
+
+  cout << "\nNatural Gas used per month in Therms?" << endl;
+  getline(cin, buffer, '\n');
+  b->mNatGasThermsMonthly = getFloat(buffer);
+  cin   .clear();
+  buffer.clear();
+
+  cout << "\nKilowatt hours used per month?" << endl;
+  getline(cin, buffer, '\n');
+  b->mKWHMonthly = getFloat(buffer);
+  cin   .clear();
+  buffer.clear();
+
+  cout << "\nOil gallons used per month?" << endl;
+  getline(cin, buffer, '\n');
+  b->mOilGalMonthly = getFloat(buffer);
+  cin   .clear();
+  buffer.clear();
+
+  cout << "\nPropane gallons used per month?" << endl;
+  getline(cin, buffer, '\n');
+  b->mPropaneGalMonthly = getFloat(buffer);
+  cin   .clear();
+  buffer.clear();
+
+  return b;
+  }
