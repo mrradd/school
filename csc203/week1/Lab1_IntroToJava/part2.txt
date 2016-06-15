@@ -1,0 +1,46 @@
+Conrad Horton
+CSC203-June2017
+20160614
+
+Part 2
+
+1) For each of the given program segments, read the code, and write the output in the space provided below each program.
+
+2) What is the output of the following program?
+A) "63"
+  
+3) What is the output of the following program?
+A) "39"
+  
+4) What is output by the following program for each of the input values 5, 7, 100, –7 and 0?
+  input: 5
+  "Enter integer: "
+  "Welcome To Java Programming"
+
+  input 7:
+  "Enter integer: "
+
+  input -7:
+  "Enter integer: "
+  "Welcome "
+
+  input 0:
+  "Enter integer: "
+  "Welcome To Java Programming"
+
+5) What is output by the following program? Assume the user enters 12 for one execution of the program and 15 for a second execution.
+  input 12:
+  "Enter integer: "
+  "Hello"
+  
+  input 15:
+  "Enter integer: "
+  "Good Bye"
+  
+6) What is the output of the following program?
+  "HELLO"
+  
+  
+  
+  
+  

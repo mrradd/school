@@ -1,0 +1,47 @@
+Conrad Horton
+CSC203-June2017
+Lab - Intro to Java
+20160614
+
+/******************************************************************************/
+What does the if selection statement allow a program to do?
+/*****************/
+  If statement allows the program to make logical decisions based on boolean
+values.
+
+/******************************************************************************/
+What is a syntax error? Give an example.
+/*****************/
+  Syntax error is when the programmer mistypes a statement making commands Java
+cannot understand, it could also mean missing a semi-colon at the end of a line,
+etc.
+
+E.G.
+  Sytem.oat.pruntlm('hi').
+  should be
+  System.out.println("hi");
+
+/******************************************************************************/
+What is the importance of a variable’s name, type, size and value?
+/*****************/
+  Name lets the program know how to call the variable.
+  Type tells the program what data type it is so it can use the proper methods
+  on it.
+  Size tells the compiler how large the variable is. Generally dictated by
+  Type.
+  Value tells the program what the value is at the memory location.
+
+/******************************************************************************/
+What is an import declaration and where does it appear in a Java source code
+file?
+/*****************/
+  The 'import' declaration tells Java what libs, runtimes, or namespaces that
+  this particular section/class is going to use. It usually appears at the top
+  of a .java file.
+  
+/******************************************************************************/
+Why do programmers insert comments in their code?
+/*****************/
+  To document their code, or break up separate sections. Sometimes to comment
+  out lines for testing/debugging.
+/******************************************************************************/
