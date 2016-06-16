@@ -63,3 +63,5 @@ csc215/ASCIITree/ASCIITree/Debug/vc120.idb
 *.sln
 *.idb
 csc215/Arrays/Debug/Arrays.exp
+csc203/playground/.metadata/*
+csc203/playground/playground/.settings/*
