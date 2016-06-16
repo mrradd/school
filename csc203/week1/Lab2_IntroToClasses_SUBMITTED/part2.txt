@@ -1,0 +1,20 @@
+Conrad Horton
+CSC203-June2017
+20160615
+Lab2 Introduction to Classes and Objects Part 2:
+
+1)What is output by the following main method?
+A) "account balance: $35.50"
+
+2)What is output by the following main method?
+A) "account balance: $0.00"
+
+3)What is output by the following main method?
+A) "account balance: $15.33"
+   "adding $2.53 to account1 balance"
+   "account1 balance: $17.86"
+   
+4)What is output by the following main method?
+A) "account balance: $7.99"
+   "adding -$1.14 to account1 balance"
+   "account1 balance: $6.85"

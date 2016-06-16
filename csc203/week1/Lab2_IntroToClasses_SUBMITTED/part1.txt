@@ -1,26 +1,24 @@
 Conrad Horton
 CSC203-June2017
 20160614
-Lab2 Introduction to Classes and Objects
-
-Part 1:
+Lab2 Introduction to Classes and Objects Part 1
 
 26) List the parts of a method header and why each one is important.
+A)
 keyword       : Denotes being abstract, public, private, protected, final, static.
 return type   : Type of data returned. 
 name          : Java identifier, so Java knows what to invoke.
 parameter list: List of variable aliases and their associated data types that the function expects.
 
 27) How are constructors and methods similar? How are they different?
-Constructors are methods, but have no return type. It is used to create new instances of an object.
+A) Constructors are methods, but have no return type. It is used to create new instances of an object.
 
 28) What is the relationship between a client of an object and the object’s public members?
-Clients are able to access the public members of the object it using.
+A) Clients are able to access the public members of the object it using.
 
 29) What types of declarations are contained within a class declaration?
-data members, methods, internal classes, constructors.
+A) data members, methods, internal classes, constructors.
 
 30) Distinguish between a primitive-type variable and a reference-type variable.
-Primitives hold one value of its type at a time. References refer to addresses which are generally objects.
-  
+A) Primitives hold one value of its type at a time. References refer to addresses which are generally objects.
   
