@@ -1,83 +1,59 @@
 
+/******************************************************************************
+* Conrad Horton
+* CSC203 June 2016
+* Lab4 Part3 Sales
+* 20160621
+*******************************************************************************
+* A mail-order house sells five products whose retail prices are as follows:
+* Product 1, $2.98; product 2, $4.50; product 3, $9.98; product 4, $4.49 and
+* product 5, $6.87. Write an application that reads a series of pairs of
+* numbers as follows:
+* a) product number
+* b) quantity sold
+* Your program should use a switch statement to determine the retail price for
+* each product. It should calculate and display the total retail value of all
+* products sold. Use a sentinel-controlled loop to determine when the program
+* should stop looping and display the final results.
+*******************************************************************************/
 package rad;
-import java.util.Scanner;
 
-/*****************************************************************************
- * Conrad Horton
- * CSC203
- * June 2016
- * Week1 Lab2 Part3: Account
- * 20160615
- ******************************************************************************
- * Modify class Account (Fig. L 3.1) to provide a method called debit that
- * withdraws money from an Account. Ensure that the debit amount does not
- * exceed the Account’s balance. If it does, the balance should be left
- * un-changed and the method should print a message indicating "Debit amount
- * exceeded account balance." Modify class AccountTest (Fig. L 3.2) to test
- * method debit.
- *****************************************************************************/
-public class Account
+public class Sales
   {
-  private double balance;
-  
-  //CTOR.
-  public Account(double initialBalance)
+  /*****************************************************************************
+  * INTERNAL CLASS Product */
+  /***
+  * Represents the Product used in the program. 
+  *****************************************************************************/
+  public class Product
     {
-    if (initialBalance > 0.0)
-      balance = initialBalance;
-    }
-  
-  //Increase balance.
-  public void credit(double amount)
-    {
-    balance += amount;
-    }
-
-  //Prevent overdraw. Decrease balance.
-  public void debit(double amount)
-    {
-    if (balance < amount)
-      System.out.println("Debit amount exceeds account balance.");
-    else
-      balance -= amount;
-    }
-  
-  //Return the balance of the Account.
-  public double getBalance()
-    {
-    return balance;
-    }
-  
-  //Using Main in place of AccountTest class, since AccountTest was pointless.
-  //This is what main is for anyway.
-  public static void main(String args[])
-    {
-    //Make account objs.
-    Account account1 = new Account(50.00);
-    Account account2 = new Account(-7.53);
+    private int    number;
+    private double totalValue;
+    private int    quantity;
     
-    //Show balances.
-    System.out.printf("account1 balance: $%.2f\n", account1.getBalance());
-    System.out.printf("account2 balance: $%.2f\n", account2.getBalance());
+    /***************************************************************************
+    * CTOR */
+    /***
+    * Represents the Product used in the program. 
+    * @param  num   Product number.
+    * @param  val   Value of the Product.
+    ***************************************************************************/
+    public Product(int num)
+      {
+      number    = num;
+      quantity  = 0;
+      }
     
-    //Prep for input.
-    Scanner input = new Scanner(System.in);
-    double withdrawalAmount;
+    /** Setters/Getters **/
+    public int  getNumber    ()           { return number;               }
+    public void setQuantity  (int qty)    { quantity   += qty;           }
+    public void setTotalValue(double val) { totalValue = val * quantity; }
     
-    //Take withdraw amount from user for account1.
-    System.out.print("\nEnter withdrawal amount from account1: ");
-    withdrawalAmount = input.nextDouble();
-    System.out.printf("\nWithdrawing $%.2f for account1...\n", withdrawalAmount);
-    account1.debit(withdrawalAmount);
-    
-    //Take withdraw amount from user for account2.
-    System.out.print("\nEnter withdrawal amount from account2: ");
-    withdrawalAmount = input.nextDouble();
-    System.out.printf("\nWithdrawing $%.2f for account2...\n", withdrawalAmount);
-    account2.debit(withdrawalAmount);
-    
-    //Show balances.
-    System.out.printf("account1 balance: $%.2f\n", account1.getBalance());
-    System.out.printf("account2 balance: $%.2f\n", account2.getBalance());
+    /** Prints data about the product. **/
+    public void print()
+      {
+      String s = String.format("Product %d: %.2f", number, totalValue);
+      System.out.println(s);
+      }
     }
   }
