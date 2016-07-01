@@ -8,24 +8,22 @@
 package rad;
 
 /*******************************************************************************
-* Class Vec2 */
+* Class Point */
 /**
-* Vector with two components. Can represent a point in 2Space.
+* Point with two components. Can represent a point in 2Space.
 *******************************************************************************/
-class Vec2
+class Point
   {
   private double mX;
   private double mY;
 
   /*****************************************************************************
-  * Vec2 */
+  * Point */
   /**
-  * Calculate distance between to Vec2 objects.
-  * 
   * @param  x  X coordinate.
   * @param  y  Y coordinate.
   *****************************************************************************/
-  public Vec2(double x, double y)
+  public Point(double x, double y)
     {
     mX = x;
     mY = y;
@@ -34,16 +32,20 @@ class Vec2
   /*****************************************************************************
   * distance */
   /**
-  * Calculate distance between to Vec2 objects.
+  * Calculate distance between two Point objects. 
   * 
-  * @param  vec  Vec2 object.
-  *****************************************************************************/  
-  public double distance(Vec2 vec)
+  * @param  p  Point object.
+  *****************************************************************************/
+  public double distance(Point p)
     {
-    return Math.sqrt(Math.pow(vec.mX - mX, 2) - Math.pow(vec.mY - mY, 2));
+    /** Distance = sq((x2 - x1)^2 + (y2 - y1)^2) **/
+    return Math.sqrt(Math.pow(p.mX - mX, 2) + Math.pow(p.mY - mY, 2));
     }
   
   public static void main (String[] args)
     {
+    Point v  = new Point(1, 1);
+    Point v2 = new Point(2, 2);
+    v.distance(v2);
     }
   }
