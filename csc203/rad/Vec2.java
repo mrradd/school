@@ -38,10 +38,12 @@ class Vec2
   * 
   * @param  vec  Vec2 object.
   *****************************************************************************/  
-  public void distance(Vec2 vec)
+  public double distance(Vec2 vec)
     {
-    double dx = Math.pow(vec.mX - mX, 2);
-    double dy = Math.pow(vec.mY - mY, 2);
-    System.out.println(Math.sqrt( dx - dy ));
+    return Math.sqrt(Math.pow(vec.mX - mX, 2) - Math.pow(vec.mY - mY, 2));
+    }
+  
+  public static void main (String[] args)
+    {
     }
   }
