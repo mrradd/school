@@ -1,0 +1,14 @@
+Conrad Horton 
+CSC203 June 2016
+Locker Puzzle Analysis
+20160703
+
+
+Analysis:
+The problem was intended to have us practice iterating over arrays using non-conventional iteration methodology.
+
+Design:
+The biggest challenge to solve this problem was designing an algorithm so I only needed one nested loop to get my data.
+
+Testing:
+I tested this program by making sure every iteration had the same output.
