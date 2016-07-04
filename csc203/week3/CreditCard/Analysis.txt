@@ -1,0 +1,20 @@
+
+Conrad Horton
+CSC203 June 2016
+Assignment Credit Card Validator
+20160703
+
+Analysis: (Describe the problem including input and output in your own words.)
+Parsing a long input into single digits and using Luhn's Check to verify if the card is valid or not. The input is a card number from the user, and the output is whether the card is valid or not.
+
+Design: (Describe the major steps for solving the problem)
+First figuring out how to get the characters from a string. I used substring() for this. Second was how to determine the type. I used startsWith() for that.
+Third was figuring the sum of the doubles, and how to extrapolate the sum of the two digits. From there it was just a matter of typing a lot.
+
+Testing: (Describe how you test this program)
+I tested against the verified data I was given in the prompt.
+
+ 
+
+
+
