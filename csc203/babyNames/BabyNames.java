@@ -1,11 +1,8 @@
 
-/*******************************************************************************
-* Conrad Horton
-* CSC203 June 2016
-* Baby Names Assignment
-* 20160717
-*******************************************************************************/
 package rad;
+
+import java.io.File;
+import java.util.Scanner;
 
 /*******************************************************************************
 * Class BabyNames */
@@ -14,8 +11,20 @@ package rad;
 *******************************************************************************/
 class BabyNames
   {
+
   public static void main(String args[])
     {
-    
+    try
+      {
+      Scanner input = new Scanner(new File("bbn5.csv"));
+      input.useDelimiter(",");
+      
+      String s = input.next();
+      System.out.println(s);
+      }
+    catch(Exception e)
+      {
+      System.out.println(e.getMessage());
+      }
     }
   }
