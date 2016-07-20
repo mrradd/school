@@ -1,0 +1,23 @@
+Create a base class of a character.  You need 2 attributes, methods to access
+and update these attributes, 2 constructors, and a printInfo() method that
+prints the attributes.  For the update of the attributes, one must have
+verification (for example, health cannot be a negative number).
+
+Next, create 2 classes that inherit from the character class.  (for example,
+zombie and goblin).  Each class must have 2 additional attributes, methods to
+access and update these attributes, 2 constructors, and a printInfo() method
+that prints the attributes. The print method should use the character base
+method.  One of the constructors should use the base class constructor to
+set these values as well.
+
+Next, you need to have an additional print method using polymorphism.  The
+second print method would only print a subset of the attributes.  Use a boolea
+ value as the parameter that determines which printInfo() method is called.
+
+Finally, write a Main() program that creates instances of all 3 classes and
+calls both print methods.
+NOTE:  The executable file is REQUIRED.  See the file VS - generate an
+executable file in Doc Sharing.
+
+Extra credit (5 points)  - allow the user to enter all the values and give them
+responses if the values are not valid. 
