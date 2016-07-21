@@ -35,6 +35,7 @@ int  Zombie::getSize       ()         { return mSize; }
 void Zombie::setAttackBonus()         { mAttackBonus = mSize * (mSize > -1 ? 1 : -1); }
 int  Zombie::getAttackBonus()         { return mAttackBonus; }
 
+
 /******************************************************************************
 * printInfo */
 /**

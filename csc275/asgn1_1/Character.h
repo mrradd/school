@@ -15,6 +15,9 @@ class Character
     int mHP;
     int mBaseAttack;
 
+    /** This will be used for Pimpl exception safety. **/
+    auto_ptr<Character> mPimpl;
+
   /** SETTERS/GETTERS **/
   public:
     virtual void setHP        (int hp = 1);
@@ -25,10 +28,15 @@ class Character
   /** CTORS **/
   public:
     Character(int hp = 0, int baseAttack = 0);
-    Character(const Character& obj);
+    Character(const Character& ref);
     virtual ~Character();
+
+  /** Operators **/
+  public:
+    Character& operator= (const Character& rhs);
 
   /** METHODS **/
   public:
+    virtual void swap     (Character& ref);
     virtual void printInfo();
   };
