@@ -56,13 +56,18 @@ class GuessGame extends JFrame
     /** Make text field. **/
     mGuessInputTextField = new JTextField(5);
     
+    /** Make new game button. **/
+    mNewGameButton = new JButton("New Game");
+    
     /** Add action listeners. **/
     /** Add text listener. **/
     mGuessInputTextField.addActionListener(new ActionListener()
       {
       public void actionPerformed(ActionEvent e)
         {
-        react(Integer.getInteger((mGuessInputTextField.getText())));
+        String  t = mGuessInputTextField.getText();
+        Integer i = Integer.parseInt(t);
+        react(i.intValue());
         }
       });
     
@@ -71,14 +76,22 @@ class GuessGame extends JFrame
       {
       public void actionPerformed(ActionEvent e)
         {
-        /** Reset the text, color, and fields. **/
-        mBackGround = Color.LIGHT_GRAY;
-        mNumber     = mGuessCount = mLastDistance = 0;
+        mBackGround   = Color.LIGHT_GRAY;
+        mGuessCount   = 0;
+        mLastDistance = 0;
+        mNumber       = mRand.nextInt(1000);
+
         mGuessInputTextField.setText("");
         paint(getGraphics());
         }
       });
     
+    setLayout(new GridLayout(5,1));
+    add(mPrompt1Label);
+    add(mPrompt2Label);
+    add(mGuessInputTextField);
+    add(mMessageLabel);
+    add(mNewGameButton);
     theGame();
     }
 
@@ -101,21 +114,53 @@ class GuessGame extends JFrame
   *****************************************************************************/
   public void react(int guess)
     {
+    mGuessCount++;
     
+    /** Successful guess. **/
+    if (mNumber == guess)
+      {
+      mBackGround = Color.GRAY;
+      mMessageLabel.setText("Correct!");      
+      return;
+      }
+    
+    /** Change background color. **/
+    int d = Math.abs(guess - mNumber);
+    if (d > mLastDistance)
+      {
+      mBackGround = Color.BLUE;
+      mMessageLabel.setText("Getting colder.");
+      }
+    else if (d < mLastDistance)
+      {
+      mBackGround = Color.RED;
+      mMessageLabel.setText("Getting warmer.");
+      }
+    
+    /** Update last distance. **/
+    mLastDistance = d;
+    
+    /** Repaint. **/
+    paint(this.getGraphics());
+    repaint();
     }
   
   /*****************************************************************************
   * theGame */
   /**
-  * Run the game. 
+  * Run the game.
   *****************************************************************************/
   public void theGame()
     {
-    
+    mNumber       = mRand.nextInt(1000);
+    mLastDistance = 0;
     }
   
   public static void main(String args[])
     {
-    
+    GuessGame gg = new GuessGame();
+    gg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    gg.setSize(400, 200);
+    gg.setVisible(true);
     }
   }
