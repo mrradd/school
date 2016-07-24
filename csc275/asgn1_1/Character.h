@@ -37,6 +37,6 @@ class Character
 
   /** METHODS **/
   public:
-    virtual void swap     (Character& ref);
+    virtual void swap     (const Character& ref);
     virtual void printInfo();
   };

@@ -11,8 +11,7 @@ method.  One of the constructors should use the base class constructor to
 set these values as well.
 
 Next, you need to have an additional print method using polymorphism.  The
-second print method would only print a subset of the attributes.  Use a boolea
- value as the parameter that determines which printInfo() method is called.
+second print method would only print a subset of the attributes.  Use a boolean value as the parameter that determines which printInfo() method is called.
 
 Finally, write a Main() program that creates instances of all 3 classes and
 calls both print methods.

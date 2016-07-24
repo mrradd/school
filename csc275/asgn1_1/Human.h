@@ -1,5 +1,6 @@
 
 #pragma once
+
 #include "Character.h"
 
 class Human : Character
@@ -22,7 +23,13 @@ class Human : Character
     Human(const Human& obj);
     virtual ~Human();
 
+  /** Operators **/
+  public:
+    Human& operator= (const Human& rhs);
+
   /** METHODS **/
   public:
+            void print    (bool printAll);
     virtual void printInfo();
+    virtual void swap     (const Human& ref);
   };
