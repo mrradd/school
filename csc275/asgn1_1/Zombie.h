@@ -1,8 +1,9 @@
 
 #pragma once
 #include "Character.h"
+#include <cmath>
 
-class Zombie : Character
+class Zombie : public Character
   {
   /** DATA MEMBERS **/
   private:
@@ -18,7 +19,7 @@ class Zombie : Character
 
   /** CTORS **/
   public:
-    Zombie (int hp = 0, int baseAttack = 0, int size = 0, int attackBonus = 0);
+    Zombie (int hp = 3, int baseAttack = 1, int size = 0, int attackBonus = 0);
     Zombie (const Zombie& obj);
     virtual ~Zombie();
 
@@ -28,7 +29,7 @@ class Zombie : Character
 
   /** METHODS **/
   public:
-            void print    (bool printAll);
     virtual void printInfo();
+            void printInfo(bool printAll);
     virtual void swap     (const Zombie& ref);
   };

@@ -11,8 +11,8 @@
 *******************************************************************************/
 Character::Character(int hp, int baseAttack)
   {
-  mHP         = hp;
-  mBaseAttack = baseAttack;
+  setHP        (hp);
+  setBaseAttack(baseAttack);
   }
 /**
 * Copy CTOR.
@@ -33,10 +33,27 @@ Character::~Character(){}
 /*******************************************************************************
 * SETTER/GETTERS
 *******************************************************************************/
-void Character::setHP        (int hp)     { mHP = hp < 0 ? 0 : hp; }
-int  Character::getHP        ()           { return mHP; }
-void Character::setBaseAttack(int attack) { mBaseAttack = attack < 1 ? 1 : attack; }
-int  Character::getBaseAttack()           { return mBaseAttack; }
+void Character::setHP (int hp)
+  {
+  if (hp < 0)
+    cout << "\nvoid Character::setHP(): " << hp <<
+      " is an invalid value. Setting to 0." << endl;
+
+  mHP = hp < 0 ? 0 : hp;
+  }
+
+int  Character::getHP(){ return mHP; }
+
+void Character::setBaseAttack(int attack)
+  {
+  if (attack < 1)
+    cout << "\nCharacter::setBaseAttack(): " << attack <<
+      " is an invalid value. Setting to 1." << endl;
+
+  mBaseAttack = attack < 1 ? 1 : attack;
+  }
+
+int Character::getBaseAttack() { return mBaseAttack; }
 
 /*******************************************************************************
 * OPERATORS
@@ -70,8 +87,8 @@ void Character::swap(const Character& ref)
 void Character::printInfo()
   {
   ostringstream os;
-  os << "\nHP: " << mHP << "\nBase Attack: " << mBaseAttack;
-  cout << os.str();
+  os << "HP: " << mHP << "\nBase Attack: " << mBaseAttack;
+  cout << os.str() << "\n";
   }
   
   

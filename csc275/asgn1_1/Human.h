@@ -3,7 +3,7 @@
 
 #include "Character.h"
 
-class Human : Character
+class Human : public Character
   {
   /** DATA MEMBERS **/
   private:
@@ -19,7 +19,7 @@ class Human : Character
 
   /** CTORS **/
   public:
-    Human(int hp = 0, int baseAttack = 0, const string name = "", const string clazz = "");
+    Human(int hp = 20, int baseAttack = 1, string name = "?", string clazz = "??");
     Human(const Human& obj);
     virtual ~Human();
 
@@ -29,7 +29,8 @@ class Human : Character
 
   /** METHODS **/
   public:
-            void print    (bool printAll);
+            
     virtual void printInfo();
+            void printInfo(bool printAll);
     virtual void swap     (const Human& ref);
   };

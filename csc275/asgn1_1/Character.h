@@ -11,12 +11,9 @@ using namespace std;
 class Character
   {
   /** DATA MEMBERS **/
-  private:
+  protected:
     int mHP;
     int mBaseAttack;
-
-    /** This will be used for Pimpl exception safety. **/
-    auto_ptr<Character> mPimpl;
 
   /** SETTERS/GETTERS **/
   public:

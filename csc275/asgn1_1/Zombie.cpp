@@ -10,11 +10,10 @@
 * @param  attackBonus  Class of the obj. Default = 0.
 *******************************************************************************/
 Zombie::Zombie(int hp, int baseAttack, int size, int attackBonus)
+  : Character(hp, baseAttack)
   {
-  setHP        ();
-  setBaseAttack();
-  setBaseAttack();
   mSize = size;
+  setAttackBonus();
   }
 /**
 * Copy CTOR.
@@ -35,11 +34,20 @@ Zombie::~Zombie(){}
 /*******************************************************************************
 * SETTER/GETTERS
 *******************************************************************************/
-void Zombie::setSize       (int size) { mSize = size; }
-int  Zombie::getSize       ()         { return mSize; }
-void Zombie::setAttackBonus()         { mAttackBonus = mSize * (mSize > -1 ? 1 : -1); }
-int  Zombie::getAttackBonus()         { return mAttackBonus; }
+void Zombie::setSize(int size)
+  {
+  if (size < 0)
+    {
+    cout << "\nvoid Zombie::setSize(): " << size <<
+      " is an invalid value. Setting to 0." << endl;
+    mSize = 0;
+    }
 
+  mSize = size;
+  }
+int  Zombie::getSize       () { return mSize; }
+void Zombie::setAttackBonus() { mAttackBonus = mSize * (mSize > -1 ? mHP/6 : -1); }
+int  Zombie::getAttackBonus() { return mAttackBonus; }
 
 /*******************************************************************************
 * OPERATORS
@@ -48,22 +56,24 @@ Zombie& Zombie::operator= (const Zombie& rhs)
   {
   /** Doing a temp/swap avoids needing to check for self assignment. **/
   Zombie temp(rhs);
-  swap (temp);
+  swap(temp);
   return *this;
   }
 
 /*******************************************************************************
 * print */
 /**
-* Prints only properties of this class.
+* Prints Zombie props if false, and Zombie+Character props if true.
 *
-* @param  printAll  True=Print this class and parent info. False=Only this class.
+* @param  printAll  True=Print Zombie and parent info. False=Only Zombie.
 *******************************************************************************/
-void Zombie::print(bool printAll)
+void Zombie::printInfo(bool printAll)
   {
   stringstream ss;
-  ss << "Zombie\n" << "Size: " << mSize << "\nAttack Bonus: " << mAttackBonus;
+  ss << "\nZombie\n" << "Size: " << mSize << "\nAttack Bonus: " << mAttackBonus;
   
+  cout << ss.str()<<"\n";
+    
   if (printAll)
     Character::printInfo();
   }
@@ -71,11 +81,11 @@ void Zombie::print(bool printAll)
 /*******************************************************************************
 * printInfo */
 /**
-* Prints all properties of this object.
+* Prints Zombie+Character properties.
 *******************************************************************************/
 void Zombie::printInfo()
   {
-  print(true);
+  printInfo(true);
   }
   
 /*******************************************************************************

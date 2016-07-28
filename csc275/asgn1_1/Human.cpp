@@ -11,7 +11,7 @@
 * @param  name        Name. Default = "".
 * @param  clazz       Class of the obj. Default = "".
 *******************************************************************************/
-Human::Human(int hp, int baseAttack, const string name, const string clazz)
+Human::Human(int hp, int baseAttack, string name, string clazz)
   : Character(hp, baseAttack)
   {
   mName  = name;
@@ -54,17 +54,20 @@ Human& Human::operator= (const Human& rhs)
   }
 
 /*******************************************************************************
-* print */
+* printInfo */
 /**
-* Prints only the properties of this class.
+* Prints Human props if false, and Human+Character props if true.
 *
-* @param  printAll  True=Print this class and parent info. False=Only this class.
+* @param  printAll  True=Print Human and parent info. False=Only Human.
 *******************************************************************************/
-void Human::print(bool printAll)
+void Human::printInfo(bool printAll)
   {
   stringstream ss;
-  ss << "Human\n" << "Name: " << mName << "\nClass: " << mClass;
+  ss << "\nHuman\n" << "Name: " << mName << "\nClass: " << mClass;
   
+  cout << ss.str() << "\n";
+    
+  /** Print Character properies. **/
   if (printAll)
     Character::printInfo();
   }
@@ -72,11 +75,11 @@ void Human::print(bool printAll)
 /*******************************************************************************
 * printInfo */
 /**
-* Prints all properties of this object.
+* Prints Human+Character properties.
 *******************************************************************************/
 void Human::printInfo()
   {
-  print(true);
+  printInfo(true);
   }
   
 /*******************************************************************************
