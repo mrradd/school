@@ -1,7 +1,10 @@
 
 #pragma once
 
+#include <iostream>
+#include <sstream>
 #include <string>
+
 
 class Word
   {
@@ -13,7 +16,7 @@ class Word
   /** SETTERS/GETTERS **/
   public:
     void         setString(std::string str);
-    std::string& setString();
+    std::string& getString();
     int          getCount ();
     
   /** CTORS **/
@@ -27,4 +30,5 @@ class Word
   /** METHODS **/
   public:
     void incrementCount();
+    void print();
   };

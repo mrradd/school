@@ -21,11 +21,24 @@ Word::~Word(){}
 * SETTER/GETTERS
 *******************************************************************************/  
 void         Word::setString(std::string str) { mString = str;  }
-std::string& Word::setString()                { return mString; }
+std::string& Word::getString()                { return mString; }
 int          Word::getCount ()                { return mCount;  }
 
 /*******************************************************************************
-* DTOR */
+* incrementCount */
 /**
+* Increments the counter.
 *******************************************************************************/
 void Word::incrementCount() { mCount++; }
+
+/*******************************************************************************
+* print */
+/**
+* Increments the counter.
+*******************************************************************************/
+void Word::print()
+  {
+  std::stringstream ss;
+  ss << mString << " " << mCount << " ocurrences" << std::endl;
+  std::cout << ss.str();
+  }
