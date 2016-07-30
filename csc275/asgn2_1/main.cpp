@@ -23,62 +23,53 @@ int main()
   /** File of words to search for. **/ std::ifstream            fileWords  ("word1.txt", std::ifstream::in);
   /** File of words to search in. **/  std::ifstream            filePassage("word2.txt", std::ifstream::in);
   /** Vector of words to find. **/     std::vector<Word*>       vecWordsToFind;
-  /** Buffer to hold passage file. **/ std::vector<std::string> vecPassage;
+  /** Buffer to hold passage file. **/ std::string              passage;
 
   /** Try to open files. **/
   if (!fileWords)
-    {
     std::cout << "word1.txt could not be opened." << std::endl;
-    return 1;
-    }
 
   if (!filePassage)
-    {
     std::cout << "word2.txt could not be opened." << std::endl;
-    return 1;
-    }
 
-  /** Load vector with Words objects. **/
-  std::string word;
-  while (fileWords >> word)
+  if (fileWords && filePassage)
     {
-    /** Make lowercase. **/
-    std::transform(word.begin(), word.end(), word.begin(), ::tolower);
-
-    /** Add spaces to the string to match exact word. **/
-    vecWordsToFind.insert(vecWordsToFind.end(), new Word(word));
-    }
-  fileWords.close();
-
-  /** Read the passage file into memory. Loading into a vector to get exact
-      strings. **/
-  while(filePassage >> word)
-    {
-    /** Make the word lowercase. **/
-    std::transform(word.begin(), word.end(), word.begin(), ::tolower);
-    vecPassage.push_back(word);
-    }
-  filePassage.close();
-
-  /** Search for the strings in the passage. **/
-  for(std::vector<Word*>::iterator itw = vecWordsToFind.begin(); itw != vecWordsToFind.end(); ++itw)
-    {
-    /** Iterate over the passage, and search for the Word. Doing it this way,
-        because find is too inaccurate since it will return matches when a word
-        is in a word. **/
-    for(std::vector<std::string>::iterator itp = vecPassage.begin(); itp != vecPassage.end(); ++itp)
+    /** Load vector with Word objects. **/
+    std::string word;
+    while (fileWords >> word)
       {
-      /** Since there will be punctuation, we will match against the passage's
-          word by creating a substring of the search param's length. **/
-      std::string str = itp->substr(0, (*itw)->getString().length());
-      
-      if ((*itw)->getString() == str)
-        (*itw)->incrementCount();
+      /** Make lowercase. **/
+      std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+      vecWordsToFind.insert(vecWordsToFind.end(), new Word(word));
       }
-      
+    fileWords.close();
 
-    /** Print the string. **/
-    (*itw)->print();
+    /** Read the passage file into memory one word at a time, so we can make it
+        lowercase. **/
+    while(filePassage >> word)
+      {
+      /** Make the word lowercase for ease of searching. **/
+      std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+      passage += word + " ";
+      }
+    filePassage.close();
+
+    /** Search for the strings in the passage. **/
+    for(std::vector<Word*>::iterator it = vecWordsToFind.begin(); it != vecWordsToFind.end(); ++it)
+      {
+      /** Iterate over the passage to search for every insance of the target
+          word. Find only finds the next instance, so we need to adjust its
+          position every iteration. **/
+      std::size_t found = passage.find((*it)->getString());
+      while(found != std::string::npos)
+        {
+        (*it)->incrementCount();
+        found = passage.find((*it)->getString(), found + 1);
+        }
+      
+      /** Print the string. **/
+      (*it)->print();
+      }
     }
 
   system("pause");
