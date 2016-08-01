@@ -2,10 +2,11 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
 #include <sstream>
 #include <string>
 
-
+using namespace std;
 class Word
   {
   /** DATA MEMBERS **/
@@ -29,6 +30,6 @@ class Word
 
   /** METHODS **/
   public:
-    void incrementCount();
-    void print();
+    void   incrementCount();
+    string toString();
   };

@@ -32,13 +32,16 @@ int          Word::getCount ()                { return mCount;  }
 void Word::incrementCount() { mCount++; }
 
 /*******************************************************************************
-* print */
+* toString */
 /**
-* Increments the counter.
+* Stringifies and formats class properties.
+*
+* @returns  Formatted string of properties.
 *******************************************************************************/
-void Word::print()
+string Word::toString()
   {
   std::stringstream ss;
-  ss << mString << " " << mCount << " ocurrences" << std::endl;
-  std::cout << ss.str();
+  int w = 20 - mString.length();
+  ss << mString << std::setw(w) << mCount << " ocurrences" << std::endl;
+  return ss.str();
   }
