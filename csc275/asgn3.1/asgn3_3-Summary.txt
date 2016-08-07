@@ -1,0 +1,10 @@
+Conrad Horton
+CSC275 July 2016
+Asgn 3.1 Boost Installation
+8/2/2016
+
+Since I was installing on a Mac I had to jump through significantly more hoops. 1) Installed MacPorts using the terminal.
+2) Ran the MacPorts command in terminal to install boost.
+3) From there I needed to actually locate the directory the headers and libs were installed in (opt/local/include/boost and opt/local/lib) so I could link them.
+4) Changed the PATH variable in BASH ~/.profile to reflect the location of the libs. (This is mainly for using MacPorts later).
+5) Updated the header and linker paths in XCode to reflect the boost location.
