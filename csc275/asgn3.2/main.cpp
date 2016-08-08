@@ -26,7 +26,6 @@
 
 using namespace std;
 
-
 void makeSharedPtr();
 void makeUniquePtr(unique_ptr<Strukt> unqPtr);
 void makeWeakPtr  ();
@@ -50,8 +49,8 @@ void makeSharedPtr()
   
   /** Join threads so they wait for eachother's execution. */
   t1.join(); t2.join(); t3.join();
-  cout << "Threads completed." << endl;
-  cout << "End makeSharedPtr" << endl;
+  cout << "Threads completed" << endl;
+  cout << "End makeSharedPtr\n" << endl;
   }
   
 /** Creates a uniquepointer using the passed in pointer. **/
@@ -59,12 +58,15 @@ void makeUniquePtr(unique_ptr<Strukt> unqPtr)
   {
   cout << "Start makeUniquePtr." << endl;
   unique_ptr<Strukt> uptr(move(unqPtr));
-  cout << "End makeUniquePtr." << endl;
+  cout << "End makeUniquePtr\n" << endl;
   }
 
+ /** Make and test a weak pointer. **/
 void makeWeakPtr()
   {
   cout << "Start makeWeakPtr." << endl;
+
+    /** Create a mini scope. To force weak ptr to be destroyed. **/
     {
     auto aptr = std::make_shared<Clazz>();
 	  wkPtr = aptr;
@@ -72,7 +74,7 @@ void makeWeakPtr()
     }
  
   testWeakPtr();
-  cout << "End makeWeakPtr." << endl;
+  cout << "End makeWeakPtr\n" << endl;
   }
 
 /** Used for testing scoping with weakpointers. **/
@@ -81,11 +83,11 @@ void testWeakPtr()
   cout << "Start testWeakPtr" << endl;
   
   if (auto apt = wkPtr.lock())
-	  cout << "Address of wkPtr " << &apt << "\n";
+	  cout << "Address of wkPtr " << &apt << endl;
   else
-    cout << "wkPtr expired\n";
+    cout << "wkPtr expired" << endl;
     
-  cout << "End testWeakPtr" << endl;
+  cout << "End testWeakPtr\n" << endl;
   }
 
 /** Thread function demonstrating use of shared_ptr. **/  
@@ -98,12 +100,14 @@ void thred(shared_ptr<Clazz> sptr)
   lock_guard<std::mutex> lk(io_mutex);
   cout << "local pointer in a thread:"
        << " sp.get() = "       << sp.get()
-       << " sp.use_count() = " << sp.use_count() << '\n';
+       << " sp.use_count() = " << sp.use_count()
+       << endl;
   }
  
 int main()
   {
   makeUniquePtr(unique_ptr<Strukt>(new Strukt));
   makeSharedPtr();
-  makeWeakPtr();
+  makeWeakPtr  ();
+  system("pause");
   }

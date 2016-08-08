@@ -1,0 +1,33 @@
+Conrad Horton
+CSC275
+Asgn 3.3 Libraries - Summary
+08/6/2016
+
+
+void doBoostCommonFactor()
+In this method I used boost::math::gcd to calculate the GCD of two numbers.
+I chose this, because I had to do something similar in a previous class.
+
+void doBoostForEach()
+BOOST_FOREACH was used to iterate over string objects in a string vector.
+This method was used, because I've wanted to have foreach functionality in c++.
+It's nice to know that I have that option with Boost.
+
+doBoostLogTrivial()
+This method used a simple log function to output a string to console by way of
+BOOS_LOG_TRIVIAL. Having made log classes in the past, this is definitely easy
+to use and impressive. I look forward to investigating the output to file
+capabilities.
+
+doBoostRandom()
+This actually took a couple methods to use the ranom methods of boost::random.
+First was declaring the generator 'boost::random::mt19937 rng;', then establishing 
+a distribution 'boost::random::uniform_int_distribution<> thirty(1,30);', and finally
+using the distribution handing it the generator 'thirty(rng);'. Random number
+generation with boost seems tedious after looking at their documentation. I can see,
+though, how it would be very handy if some serious RNG was needed.
+
+doBoostRegex()
+Using boost::regex::pattern was actually easier than using C#'s or Java's I was quite
+surprised. Reading the documentation on it, Boost's regex capabilities are far more
+robust than those of C# and Java as well.
