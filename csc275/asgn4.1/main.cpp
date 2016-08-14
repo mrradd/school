@@ -123,6 +123,7 @@ int main()
     cout << e.what() << "\n\n";
     }
 
+  system("pause");
   return 0;
   }
   

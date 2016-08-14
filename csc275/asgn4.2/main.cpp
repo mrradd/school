@@ -65,12 +65,14 @@ int main()
         case '^': result = y ^ x; break;
         case '%': result = y % x; break;
         }
-      cout << result << "\n";
       pfStack.push(result);
       }
     }
   
-  
+  /** Display result. */
+  cout << "Result = "<< pfStack.top() << "\n";
+
+  system("pause");
   return 0;
   }
   
