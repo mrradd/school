@@ -1,86 +1,104 @@
-/*******************************************************************************
-* Stack */
+/******************************************************************************
+* Queue */
 /**
-* Emulates the functionality of an STL Stack.
+* Emulates the functionality of an STL Queue.
 *******************************************************************************/
 #include <iostream>
 #include <stdexcept>
 
 template <typename T, int MaxSize>
-class Stack
+class Queue
   {
   /*****************************************************************************
   * Datamembers
   *****************************************************************************/
   private:
-    int mEmptyVal;
     T   mList[MaxSize];
-    int mTop;
+    int mSize;
 
   /*****************************************************************************
   * CTORS/DTORS
   *****************************************************************************/    
   public:
-    Stack() { mEmptyVal = mTop = -1; };
-    ~Stack(){};
+    Queue() { mSize = 0; };
+    ~Queue(){};
     
   /*****************************************************************************
   * Methods
   *****************************************************************************/
   public:
+    /***************************************************************************
+    * back */
+    /**
+    * Returns the top object in the stack. 
+    ***************************************************************************/      
+    T back()
+      {
+      if (empty())
+        throw std::out_of_range("Stack Empty.");
+      
+      return mList[mSize];
+      }
     
     /***************************************************************************
     * empty */
     /**
     * Returns if the list is empty.
     ***************************************************************************/
-    bool empty(){ return mEmptyVal == mTop; }
+    bool empty(){ return mSize <= 0; }
+    
+    /***************************************************************************
+    * front */
+    /**
+    * Returns the top object in the stack. 
+    ***************************************************************************/      
+    T front()
+      {
+      if (empty())
+        throw std::out_of_range("Stack Empty.");
+      
+      return mList[0];
+      }
+    
+    /***************************************************************************
+    * push */
+    /**
+    * Push an object onto the back of the stack. 
+    ***************************************************************************/
+    void push(T t)
+      {
+      if(mSize < MaxSize)
+        mList[mSize++] = t;
+      else throw std::out_of_range("Stack full.");
+      }
 
     /***************************************************************************
     * pop */
     /**
-    * Returns the top object, and decrements the counter, so it is not
-    * accessible. 
+    * Returns the front object, and decrements the size counter, then reorders
+    * the list by shifting items to the front.
     ***************************************************************************/      
     void pop()
       {
       if(empty())
         throw std::out_of_range("Stack Empty.");
-
-      mList[mTop--] = NULL;
+      
+      /** Shift all elements down one. */
+      if(mSize > 1)
+        for(int i = 1; i < mSize; i++)
+          {
+          mList[i-1] = mList[i];
+          mList[i]   = NULL;
+          }
+      --mSize;
       }
-
-    /***************************************************************************
-    * push */
-    /**
-    * Push an object onto the top of the stack. 
-    ***************************************************************************/
-    void push(T t)
-      {
-      if((mTop + 1) < MaxSize)
-        mList[++mTop] = t;
-      else throw std::out_of_range("Stack full.");
-      }
-
+    
     /***************************************************************************
     * size */
     /**
     * Returns the size of the stack.
     ***************************************************************************/
-    int size(){ return mTop < 0 ? 0 : mTop + 1; }
-
-    /***************************************************************************
-    * top */
-    /**
-    * Returns the top object in the stack. 
-    ***************************************************************************/      
-    T top()
-      {
-      if (empty())
-        throw std::out_of_range("Stack Empty.");
-      
-      return mList[mTop];
-      }
+    int size(){ return mSize <= 0 ? 0 : mSize + 1; }
   };
   
   
