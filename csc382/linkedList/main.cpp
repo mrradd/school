@@ -27,14 +27,25 @@ int main()
   {
   DoubleLinkList<int>* dbll = new DoubleLinkList<int>;
   
-  int* i = new int(1);
-  cout << i << endl;
+  int* i  = new int(2);
+  int* i2 = new int(3);
+  int* i3 = new int(5);
+  int* i4 = new int(8);
+  int* i5 = new int(13);
 
   dbll->insert(i);
-  cout << dbll->find(i) << endl;
+  dbll->insert(i2);
+  dbll->insert(i5);
 
+  dbll->find(i);
+  dbll->find(i2);
+  dbll->find(i4);
 
-  delete i;
+  dbll->deleteNode(i);
+  
+  dbll->find(i);
+
+  delete i, i2, i3, i4, i5;
   delete dbll;
 
   system("pause");
