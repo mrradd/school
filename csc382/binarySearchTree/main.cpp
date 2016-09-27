@@ -14,15 +14,41 @@
 *******************************************************************************/
 #include <iostream>
 #include <string>
+#include <random>
+#include <ctime>
 #include "BST.h"
+
 int main()
   {
   BST<int> bst;
 
-  bst.add(20, 30);
-  bst.add(1,  89);
-  bst.add(21, 40);
-  bst.add(80, 66);
+//  int keyArray[100] = {0};
+  
+  /** Load array with 100 key value pairs. */
+  srand (time(NULL));
+  for(int i = 0; i < 100; i++)
+    {
+    int key = rand() % 10000 + 1;
+    bool exists = false;
+    
+//    /** Make sure the key does not exist. */
+//    for(int j = 0; j < 100; j++)
+//      if(keyArray[j] == key)
+//        {
+//        exists = true;
+//        break;
+//        }
+//        
+//    /** Add the key and value to their proper array. */
+//    if(!exists)
+//      keyArray[i] = key;
 
-  system("pause");
+    bst.add(key, i);
+    }
+
+  bst.max();
+  bst.del(99);
+  bst.max();
+  //system("pause");
+  return 0;
   }

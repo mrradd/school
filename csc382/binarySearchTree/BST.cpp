@@ -26,19 +26,27 @@ void BST<T>::del(T val)
 
 /** Find and delete a certain Node. */
 template<typename T>
-void BST<T>::delNode(T val, Node<T>* node)
+void BST<T>::delNode(T val, Node<T>*& node)
   {
-  if (val < node->data)
+  bool l = node->left  != nullptr;
+  bool ld = val < node->data;
+  bool r = node->right != nullptr;
+  bool rd = val > node->data;
+  
+  if (l && ld)
     delNode(val, node->left);
-  else if (val > node->data)
+  else if (r && rd)
     delNode(val, node->right);
   else
+    {
+    cout << "DELETE  K: " << node->key << "\n\n";
     doDeletion(node);
+    }
   }
 
 /** Deletes the node and reattaches the subtrees. */
 template<class T>
-void BST<T>::doDeletion(Node<T>* node)
+void BST<T>::doDeletion(Node<T>*& node)
   {
   Node<T> *tempNode;
 
@@ -82,17 +90,20 @@ template<typename T>
 long unsigned BST<T>::findMax(Node<T>* node, unsigned long key)
   {
   long unsigned maxKey = key;
-  if(node != nullptr)
+  if(node != NULL)
     {
-    long unsigned lKey   = node->left->key;
-    long unsigned rKey   = node->right->key;
-    long unsigned bigKey = rKey > lKey ? rKey : lKey;
+    long unsigned lBig   = 0;
+    long unsigned rBig   = 0;
+    long unsigned bigKey = 0;
+    
+    if(node->left != NULL)
+      lBig = findMax(node->left, node->left->key);
+    
+    if(node->right != NULL)
+      rBig = findMax(node->right, node->right->key);
+    
+    bigKey = rBig > lBig ? rBig : lBig;
     maxKey = maxKey > bigKey ? maxKey : bigKey;
-
-    findMax(node->left, lKey);
-    cout << node->data << " ";
-    findMax(node->right, rKey);
-
     }
 
   return maxKey;
@@ -100,13 +111,13 @@ long unsigned BST<T>::findMax(Node<T>* node, unsigned long key)
 
 /** Insert a Node to the tree hidden from the user, because reasons. */
 template<typename T>
-void BST<T>::insert(long long key, T val, Node<T>* node)
+void BST<T>::insert(long long key, T val, Node<T>*& node)
   {
   /** External Node found, set the Node value. */
   if (node == nullptr)
     {
     node = new Node<T>(key, val);
-    cout << "SET  K: " << key << endl;
+    cout << "SET  K: " << key << "\n\n";
     }
 
   /** Insert in left Node. */
@@ -131,7 +142,6 @@ void BST<T>::insert(long long key, T val, Node<T>* node)
   /** Node was not added. */
   else
     cout << "Node not added for some reason. Intended Key: " << key << endl;
-
   }
 
 /** Find the largest key starting from the Root Node. */

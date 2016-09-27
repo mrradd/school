@@ -40,10 +40,10 @@ class BST
     /** First Node in the tree. */
     Node<T>* mRoot;
 
-    void          doDeletion (Node<T>* node);
-    void          delNode    (T t, Node<T>* node);
+    void          doDeletion (Node<T>*& node);
+    void          delNode    (T t, Node<T>*& node);
     long unsigned findMax    (Node<T>* node, unsigned long key);
-    void          insert     (long long key, T t, Node<T>* node = nullptr);
+    void          insert     (long long key, T t, Node<T>*& node = nullptr);
     void          replaceNode(Node<T>* nReplace, Node<T>* nReplaceWith);
 
   public:
