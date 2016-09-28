@@ -19,11 +19,11 @@ class HashTable
     HashTable( int tableLength = 13 );
     ~HashTable();
     
-    Node * getNodeByKey    (string key);
+    Node * retrieve        (string key);
     int    getLength       ();
     int    getNumberOfNodes();
     
-    void insertNode(Node * newNode);
+    void insert(Node * newNode);
     bool removeNode(string key);
     void printHistogram();
     void printTable();

@@ -42,7 +42,7 @@ int LinkedList::getLength()
   }
   
 /** Inserts a node at the end of the list. */
-void LinkedList::insertNode(Node* node)
+void LinkedList::insert(Node* node)
   {
   if (!head->next)
     {

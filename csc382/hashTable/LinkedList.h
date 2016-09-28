@@ -27,7 +27,7 @@ class LinkedList
     Node * getNode  (string key);
     int    getLength();
     
-    void insertNode(Node * newNode);
+    void insert(Node * newNode);
     void printList ();
     bool removeItem(string key);
   };

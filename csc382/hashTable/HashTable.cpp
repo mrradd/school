@@ -16,7 +16,7 @@ HashTable::~HashTable()
 
 /** Returns a node from the Hash Table by key. If the node isn't found, a null
     pointer is returned. */
-Node * HashTable::getNodeByKey(string itemKey)
+Node * HashTable::retrieve(string itemKey)
   {
   int index = hash(itemKey);
   return array[index].getNode(itemKey);
@@ -49,10 +49,10 @@ int HashTable::hash(string key)
   }
 
 /**  Adds a node to the Hash Table. */
-void HashTable::insertNode(Node * newNode)
+void HashTable::insert(Node * newNode)
   {
   int index = hash(newNode->key);
-  array[index].insertNode(newNode);
+  array[index].insert(newNode);
   }
 
 /**  Prints a histogram illustrating the Item distribution. */
