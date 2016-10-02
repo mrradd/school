@@ -41,7 +41,7 @@ class BST
     Node<T>* mRoot;
 
     void          doDeletion (Node<T>*& node);
-    void          delNode    (T t, Node<T>*& node);
+    void          delNode    (long long key, Node<T>*& node);
     long unsigned findMax    (Node<T>* node, unsigned long key);
     void          insert     (long long key, T t, Node<T>*& node = nullptr);
     void          replaceNode(Node<T>* nReplace, Node<T>* nReplaceWith);
@@ -49,7 +49,7 @@ class BST
   public:
     BST(){ mRoot = nullptr; }
     void add(long long key, T t);
-    void del(T t);
+    void del(long long key);
     void max();
 
   };

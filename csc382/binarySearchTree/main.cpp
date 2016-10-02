@@ -23,31 +23,21 @@ int main()
   BST<int> bst;
 
 //  int keyArray[100] = {0};
-  
+  long long key    = 0;
+  long long delKey = 0;
   /** Load array with 100 key value pairs. */
   srand (time(NULL));
+  
   for(int i = 0; i < 100; i++)
     {
-    int key = rand() % 10000 + 1;
-    bool exists = false;
+    key = rand() % 1000 + 1;
+    delKey = key < 500 ? key : 0;
     
-//    /** Make sure the key does not exist. */
-//    for(int j = 0; j < 100; j++)
-//      if(keyArray[j] == key)
-//        {
-//        exists = true;
-//        break;
-//        }
-//        
-//    /** Add the key and value to their proper array. */
-//    if(!exists)
-//      keyArray[i] = key;
-
     bst.add(key, i);
     }
 
   bst.max();
-  bst.del(99);
+  bst.del(delKey);
   bst.max();
   //system("pause");
   return 0;

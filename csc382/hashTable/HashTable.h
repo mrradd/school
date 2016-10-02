@@ -18,11 +18,11 @@ class HashTable
   public:
     HashTable( int tableLength = 13 );
     ~HashTable();
-    
+
     Node * retrieve        (string key);
     int    getLength       ();
     int    getNumberOfNodes();
-    
+
     void insert(Node * newNode);
     bool removeNode(string key);
     void printHistogram();

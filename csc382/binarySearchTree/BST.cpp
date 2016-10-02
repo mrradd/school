@@ -19,24 +19,24 @@ void BST<T>::add(long long key, T val)
 
 /** Try deleting the root node first then traverse the tree. */
 template<typename T>
-void BST<T>::del(T val)
+void BST<T>::del(long long key)
   {
-  delNode(val, mRoot);
+  delNode(key, mRoot);
   }
 
 /** Find and delete a certain Node. */
 template<typename T>
-void BST<T>::delNode(T val, Node<T>*& node)
+void BST<T>::delNode(long long key, Node<T>*& node)
   {
   bool l = node->left  != nullptr;
-  bool ld = val < node->data;
+  bool ld = key < node->key;
   bool r = node->right != nullptr;
-  bool rd = val > node->data;
-  
+  bool rd = key > node->key;
+
   if (l && ld)
-    delNode(val, node->left);
+    delNode(key, node->left);
   else if (r && rd)
-    delNode(val, node->right);
+    delNode(key, node->right);
   else
     {
     cout << "DELETE  K: " << node->key << "\n\n";
@@ -64,7 +64,7 @@ void BST<T>::doDeletion(Node<T>*& node)
     node     = node->right;
     delete tempNode;
     }
-   
+
   /** Node has two children. */
   else
     {
@@ -77,8 +77,8 @@ void BST<T>::doDeletion(Node<T>*& node)
 
     /** Attach the left subtree. */
     tempNode->left = node->left;
-    tempNode = node;
-    
+    tempNode       = node;
+
     /** Attach the right subtree. */
     node = node->right;
     delete tempNode;
@@ -95,13 +95,13 @@ long unsigned BST<T>::findMax(Node<T>* node, unsigned long key)
     long unsigned lBig   = 0;
     long unsigned rBig   = 0;
     long unsigned bigKey = 0;
-    
+
     if(node->left != NULL)
       lBig = findMax(node->left, node->left->key);
-    
+
     if(node->right != NULL)
       rBig = findMax(node->right, node->right->key);
-    
+
     bigKey = rBig > lBig ? rBig : lBig;
     maxKey = maxKey > bigKey ? maxKey : bigKey;
     }
@@ -109,7 +109,7 @@ long unsigned BST<T>::findMax(Node<T>* node, unsigned long key)
   return maxKey;
   }
 
-/** Insert a Node to the tree hidden from the user, because reasons. */
+/** Insert a Node to the tree; method hidden from the user, because reasons. */
 template<typename T>
 void BST<T>::insert(long long key, T val, Node<T>*& node)
   {
@@ -150,7 +150,6 @@ void BST<T>::max()
   {
   cout << "MAX: " << findMax(mRoot, mRoot->key) << endl;
   }
-
 
 /** The explicit instantiation; see
     http://www.cplusplus.com/forum/articles/14272/ (guestgulkan) */
