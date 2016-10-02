@@ -79,47 +79,6 @@ void DoubleLinkList<T>::deleteNode(T* delNode)
   }
 
 /**************************************************************************
-* find */
-/**
-* Finds the Node with data equal to passed in data.
-*
-* @param  data  T object to insert.
-* @returns pointer to the data found.
-*************************************************************************
-template<typename T>
-T* DoubleLinkList<T>::find(T* data)
-  {
-  cout << "start find(T* data)" << endl;
-  cout << "Searching for: " << *data << " ..." << endl;
-  
-  /** Traverse the list to find the data we want. 
-  Node<T>* n = head;
-  try
-    {
-    while (n->next != NULL)
-      {
-      if (*(n->data) == *data)
-        {
-        cout << "Match found: " << *(n->data) << "\n" << endl;
-        return n->data;
-        }
-
-      if (n->data != NULL)
-        n = n->next;
-      }
-    }
-  catch(...)
-    {
-    cout << "derp" << endl;
-    }
-
-  /** Nothing found.
-  cout << "No match found." << endl;
-  cout << "end find(T* data)\n" << endl;
-  return nullptr;
-  }*/
-
-/**************************************************************************
 * insert */
 /**
 * Inserts a new node at the end of the list with a key equal to newData.
@@ -156,5 +115,76 @@ void DoubleLinkList<T>::insert(T* newData)
     cout << "data: " << *(temp->data) << " prev: " << (temp->prev != NULL ? *(temp->prev->data) : 0) << "\n" << endl;
     }
   }
+ 
+/* sorts the linked list by changing next pointers. */
+template<typename T>
+void DoubleLinkList<T>::mergeSort(Node<T>** headRef)
+  {
+  Node<T>* h = *headRef;
+  Node<T>* a;
+  Node<T>* b;
+  if ((head == NULL) || (head->next == NULL))
+    {
+    return;
+    }
+  split    (h, &a, &b);
+  mergeSort(&a);
+  mergeSort(&b);
   
+  *headRef = sortedMerge(a, b);
+  }
+  
+/* merge the sorted linked lists */
+template<typename T>
+Node<T>* DoubleLinkList<T>::sortedMerge(Node<T>* nodeA,  Node<T>* nodeB)
+  {
+    Node<T>* result = NULL;
+    if (nodeA == NULL)
+        return nodeB;
+    else if (nodeB==NULL)
+        return nodeA;
+    if (nodeA->key <= nodeB->key)
+      {
+      result = nodeA;
+      result->next = sortedMerge(nodeA->next, nodeB);
+      }
+    else
+      {
+      result = nodeB;
+      result->next = sortedMerge(nodeA, nodeB->next);
+      }
+    return result;
+  }
+ 
+/* Split the nodes of the given list into front and back halves*/
+template<typename T>
+void DoubleLinkList<T>::split(Node<T>* source, Node<T>** front, Node<T>** back)
+  {
+  Node<T>* fast;
+  Node<T>* slow;
+  
+  if (source==NULL || source->next==NULL)
+    {
+    *front = source;
+    *back  = NULL;
+    }
+  else
+    {
+    slow = source;
+    fast = source->next;
+    while (fast != NULL)
+      {
+      fast = fast->next;
+      if (fast != NULL)
+        {
+        slow = slow->next;
+        fast = fast->next;
+        }
+      }
+    *front = source;
+    *back  = slow->next;
+    slow->next = NULL;
+    }
+  }
+    
 template class DoubleLinkList<int>;

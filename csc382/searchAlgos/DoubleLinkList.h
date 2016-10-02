@@ -11,7 +11,7 @@ template <typename T>
 class Node
   {
   public:
-    long key;
+    long  key;
     T*    data;
     Node* prev;
     Node* next;
@@ -23,10 +23,13 @@ class DoubleLinkList
   {
   public:
     Node<T>* head;
-    DoubleLinkList     ();
-    Node<T>* getNode   (long key);
-    void     deleteNode(T* delNode);
-    //T*       find      (T* data);
-    void     insert    (T* newData);
-    void     sort      ();
+    DoubleLinkList      ();
+    Node<T>* getNode    (long key);
+    void     deleteNode (T* delNode);
+    void     insert     (T* newData);
+    void     mergeSort  (Node<T>** headRef);
+    void     split      (Node<T>* source, Node<T>** front, Node<T>** back);
+    Node<T>* sortedMerge(Node<T>* listA,  Node<T>* listB);
   };
+  
+  
