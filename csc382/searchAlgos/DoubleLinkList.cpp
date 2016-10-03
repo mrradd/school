@@ -10,28 +10,8 @@ using namespace std;
 * CTOR
 **************************************************************************/
 template<typename T>
-DoubleLinkList<T>::DoubleLinkList(){ head = NULL; }
+DoubleLinkList<T>::DoubleLinkList(){ rootNode = NULL; }
 
-/**************************************************************************
-* insert */
-/**
-* Inserts a new node at the end of the list with a key equal to newData.
-* @param  newData  T object to insert.
-**************************************************************************/
-template<typename T>
-Node<T>* DoubleLinkList<T>::getNode(long key)
-  {
-  Node<T>* n1 = head;
-  Node<T>* n2 = head;
-  while (n2)
-    {
-    n1 = n2;
-    if ((n1 != head) && (n1->key == key))
-      return n1;
-    n2 = n1->next;
-    }
-  return NULL;
-  }
 
 /**************************************************************************
 * deleteNode */
@@ -44,11 +24,12 @@ Node<T>* DoubleLinkList<T>::getNode(long key)
 template<typename T>
 void DoubleLinkList<T>::deleteNode(T* delNode)
   {
+  
   cout << "start delete(T* delNode)" << endl;
   cout << "Trying to delete " << *(delNode) << endl;
 
   /** Traverse the list to find the data we want. */
-  Node<T>* n     = head;
+  Node<T>* n     = rootNode;
   while(n->next != NULL)
     {
     if (*(n->data) == *(delNode))
@@ -63,8 +44,8 @@ void DoubleLinkList<T>::deleteNode(T* delNode)
       if(n->next != NULL)
         n->next->prev = n->prev;
 
-      if(n == head)
-        head = n->next;
+      if(n == rootNode)
+        rootNode = n->next;
 
       cout << "Deleting Node." << endl;
       free(n);
@@ -79,33 +60,68 @@ void DoubleLinkList<T>::deleteNode(T* delNode)
   }
 
 /**************************************************************************
+* doMergeSort */
+/**
+* Pass through that performs the Merge Sort command from the rootNode of the
+* linked list.
+**************************************************************************/
+template<typename T>
+void DoubleLinkList<T>::doMergeSort()
+  {
+  mergeSort(rootNode);
+  }
+
+/**************************************************************************
+* getNode */
+/**
+* Returns Node with passed in key.
+* @param  key  Returns Node with that key.
+**************************************************************************/
+template<typename T>
+Node<T>* DoubleLinkList<T>::getNode(long key)
+  {
+  Node<T>* n1 = rootNode;
+  Node<T>* n2 = rootNode;
+  while (n2)
+    {
+    n1 = n2;
+    if ((n1 != rootNode) && (n1->key == key))
+      return n1;
+    n2 = n1->next;
+    }
+  return NULL;
+  }
+
+/**************************************************************************
 * insert */
 /**
 * Inserts a new node at the end of the list with a key equal to newData.
 * @param  newData  T object to insert.
+* @param  key      Key for this node.
 **************************************************************************/
 template<typename T>
-void DoubleLinkList<T>::insert(T* newData)
+void DoubleLinkList<T>::insert(long key, T* newData)
   {
   /** Init temp node with data. */
   Node<T>* temp = new Node<T>();
   temp->next    = NULL;
-  temp->data    = newData;
+  temp->data    = newData; 
+  temp->key     = key;
        
   /** Check to see that the starting node exits.*/
-  if(head == NULL)
+  if(rootNode == NULL)
     {
-    cout << "init head\n" << endl;
+    cout << "init rootNode\n" << endl;
     /** Give the starting node data via temp swap. */
     temp->prev = NULL;
-    head = temp;
-    cout << "data: " << *(head->data) << " prev: " << (head->prev != NULL ? *(head->prev->data) : 0) << "\n" << endl;
+    rootNode = temp;
+    cout << "data: " << *(rootNode->data) << " prev: " << (rootNode->prev != NULL ? *(rootNode->prev->data) : 0) << "\n" << endl;
     }
   else
     {
     /** Traverse the list to find the end. */
     cout << "add node" << endl;
-    Node<T>* n = head;
+    Node<T>* n = rootNode;
     while(n->next != NULL)
       n = n->next;
     
@@ -116,75 +132,175 @@ void DoubleLinkList<T>::insert(T* newData)
     }
   }
  
-/* sorts the linked list by changing next pointers. */
+/**************************************************************************
+* printList */
+/**
+* Prints the whole Double Linked List.
+**************************************************************************/
 template<typename T>
-void DoubleLinkList<T>::mergeSort(Node<T>** headRef)
+void DoubleLinkList<T>::printList()
   {
-  Node<T>* h = *headRef;
-  Node<T>* a;
-  Node<T>* b;
-  if ((head == NULL) || (head->next == NULL))
+  cout << "->" <<endl;
+  Node<T>* node = rootNode;
+  while (node != NULL)
     {
-    return;
+    cout << "Key: " << node->key << " Data: " << *(node->data) <<endl;
+    node = node->next;
     }
-  split    (h, &a, &b);
-  mergeSort(&a);
-  mergeSort(&b);
-  
-  *headRef = sortedMerge(a, b);
+  }
+
+/**************************************************************************
+* mergeSort */
+/**
+* Sorts the linked list by changing next pointers.
+* @param  headRef  Parent Node
+**************************************************************************/
+template<typename T>
+void DoubleLinkList<T>::mergeSort(Node<T>*& parentNode)
+  {
+  //Node<T>* p = *&parentNode;
+  Node<T>* n1;
+  Node<T>* n2;
+
+  if ((parentNode == NULL) || (parentNode->next == NULL))
+    return;
+
+  split    (parentNode, n1, n2);
+  mergeSort(n1);
+  mergeSort(n2);
+  parentNode = sortedMerge(n1, n2);
   }
   
-/* merge the sorted linked lists */
+/**************************************************************************
+* sortedMerge */
+/**
+* Merge the sorted linked lists.
+* @param  nodeA  Sorted sublist of whole Linked List.
+* @param  nodeB  Sorted sublist of whole Linked List.
+* @returns merged sorted list.
+**************************************************************************/
 template<typename T>
-Node<T>* DoubleLinkList<T>::sortedMerge(Node<T>* nodeA,  Node<T>* nodeB)
+Node<T>* DoubleLinkList<T>::sortedMerge(Node<T>* front,  Node<T>* back)
   {
-    Node<T>* result = NULL;
-    if (nodeA == NULL)
-        return nodeB;
-    else if (nodeB==NULL)
-        return nodeA;
-    if (nodeA->key <= nodeB->key)
-      {
-      result = nodeA;
-      result->next = sortedMerge(nodeA->next, nodeB);
-      }
-    else
-      {
-      result = nodeB;
-      result->next = sortedMerge(nodeA, nodeB->next);
-      }
-    return result;
-  }
- 
-/* Split the nodes of the given list into front and back halves*/
-template<typename T>
-void DoubleLinkList<T>::split(Node<T>* source, Node<T>** front, Node<T>** back)
-  {
-  Node<T>* fast;
-  Node<T>* slow;
-  
-  if (source==NULL || source->next==NULL)
+  Node<T>* result = NULL;
+  if (front == NULL)
+      return back;
+  else if (back==NULL)
+      return front;
+
+  if (front->key <= back->key)
     {
-    *front = source;
-    *back  = NULL;
+    result = front;
+    result->next = sortedMerge(front->next, back);
     }
   else
     {
-    slow = source;
-    fast = source->next;
-    while (fast != NULL)
+    result = back;
+    result->next = sortedMerge(front, back->next);
+    }
+
+  return result;
+  }
+ 
+/**************************************************************************
+* split */
+/**
+* Splits the main list into two sublists with passed in references.
+*
+* @param  frontRef  Reference to the front of the source list.
+* @param  backRef   Reference to the back half of the source list.
+**************************************************************************/
+template<typename T>
+void DoubleLinkList<T>::split(Node<T>* source, Node<T>*& frontRef, Node<T>*& backRef)
+  {
+  Node<T>* n1;
+  Node<T>* n2;
+  
+  if (source==NULL || source->next==NULL)
+    {
+    frontRef = source;
+    backRef  = NULL;
+    }
+  else
+    {
+    n2 = source;
+    n1 = source->next;
+    while (n1 != NULL)
       {
-      fast = fast->next;
-      if (fast != NULL)
+      n1 = n1->next;
+      if (n1 != NULL)
         {
-        slow = slow->next;
-        fast = fast->next;
+        n2 = n2->next;
+        n1 = n1->next;
         }
       }
-    *front = source;
-    *back  = slow->next;
-    slow->next = NULL;
+
+    frontRef = source;
+    backRef  = n2->next;
+    n2->next  = NULL;
+    //cout << "fronRef: "   << (*frontRef)->key << " data: " << *((*frontRef)->data);
+    //cout << "\nbackRef: " << (*backRef)->key  << " data: " << *((*backRef)->data);
+    //cout << endl << endl;
     }
   }
-    
+
+/**************************************************************************
+* doBubbleSort */
+/**
+* Performs a bubble sort on the list.
+*
+* @param  node  Reference to the the source list.
+**************************************************************************/
+template<typename T>
+void DoubleLinkList<T>::doBubbleSort(Node<T>** node)
+  {
+  Node<T>* front = *node;
+  *node = nullptr;
+
+  while(front)
+    {
+    Node<T>** lhs = &front;
+    Node<T>** rhs = &front->next;
+    bool swapped  = false;
+
+    while(*rhs)
+      {
+      
+      /** Swap linked node ptrs, then swap *back* their next ptrs. */
+      if ((*rhs)->key < (*lhs)->key)
+        {
+        swap(*lhs,*rhs);
+        swap((*lhs)->next,(*rhs)->next);
+        lhs = &(*lhs)->next;
+        swapped = true;
+        }
+
+      /** No swap, so advance both pointers. */
+      else
+        {
+        lhs = rhs;
+        rhs = &(*rhs)->next;
+        }
+      }
+
+      /** Link last node to sorted part. */
+      *rhs = *node;
+
+      /** detach final node and terminate. */
+      if(swapped)
+        {
+        /** take last node off the list and put it into the result. */
+        *node = *lhs;
+        *lhs  = nullptr;
+        }
+
+      /** Finished. */
+      else
+        {
+        *node = front;
+        break;
+        }
+    }
+  }
+
 template class DoubleLinkList<int>;

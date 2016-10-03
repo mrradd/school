@@ -11,6 +11,7 @@ template <typename T>
 class Node
   {
   public:
+    Node<T>(){ key = -1; data = NULL; prev = NULL; next = NULL; }
     long  key;
     T*    data;
     Node* prev;
@@ -21,15 +22,21 @@ class Node
 template <typename T>
 class DoubleLinkList
   {
-  public:
-    Node<T>* head;
-    DoubleLinkList      ();
-    Node<T>* getNode    (long key);
-    void     deleteNode (T* delNode);
-    void     insert     (T* newData);
-    void     mergeSort  (Node<T>** headRef);
-    void     split      (Node<T>* source, Node<T>** front, Node<T>** back);
+  protected:
+    void     mergeSort  (Node<T>*& headRef);
     Node<T>* sortedMerge(Node<T>* listA,  Node<T>* listB);
+    void     split      (Node<T>* source, Node<T>*& front, Node<T>*& back);
+
+  public:
+    Node<T>* rootNode;
+    DoubleLinkList      ();
+    
+    void     deleteNode  (T* delNode);
+    void     doMergeSort ();
+    void     doBubbleSort(Node<T>** node);
+    Node<T>* getNode     (long key);
+    void     insert      (long key, T* newData);
+    void     printList   ();
   };
   
   
