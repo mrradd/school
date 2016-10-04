@@ -1,7 +1,3 @@
-
-#pragma once
-
-
 #include "DoubleLinkList.h"
 
 using namespace std;
@@ -49,7 +45,6 @@ void DoubleLinkList<T>::deleteNode(T* delNode)
     n = n->next;
     }
   }
-
 
 /**************************************************************************
 * doBubbleSort */
@@ -245,7 +240,6 @@ void DoubleLinkList<T>::split(Node<T>* source, Node<T>*& frontRef, Node<T>*& bac
     n2->next  = NULL;
     }
   }
-
 
 /**************************************************************************
 * bubbleSort */
