@@ -26,6 +26,7 @@ class DoubleLinkList
     void     mergeSort  (Node<T>*& headRef);
     Node<T>* sortedMerge(Node<T>* listA,  Node<T>* listB);
     void     split      (Node<T>* source, Node<T>*& front, Node<T>*& back);
+    void     bubbleSort (Node<T>** node);
 
   public:
     Node<T>* rootNode;
@@ -33,7 +34,7 @@ class DoubleLinkList
     
     void     deleteNode  (T* delNode);
     void     doMergeSort ();
-    void     doBubbleSort(Node<T>** node);
+    void     doBubbleSort();
     Node<T>* getNode     (long key);
     void     insert      (long key, T* newData);
     void     printList   ();

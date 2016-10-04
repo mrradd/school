@@ -24,9 +24,6 @@ DoubleLinkList<T>::DoubleLinkList(){ rootNode = NULL; }
 template<typename T>
 void DoubleLinkList<T>::deleteNode(T* delNode)
   {
-  
-  cout << "start delete(T* delNode)" << endl;
-  cout << "Trying to delete " << *(delNode) << endl;
 
   /** Traverse the list to find the data we want. */
   Node<T>* n     = rootNode;
@@ -34,7 +31,6 @@ void DoubleLinkList<T>::deleteNode(T* delNode)
     {
     if (*(n->data) == *(delNode))
       {
-      cout << "Changing prev and next pointers." << endl;
       
       /** Point n's previous node to n's next node. */
       if(n->prev != NULL)
@@ -47,16 +43,23 @@ void DoubleLinkList<T>::deleteNode(T* delNode)
       if(n == rootNode)
         rootNode = n->next;
 
-      cout << "Deleting Node." << endl;
       free(n);
-      cout << "Node deleted.\n" << endl;
       return;
       }
     n = n->next;
     }
+  }
 
-  cout << "Nothing deleted." << endl;
-  cout << "end delete(T* delNode)\n" << endl;
+
+/**************************************************************************
+* doBubbleSort */
+/**
+* Performs a bubble sort on the list.
+**************************************************************************/
+template<typename T>
+void DoubleLinkList<T>::doBubbleSort()
+  {
+  bubbleSort(&rootNode);
   }
 
 /**************************************************************************
@@ -111,16 +114,19 @@ void DoubleLinkList<T>::insert(long key, T* newData)
   /** Check to see that the starting node exits.*/
   if(rootNode == NULL)
     {
-    cout << "init rootNode\n" << endl;
+    //cout << "init rootNode\n" << endl;
+
     /** Give the starting node data via temp swap. */
     temp->prev = NULL;
     rootNode = temp;
-    cout << "data: " << *(rootNode->data) << " prev: " << (rootNode->prev != NULL ? *(rootNode->prev->data) : 0) << "\n" << endl;
+    
+    //cout << "data: " << *(rootNode->data) << " prev: " << (rootNode->prev != NULL ? *(rootNode->prev->data) : 0) << "\n" << endl;
     }
   else
     {
     /** Traverse the list to find the end. */
-    cout << "add node" << endl;
+    //cout << "add node" << endl;
+    
     Node<T>* n = rootNode;
     while(n->next != NULL)
       n = n->next;
@@ -128,7 +134,7 @@ void DoubleLinkList<T>::insert(long key, T* newData)
     n->next    = temp;
     temp->prev = n;
     
-    cout << "data: " << *(temp->data) << " prev: " << (temp->prev != NULL ? *(temp->prev->data) : 0) << "\n" << endl;
+    //cout << "data: " << *(temp->data) << " prev: " << (temp->prev != NULL ? *(temp->prev->data) : 0) << "\n" << endl;
     }
   }
  
@@ -158,7 +164,6 @@ void DoubleLinkList<T>::printList()
 template<typename T>
 void DoubleLinkList<T>::mergeSort(Node<T>*& parentNode)
   {
-  //Node<T>* p = *&parentNode;
   Node<T>* n1;
   Node<T>* n2;
 
@@ -238,21 +243,19 @@ void DoubleLinkList<T>::split(Node<T>* source, Node<T>*& frontRef, Node<T>*& bac
     frontRef = source;
     backRef  = n2->next;
     n2->next  = NULL;
-    //cout << "fronRef: "   << (*frontRef)->key << " data: " << *((*frontRef)->data);
-    //cout << "\nbackRef: " << (*backRef)->key  << " data: " << *((*backRef)->data);
-    //cout << endl << endl;
     }
   }
 
+
 /**************************************************************************
-* doBubbleSort */
+* bubbleSort */
 /**
-* Performs a bubble sort on the list.
+* Performs a bubble sort on the passed in list.
 *
 * @param  node  Reference to the the source list.
 **************************************************************************/
 template<typename T>
-void DoubleLinkList<T>::doBubbleSort(Node<T>** node)
+void DoubleLinkList<T>::bubbleSort(Node<T>** node)
   {
   Node<T>* front = *node;
   *node = nullptr;
