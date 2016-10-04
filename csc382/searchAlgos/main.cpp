@@ -11,6 +11,7 @@
 #include "DoubleLinkList.h"
 #include <exception>
 #include <ctime>
+#include <iostream>
 
 #define QTY 1000
 
@@ -20,14 +21,14 @@ int main()
   {
   srand (time(NULL));
   long keyArray[QTY];
-
+    
   /** Clocks for the different sized lists. */
-  float bubbleClock1000 = 0.0f;
-  float bubbleClock100  = 0.0f;
-  float bubbleClock10   = 0.0f;
-  float mergeClock1000  = 0.0f;
-  float mergeClock100   = 0.0f;
-  float mergeClock10    = 0.0f;
+  double bubbleClock1000 = 0.0;
+  double bubbleClock100  = 0.0;
+  double bubbleClock10   = 0.0;
+  double mergeClock1000  = 0.0;
+  double mergeClock100   = 0.0;
+  double mergeClock10    = 0.0;
 
   /** Different sized lists. */
   DoubleLinkList<int>* dbllBubble1000 = new DoubleLinkList<int>;
@@ -84,6 +85,7 @@ int main()
   /** Perform sorting algorithms, and calculate execution times. */
   try
     {
+
     /** Do Bubble sorts. */
     cout << "Do Bubble sort" << endl;
     bubbleClock10   = clock();
@@ -103,7 +105,6 @@ int main()
     cout << "Bubble time @10 elements   = " << bubbleClock10   << endl;
     cout << "Bubble time @100 elements  = " << bubbleClock100  << endl;
     cout << "Bubble time @1000 elements = " << bubbleClock1000 << endl << endl;
-
 
     /** Do Merge sorts. */
     cout << "Do Merge sort" << endl;
@@ -129,8 +130,7 @@ int main()
     {
     cout << e.what() << endl;
     }
- 
-    
+
   system("pause");
   return 1;
   }
