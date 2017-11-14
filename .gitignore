@@ -65,3 +65,10 @@ csc215/ASCIITree/ASCIITree/Debug/vc120.idb
 csc215/Arrays/Debug/Arrays.exp
 csc203/playground/.metadata/*
 csc203/playground/playground/.settings/*
+
+#Unity
+#==========================
+gpe104/*/Library
+gpe104/*/ProjectSettings
+*.userprefs
+*/*/UnityPackageManager
