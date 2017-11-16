@@ -72,3 +72,6 @@ gpe104/*/Library
 gpe104/*/ProjectSettings
 *.userprefs
 */*/UnityPackageManager
+*/builds
+*/*/obj
+*/*/temp
