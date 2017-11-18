@@ -10,26 +10,18 @@ using UnityEngine;
 public class Player : MonoBehaviour
   {
 
+  /** Facings. */
   protected const int NORTH = 1;
   protected const int SOUTH = 2;
   protected const int EAST  = 3;
   protected const int WEST  = 4;
 
-  /** Velocity of the sprite. */
-  public float speed;
+  /** Velocity of the sprite. */public float speed;
 
-  /** Animator reference. */
-  protected Animator mAnimator;
-
-  /** Direction player is facing. */
-  protected int mPlayerFacing;
-
-  /** Rigid body 2D component. */
-  protected Rigidbody2D mRigidBody2D;
-
-  /** Starting position of the asset. */
-  protected Vector2 mStartPosition;
-
+  /** Animator reference. */             protected Animator    mAnimator;
+  /** Direction player is facing. */     protected int         mPlayerFacing;
+  /** Rigid body 2D component. */        protected Rigidbody2D mRigidBody2D;
+  /** Starting position of the asset. */ protected Vector2     mStartPosition;
 
   /******************************************************************************
   * Unity methods.
@@ -85,18 +77,24 @@ public class Player : MonoBehaviour
       {
       /** Left Arrow pressed. */
       if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
         x = -speed;
+        transform.GetComponent<SpriteRenderer>().flipX = false;
+        }
 
       /** Right Arrow pressed. */
-      if(Input.GetKeyDown(KeyCode.RightArrow))
+      else if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
         x = speed;
+        transform.GetComponent<SpriteRenderer>().flipX = true;
+        }
 
       /** Up Arrow pressed. */
-      if(Input.GetKeyDown(KeyCode.UpArrow))
+      else if(Input.GetKeyDown(KeyCode.UpArrow))
         y = speed;
 
       /** Down Arrow pressed. */
-      if(Input.GetKeyDown(KeyCode.DownArrow))
+      else if(Input.GetKeyDown(KeyCode.DownArrow))
         y = -speed;
 
       changeFacing(x, y);
@@ -107,30 +105,38 @@ public class Player : MonoBehaviour
     else if(Input.GetKey(KeyCode.Space))
       mRigidBody2D.MovePosition(mStartPosition);
 
-    /** Move the asset smoothly. */
+    /** Move the asset. */
     else
       {
       /** Left Arrow pressed. */
       if(Input.GetKey(KeyCode.LeftArrow))
         {
         x = -speed;
+        mAnimator.SetTrigger("playerMoveLeft");
+
+        /** Unflip so animation faces the left. */
+        transform.GetComponent<SpriteRenderer>().flipX = false;
         }
 
       /** Right Arrow pressed. */
-      if(Input.GetKey(KeyCode.RightArrow))
+      else if(Input.GetKey(KeyCode.RightArrow))
         {
         x = speed;
+        mAnimator.SetTrigger("playerMoveRight");
+
+        /** Flip so animation faces the right. */
+        transform.GetComponent<SpriteRenderer>().flipX = true;
         }
 
       /** Up Arrow pressed. */
-      if(Input.GetKey(KeyCode.UpArrow))
+      else if(Input.GetKey(KeyCode.UpArrow))
         {
         y = speed;
         mAnimator.SetTrigger("playerMoveUp");
         }
 
       /** Down Arrow pressed. */
-      if(Input.GetKey(KeyCode.DownArrow))
+      else if(Input.GetKey(KeyCode.DownArrow))
         {
         y = -speed;
         mAnimator.SetTrigger("playerMoveDown");
@@ -146,6 +152,10 @@ public class Player : MonoBehaviour
         mAnimator.SetTrigger("playerIdleDown");
       else if(mPlayerFacing == NORTH)
         mAnimator.SetTrigger("playerIdleUp");
+      else if(mPlayerFacing == WEST)
+        mAnimator.SetTrigger("playerIdleLeft");
+      else if(mPlayerFacing == EAST)
+        mAnimator.SetTrigger("playerIdleRight");
       }
     }
   }
