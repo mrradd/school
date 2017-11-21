@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 95485110084110644}
   - component: {fileID: 114998933119512048}
   - component: {fileID: 50936010708003404}
-  m_Layer: 0
+  - component: {fileID: 60521283182420956}
+  m_Layer: 10
   m_Name: Asteroid
-  m_TagString: Untagged
+  m_TagString: asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1415092409811866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -700, y: 323, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalPosition: {x: -10.51, y: 3.89, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,6 +64,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &60521283182420956
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1415092409811866}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.93999994, y: 1.23}
+    newSize: {x: 0.93999994, y: 1.23}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.48055214, y: 0.23834355}
+      - {x: 0.48055214, y: 0.343865}
+      - {x: 0.45944783, y: 0.39662576}
+      - {x: 0.32226992, y: 0.61822087}
+      - {x: 0.13233127, y: 0.61822087}
+      - {x: -0.2158896, y: 0.24889569}
+      - {x: -0.3319632, y: 0.037852746}
+      - {x: -0.44803685, y: -0.25760737}
+      - {x: -0.46914113, y: -0.3525767}
+      - {x: -0.46914113, y: -0.373681}
+      - {x: -0.38472396, y: -0.52141106}
+      - {x: -0.30030677, y: -0.6058282}
+      - {x: -0.14202456, y: -0.6163804}
+      - {x: 0.079570524, y: -0.6163804}
+      - {x: 0.13233127, y: -0.5636197}
+      - {x: 0.26950917, y: -0.21539879}
+      - {x: 0.37503067, y: 0.01674845}
 --- !u!95 &95485110084110644
 Animator:
   serializedVersion: 3
@@ -91,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb0d19489b30f645bea989bbd54bafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 10
 --- !u!212 &212969434168426864
 SpriteRenderer:
   m_ObjectHideFlags: 1
