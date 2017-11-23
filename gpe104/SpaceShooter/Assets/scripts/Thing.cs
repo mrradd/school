@@ -10,6 +10,6 @@ public abstract class Thing : MonoBehaviour
   {
   public float speed;
   protected abstract void move();
-
+  public abstract void kill();
   }
 

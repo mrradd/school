@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114136037021535080}
   - component: {fileID: 60905529675361352}
   - component: {fileID: 50861756149313780}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SpaceShip
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1726439243707770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.9128637, y: 0.5561354, z: -4442.1094}
-  m_LocalScale: {x: 49.356773, y: 49.356773, z: 49.356773}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   bullet: {fileID: 1920381034528950, guid: 3e00643ff24d6c1498fd00b5e8b31131, type: 2}
-  rotationSpeed: 10
+  rotationSpeed: 100
 --- !u!212 &212122197247914620
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -144,9 +144,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -913233749
+  m_SortingLayerID: -1107703555
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e24b181131efd1d4d8f9b7db9f20b94e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -11,35 +11,39 @@ using UnityEngine.SceneManagement;
 public class StartSceneManager : MonoBehaviour
   {
   public Button startGameButton;
-  public int    mainGameSceneIndex;
 
   protected static StartSceneManager mInstance;
+
+  /** Returns an instance of StartSceneManager. */
+  public StartSceneManager instance
+    {
+    get
+      {
+      if(mInstance == null)
+        mInstance = new StartSceneManager();
+
+      return mInstance;
+      }
+    }
 
   /**************************************************************************
   * Unity Methods 
   **************************************************************************/
-  /*
+  /**************************************************************************
+  * Awake */ 
+  /**
+  **************************************************************************/
   public void Awake()
     {
-    if(!instance)
-      instance = this;
+    if(!mInstance)
+      mInstance = this;
     else
       {
       Debug.LogError("ERROR: There can only be one MainGameSceneManager.");
       Destroy(gameObject);
       }
     }
-  */
-
-  /**************************************************************************
-  * Start */ 
-  /**
-  **************************************************************************/
-  public void Start ()
-    {
-    startGameButton.GetComponent<Button>().onClick.AddListener(loadMainGameScene);
-    }
-
+  
   /**************************************************************************
   * Methods 
   **************************************************************************/
@@ -69,12 +73,9 @@ public class StartSceneManager : MonoBehaviour
   /**
   * UnityEvent that is triggered when the button is pressed. Loads the Main
   * Game Scene.
-  * 
-  * Note: Triggered on MouseUp after MouseDown on the same object.
-  * see: https://docs.unity3d.com/ScriptReference/UI.Button-onClick.html
   **************************************************************************/
-  protected void loadMainGameScene()
+  public void loadMainGameScene()
     {
-    SceneManager.LoadScene(mainGameSceneIndex);
+    SceneManager.LoadScene("MainGameScene", LoadSceneMode.Single);
     }
   }

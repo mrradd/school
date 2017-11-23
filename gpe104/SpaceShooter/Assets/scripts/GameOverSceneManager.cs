@@ -1,74 +1,78 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /****************************************************************************
-* Bullet */ 
+* GameOverSceneManager */ 
 /**
-* A projectile fired by the player's space ship.
-*
-* Destroyed when it hits an asteroid, or goes off screen.
+* Singleton class which manages the Game Over Scene.
 ****************************************************************************/
-public class Bullet : Thing
+public class GameOverSceneManager : MonoBehaviour
   {
-  /**************************************************************************
-  * Unity Methods 
-  **************************************************************************/
-  /**************************************************************************
-  * OnBecameInvisible */ 
-  /**
-  **************************************************************************/
-  public void OnBecameInvisible()
+
+  protected static GameOverSceneManager mInstance;
+
+  /** Returns an instance of GameOverSceneManager. */
+  public GameOverSceneManager instance
     {
-    kill();
-    }
-  
-  /**************************************************************************
-  * OnCollisionEnter */ 
-  /**
-  **************************************************************************/
-  public void OnCollisionEnter2D(Collision2D coll)
-    {
-    if(coll.gameObject.tag == "Asteroid")
+    get
       {
-      coll.gameObject.SendMessage("kill");
-      GameObject.FindGameObjectWithTag("GameManager").GetComponent<MainGameSceneManager>().incrementPlayerScore(10);
+      if(mInstance == null)
+        mInstance = new GameOverSceneManager();
+
+      return mInstance;
       }
     }
 
   /**************************************************************************
-  * Update */ 
+  * Unity Methods 
+  **************************************************************************/
+  /**************************************************************************
+  * Awake */ 
   /**
   **************************************************************************/
-  public void Update ()
+  public void Awake()
     {
-    move();
+    if(!mInstance)
+      mInstance = this;
+    else
+      {
+      Debug.LogError("ERROR: There can only be one MainGameSceneManager.");
+      Destroy(gameObject);
+      }
     }
-
+  
   /**************************************************************************
   * Methods 
   **************************************************************************/
   /**************************************************************************
-  * kill */ 
+  * Constructor */ 
   /**
-  * Kill the Player.
   **************************************************************************/
-  public override void kill()
+  protected GameOverSceneManager()
     {
-    Destroy(gameObject);
     }
-  
-  /**************************************************************************
-  * move */ 
-  /**
-  * Moves the bullet.
-  **************************************************************************/
-  protected override void move ()
-    {
-    Vector3 pos      = transform.position;
-    Vector3 velocity = new Vector3(0, speed * Time.deltaTime, 0);
 
-    pos += transform.rotation * velocity;
-    transform.position = pos;
+  /**************************************************************************
+  * launchMainGame */ 
+  /**
+  * Go to the Main Game.
+  **************************************************************************/
+  public void launchMainGame()
+    {
+    SceneManager.LoadScene("MainGameScene", LoadSceneMode.Single);
     }
-  }
+
+  /**************************************************************************
+  * launchMainMenu */ 
+  /**
+  * Go to the Main Menu.
+  **************************************************************************/
+  public void launchMainMenu()
+    {
+    SceneManager.LoadScene("StartScene", LoadSceneMode.Single);
+    }
+
+
+}
