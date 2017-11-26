@@ -11,7 +11,8 @@ using UnityEngine;
 public class SpaceShip : Thing 
   {
   /** Bullet game object. */      public GameObject bullet;
-  /** Speed of the projectile. */ public float rotationSpeed;
+  /** Explosion sound. */         public AudioClip  explosionSound;
+  /** Speed of the projectile. */ public float      rotationSpeed;
 
   /** Z axis rotation value. */ protected float mDeltaZ = 0;
 
@@ -50,6 +51,7 @@ public class SpaceShip : Thing
   public override void kill()
     {
     GameObject.FindGameObjectWithTag("GameManager").GetComponent<MainGameSceneManager>().decrementPlayerLives();
+    gameObject.GetComponent<AudioSource>().PlayOneShot(explosionSound);
     }
 
   /**************************************************************************
@@ -69,10 +71,14 @@ public class SpaceShip : Thing
   /**************************************************************************
   * rotate */ 
   /**
-  * Rotate the spaceship left and right.
+  * Rotate the spaceship left and right, and move it forward and backward.
+  * TODO CH  Consider using physics for movement.
   **************************************************************************/
   protected override void move()
     {
+    Vector3 pos      = transform.position;
+    float   newSpeed = 0;
+
     /** Left Arrow pressed. Rotate left. */
     if(Input.GetKey(KeyCode.LeftArrow))
       {
@@ -85,6 +91,26 @@ public class SpaceShip : Thing
       {
       mDeltaZ -= Time.deltaTime * rotationSpeed;
       transform.rotation = Quaternion.Euler(0, 0, mDeltaZ);
+      }
+
+    /** Up Arrow. Move forward. */
+    if(Input.GetKey(KeyCode.UpArrow))
+      {
+      newSpeed = speed;
+      }
+
+    /** Down Arrow. Move backward. */
+    if(Input.GetKey(KeyCode.DownArrow))
+      {
+      newSpeed = -speed;
+      }
+
+    /** Update position. */
+    if(newSpeed != 0f)
+      {
+      Vector3 velocity = new Vector3(0, newSpeed * Time.deltaTime, 0);
+      pos += transform.rotation * velocity;
+      transform.position = pos;
       }
     }
   }

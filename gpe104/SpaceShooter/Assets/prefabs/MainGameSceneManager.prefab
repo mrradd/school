@@ -52,4 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 1415092409811866, guid: 8d8d5a381e8e67849a61c64493b08224, type: 2}
+  livesText: {fileID: 0}
+  scoreText: {fileID: 0}
   maxAsteroids: 3

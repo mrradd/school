@@ -17,6 +17,8 @@ public class MainGameSceneManager : MonoBehaviour
   /** Player score. */                  protected int mPlayerScore     = 0;
 
   /** Asteroid. */                                 public GameObject asteroid;
+  /** Player lives text. */                        public GameObject livesText;
+  /** Player Score text. */                        public GameObject scoreText;
   /** Maximum Asteroids allowed to be on field. */ public int        maxAsteroids;
 
 
@@ -49,7 +51,17 @@ public class MainGameSceneManager : MonoBehaviour
       Destroy(gameObject);
       }
     }
-	
+
+  /**************************************************************************
+  * Start */ 
+  /**
+  **************************************************************************/
+  public void Start()
+    {
+    livesText.GetComponent<LivesText>().updateLivesRemaining(mPlayerLives);
+    scoreText.GetComponent<ScoreText>().updateScore(mPlayerScore);
+    }
+
   /**************************************************************************
   * Update */ 
   /**
@@ -103,6 +115,7 @@ public class MainGameSceneManager : MonoBehaviour
   public void decrementPlayerLives()
     {
     mPlayerLives--;
+    livesText.GetComponent<LivesText>().updateLivesRemaining(mPlayerLives);
     }
 
   /**************************************************************************
@@ -123,6 +136,7 @@ public class MainGameSceneManager : MonoBehaviour
   public void incrementPlayerScore(int value)
     {
     mPlayerScore += value;
+    scoreText.GetComponent<ScoreText>().updateScore(mPlayerScore);
     }
 
   /**************************************************************************
