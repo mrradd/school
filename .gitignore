@@ -69,9 +69,10 @@ csc203/playground/playground/.settings/*
 #Unity
 #==========================
 gpe104/*/Library
-gpe104/*/ProjectSettings
+gpe104/builds
+gpe104/*.zip
 *.userprefs
 */*/UnityPackageManager
-*/builds
+*/*/builds
 */*/obj
 */*/temp
