@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 /**
 * Singleton class which manages the Start Scene.
 ****************************************************************************/
-public class StartSceneManager : MonoBehaviour
+public class StartSceneManager : BaseManager
   {
   public Button startGameButton;
 
@@ -43,7 +43,16 @@ public class StartSceneManager : MonoBehaviour
       Destroy(gameObject);
       }
     }
-  
+
+  /**************************************************************************
+  * Update */ 
+  /**
+  **************************************************************************/
+  public override void Update ()
+    {
+    base.Update();
+    }
+
   /**************************************************************************
   * Methods 
   **************************************************************************/

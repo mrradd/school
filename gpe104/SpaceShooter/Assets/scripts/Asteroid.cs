@@ -91,6 +91,9 @@ public class Asteroid : Thing
   public void Update ()
     {
 
+    if(Input.GetKeyDown(KeyCode.X))
+      followPlayer = !followPlayer;
+
     /** Check to see if object should be destroyed. */
     if(!mActive)
       {

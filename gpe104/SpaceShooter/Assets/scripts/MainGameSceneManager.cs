@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 /**
 * Singleton class to manage the main game scene.
 ****************************************************************************/
-public class MainGameSceneManager : MonoBehaviour
+public class MainGameSceneManager : BaseManager
   {
   protected static MainGameSceneManager mInstance;
 
@@ -66,8 +66,9 @@ public class MainGameSceneManager : MonoBehaviour
   * Update */ 
   /**
   **************************************************************************/
-	public void Update ()
+	public override void Update ()
     {
+    base.Update();
     spawnAsteroid();
     checkLose();
 	  }

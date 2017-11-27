@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 /**
 * Singleton class which manages the Game Over Scene.
 ****************************************************************************/
-public class GameOverSceneManager : MonoBehaviour
+public class GameOverSceneManager : BaseManager
   {
 
   protected static GameOverSceneManager mInstance;
@@ -42,7 +42,16 @@ public class GameOverSceneManager : MonoBehaviour
       Destroy(gameObject);
       }
     }
-  
+
+  /**************************************************************************
+  * Update */ 
+  /**
+  **************************************************************************/
+  public override void Update ()
+    {
+    base.Update();
+    }
+
   /**************************************************************************
   * Methods 
   **************************************************************************/
