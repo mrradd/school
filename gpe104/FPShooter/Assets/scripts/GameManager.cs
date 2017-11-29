@@ -61,16 +61,17 @@ public class GameManager : MonoBehaviour
   public void loadMainGameScene()
     {
     SceneManager.LoadScene("MainGameScene", LoadSceneMode.Single);
-    click+=20;
+    click++;
     }
-
+  
   /**************************************************************************
-  * testButton */ 
+  * loadMainMenuScene */ 
   /**
-  * Loads the Main Game Scene.
+  * Loads the Main Menu Scene.
   **************************************************************************/
-  public void testButton()
+  public void loadMainMenuScene()
     {
+    SceneManager.LoadScene("MainMenuScene", LoadSceneMode.Single);
     click++;
     }
   }
