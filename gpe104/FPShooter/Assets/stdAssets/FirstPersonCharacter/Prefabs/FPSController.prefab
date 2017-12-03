@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8200000}
   m_Layer: 0
   m_Name: FPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 2000000}
   - component: {fileID: 8100000}
   - component: {fileID: 12474086}
+  - component: {fileID: 114266596498777096}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -44,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.49, z: 0}
+  m_LocalPosition: {x: 88, y: 103, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -216,7 +217,7 @@ MonoBehaviour:
   m_WalkSpeed: 5
   m_RunSpeed: 10
   m_RunstepLenghten: 0.7
-  m_JumpSpeed: 0
+  m_JumpSpeed: 10
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
@@ -338,3 +339,17 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
+--- !u!114 &114266596498777096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9d11ed61a00104fbc4417599c2525c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 1000
+  projectile: {fileID: 1938109840147398, guid: 81bf24a3c0d37d34dbfa71708b14f9d8, type: 2}
+  projectileLimit: 0

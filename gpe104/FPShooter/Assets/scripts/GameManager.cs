@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
   {
   /** Instance. */ protected static GameManager mInstance;
 
-  public static int click = 0;
-
   /** Returns an instance of this. */
   public static GameManager instance
     {
@@ -46,13 +44,21 @@ public class GameManager : MonoBehaviour
   **************************************************************************/
   public void Update ()
     {
-    if(Input.GetKeyDown(KeyCode.A))
-      Debug.Log(click);
     }
 
   /**************************************************************************
   * Methods 
   **************************************************************************/
+  /**************************************************************************
+  * loadGameOverScene */ 
+  /**
+  * Loads the Game Over Scene.
+  **************************************************************************/
+  public void loadGameOverScene()
+    {
+    SceneManager.LoadScene("GameOverScene", LoadSceneMode.Single);
+    }
+
   /**************************************************************************
   * loadMainGameScene */ 
   /**
@@ -61,7 +67,6 @@ public class GameManager : MonoBehaviour
   public void loadMainGameScene()
     {
     SceneManager.LoadScene("MainGameScene", LoadSceneMode.Single);
-    click++;
     }
   
   /**************************************************************************
@@ -72,6 +77,15 @@ public class GameManager : MonoBehaviour
   public void loadMainMenuScene()
     {
     SceneManager.LoadScene("MainMenuScene", LoadSceneMode.Single);
-    click++;
+    }
+
+  /**************************************************************************
+  * loadWinScene */ 
+  /**
+  * Loads the Win Scene.
+  **************************************************************************/
+  public void loadWinScene()
+    {
+    SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
     }
   }
