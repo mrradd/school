@@ -19,19 +19,15 @@ public class Shooter : MonoBehaviour
   /** Max number of projectiles. */             public int        projectileLimit;
 
   /** Amount of time before charging starts. */   protected float mInitialChargeDelay;
-  /** Remaining amount of projectiles to fire. */ protected int   mProjectilesRemaining;
 
-  /**************************************************************************
-  * Unity Methods 
-  **************************************************************************/
   /**************************************************************************
   * Start */ 
   /**
   **************************************************************************/
   public void Start ()
     {
-    mInitialChargeDelay   = chargeDelay;
-    mProjectilesRemaining = projectileLimit;
+    mInitialChargeDelay             = chargeDelay;
+    GameManager.instance.playerAmmo = projectileLimit;
     }
   
   /**************************************************************************
@@ -57,7 +53,7 @@ public class Shooter : MonoBehaviour
     /** RMB pressed. Relaod projectiles. */
     if(Input.GetMouseButtonDown(1))
       {
-      mProjectilesRemaining = projectileLimit;
+      GameManager.instance.playerAmmo = projectileLimit;
       }
     }
 
@@ -69,7 +65,7 @@ public class Shooter : MonoBehaviour
   protected void shoot()
     {
     /** Check to see if we have any projectiles to shoot. */
-    if(mProjectilesRemaining > 0)
+    if(GameManager.instance.playerAmmo > 0)
       {
 
       /** LMB being held down. Increase force. */
@@ -83,7 +79,7 @@ public class Shooter : MonoBehaviour
       /** LMB released. Fire projectile. */
       if(Input.GetMouseButtonUp(0))
         {
-        mProjectilesRemaining--;
+        GameManager.instance.playerAmmo--;
         GameObject g = Instantiate(projectile, transform.position + transform.forward, Quaternion.identity);
         g.GetComponent<Rigidbody>().AddForce(force * transform.forward);
 

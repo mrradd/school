@@ -45,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 88, y: 103, z: 0}
+  m_LocalPosition: {x: 56.48, y: 103, z: -44.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -350,6 +350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9d11ed61a00104fbc4417599c2525c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chargeDelay: 1
   force: 1000
+  forceDelta: 10
+  maxForce: 5000
+  minForce: 1000
   projectile: {fileID: 1938109840147398, guid: 81bf24a3c0d37d34dbfa71708b14f9d8, type: 2}
-  projectileLimit: 0
+  projectileLimit: 10

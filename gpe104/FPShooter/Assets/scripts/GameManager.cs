@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 /******************************************************************************
 * GameManager */
@@ -11,6 +13,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
   {
   /** Instance. */ protected static GameManager mInstance;
+
+  /** Ammo Remaining. */              public int playerAmmo;
+  /** Amount of health Player has. */ public int playerHealth;
+  /** Player's score. */              public int playerScore;
 
   /** Returns an instance of this. */
   public static GameManager instance
@@ -44,6 +50,22 @@ public class GameManager : MonoBehaviour
   **************************************************************************/
   public void Update ()
     {
+    /** Esc pressed. Exit. */
+    if(Input.GetKeyDown(KeyCode.Escape))
+      Application.Quit();
+
+    if(SceneManager.GetActiveScene().name == "MainGameScene")
+      {
+      GameObject.Find("TxtAmmo").gameObject.GetComponent<Text>().text   = "Ammo: "   + playerAmmo + "/" + GameObject.FindWithTag("MainCamera").gameObject.GetComponent<Shooter>().projectileLimit;
+      GameObject.Find("TxtHealth").gameObject.GetComponent<Text>().text = "Health: " + playerHealth;
+      GameObject.Find("TxtScore").gameObject.GetComponent<Text>().text  = "Score: "  + playerScore;
+
+      /** Player loses. */
+      if(playerHealth <= 0)
+        {
+        loadScene("GameOverScene");
+        }
+      }
     }
 
   /**************************************************************************
@@ -77,6 +99,19 @@ public class GameManager : MonoBehaviour
   public void loadMainMenuScene()
     {
     SceneManager.LoadScene("MainMenuScene", LoadSceneMode.Single);
+    }
+
+  /**************************************************************************
+  * loadScene */ 
+  /**
+  * Loads the passed in Scene name, and turns on the mouse.
+  * @param  sceneName  Scene Name to load.
+  **************************************************************************/
+  public void loadScene(string sceneName)
+    {
+    /** Unhide and unlock the cursor. This was locked and hidden by the FirstPersonController from Unity. */
+    GameObject.Find("FPSController").GetComponent<FirstPersonController>().mouseLook.SetCursorLock(false);
+    SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
   /**************************************************************************

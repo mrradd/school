@@ -51,10 +51,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\Box.cs" />
+     <Compile Include="Assets\scripts\Collectible.cs" />
+     <Compile Include="Assets\scripts\DeathZone.cs" />
      <Compile Include="Assets\scripts\GameManager.cs" />
+     <Compile Include="Assets\scripts\LavaBall.cs" />
+     <Compile Include="Assets\scripts\OrbSpawner.cs" />
+     <Compile Include="Assets\scripts\PlayerHit.cs" />
      <Compile Include="Assets\scripts\Projectile.cs" />
      <Compile Include="Assets\scripts\Shooter.cs" />
-     <Compile Include="Assets\stdAssets\FirstPersonCharacter\Scripts\CrossPlatformInputInitialize.cs" />
+     <Compile Include="Assets\scripts\WaterBall.cs" />
+     <Compile Include="Assets\scripts\WinZone.cs" />
      <Compile Include="Assets\stdAssets\FirstPersonCharacter\Scripts\CrossPlatformInputManager.cs" />
      <Compile Include="Assets\stdAssets\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
      <Compile Include="Assets\stdAssets\FirstPersonCharacter\Scripts\HeadBob.cs" />
