@@ -9,8 +9,10 @@ using UnityEngine;
 ******************************************************************************/
 public class EnemyHearing : MonoBehaviour
   {
+  /** Reference to its parent. */    public GameObject parentObject;
 
   /** Player's previous position. */ protected Vector3 mPreviousPosition;
+
 
   /**************************************************************************
   * Unity Methods 
@@ -41,6 +43,8 @@ public class EnemyHearing : MonoBehaviour
       if(mPreviousPosition != currentPosition)
         {
         mPreviousPosition = other.gameObject.transform.position;
+        parentObject.transform.LookAt(other.gameObject.transform);
+
         Debug.Log("Player heard!");
         }
       }

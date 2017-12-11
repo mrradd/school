@@ -53,6 +53,8 @@
   <ItemGroup>
      <Compile Include="Assets\scripts\Checkpoint.cs" />
      <Compile Include="Assets\scripts\CollisionSensor.cs" />
+     <Compile Include="Assets\scripts\DeathZone.cs" />
+     <Compile Include="Assets\scripts\Door.cs" />
      <Compile Include="Assets\scripts\EnemyHearing.cs" />
      <Compile Include="Assets\scripts\EnemySight.cs" />
      <Compile Include="Assets\scripts\GameManager.cs" />

@@ -75,9 +75,33 @@ public class GameManager : MonoBehaviour
   * Methods 
   **************************************************************************/
   /**************************************************************************
+  * checkForKey */ 
+  /**
+  * Checks if the player has the key of the passed in color.
+  * @param  color  Color of the key to check for.
+  **************************************************************************/
+  public bool checkForKey(string color)
+    {
+    if(color == "pink")
+      return hasPinkKey;
+
+    if(color == "yellow")
+      return hasYellowKey;
+
+    if(color == "white")
+      return hasWhiteKey;
+
+    if(color == "blurple")
+      return hasTheObject;
+
+    return false;
+    }
+  
+  /**************************************************************************
   * keyCollected */ 
   /**
-  * Checks what key was collected. 
+  * Checks what key was collected.
+  * @param  color  Color of the key.
   **************************************************************************/
   public void keyCollected(string color)
     {
