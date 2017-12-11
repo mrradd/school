@@ -9,6 +9,9 @@ using UnityEngine;
 ******************************************************************************/
 public class CollisionSensor : MonoBehaviour
   {
+
+  /** Sound when player triggers object. */ public AudioClip triggerSound;
+
   /**************************************************************************
   * Unity Methods 
   **************************************************************************/
@@ -20,6 +23,7 @@ public class CollisionSensor : MonoBehaviour
     {
     if(other.gameObject.tag == "Player")
       {
+      gameObject.GetComponent<AudioSource>().PlayOneShot(triggerSound);
       Debug.Log("Player triggered!");
       }
     }

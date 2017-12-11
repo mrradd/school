@@ -9,8 +9,8 @@ using UnityEngine;
 ******************************************************************************/
 public class Key : MonoBehaviour
   {
-  /** Color. */
-  public string color;
+  /** Color. */                public string    color;
+  /** Sound when picked up. */ public AudioClip pickupSound;
 
   /**************************************************************************
   * Unity Methods 
@@ -24,7 +24,10 @@ public class Key : MonoBehaviour
       {
       GameManager.instance.keyCollected(color);
       Debug.Log("Picked up " + color);
-      Destroy(gameObject);
+      transform.position = new Vector3(0f, 0f, 0f);
+      gameObject.GetComponent<AudioSource>().PlayOneShot(pickupSound);
+      Destroy(gameObject, 4f);
       }
     }
+  
   }

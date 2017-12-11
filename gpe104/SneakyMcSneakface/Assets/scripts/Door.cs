@@ -9,9 +9,12 @@ using UnityEngine;
 ******************************************************************************/
 public class Door : MonoBehaviour
   {
-  /** Color. */         public string color;
+  /** Color. */             public string    color;
+  /** Door locked sound. */ public AudioClip doorLocked;
+  /** Door open sound. */   public AudioClip doorOpened;
+  /** Exit for game. */     public bool      exit = false;
 
-  /** Exit for game. */ public bool exit = false;
+
 
   /**************************************************************************
   * Unity Methods 
@@ -26,10 +29,17 @@ public class Door : MonoBehaviour
       if(GameManager.instance.checkForKey(color))
         {
         Debug.Log("Has key " + color);
-        Destroy(gameObject);
+
+        transform.position = new Vector3(0f, 0f, 0f);
+
+        gameObject.GetComponent<AudioSource>().PlayOneShot(doorOpened);
+        Destroy(gameObject, 4f);
         }
       else
+        {
         Debug.Log("Does not have key " + color);
+        gameObject.GetComponent<AudioSource>().PlayOneShot(doorLocked);
+        }
       }
     }
   }

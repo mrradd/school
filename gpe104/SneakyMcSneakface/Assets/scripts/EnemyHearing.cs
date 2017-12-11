@@ -9,9 +9,11 @@ using UnityEngine;
 ******************************************************************************/
 public class EnemyHearing : MonoBehaviour
   {
-  /** Reference to its parent. */    public GameObject parentObject;
+  /** Reference to its parent. */ public GameObject parentObject;
 
+  /** Heard player. */               protected bool    mAlerted = false;
   /** Player's previous position. */ protected Vector3 mPreviousPosition;
+
 
 
   /**************************************************************************
@@ -45,7 +47,7 @@ public class EnemyHearing : MonoBehaviour
         mPreviousPosition = other.gameObject.transform.position;
         parentObject.transform.LookAt(other.gameObject.transform);
 
-        Debug.Log("Player heard!");
+        alerted();
         }
       }
     }
@@ -54,8 +56,21 @@ public class EnemyHearing : MonoBehaviour
   * Update */ 
   /**
   **************************************************************************/
-  void Update ()
+  public virtual void Update ()
     {
 
+    }
+
+  /**************************************************************************
+  * Methods 
+  **************************************************************************/
+  /**************************************************************************
+  * alerted */ 
+  /**
+  * Action when alerted.
+  **************************************************************************/
+  public virtual void alerted()
+    {
+    Debug.Log("Player heard!");
     }
   }
