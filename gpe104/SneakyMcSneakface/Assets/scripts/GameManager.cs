@@ -12,6 +12,14 @@ public class GameManager : MonoBehaviour
   {
   /** Instance. */ protected static GameManager mInstance;
 
+  /** Has pink key flag. */   public bool    hasPinkKey   = false;
+  /** The main objective. */  public bool    hasTheObject = false;
+  /** Has yellow key flag. */ public bool    hasYellowKey = false;
+  /** Has pink key flag. */   public bool    hasWhiteKey  = false;
+  /** Checkpoint position.*/  public Vector3 lastCheckPoint; 
+
+  /** God Mode. */ public bool godMode = false;
+
   /** Returns an instance of this. */
   public static GameManager instance
     {
@@ -36,6 +44,7 @@ public class GameManager : MonoBehaviour
   public void Awake ()
     {
     mInstance = this;
+    lastCheckPoint = new Vector3(1031, 1001, 970);
     }
 
   /**************************************************************************
@@ -47,11 +56,44 @@ public class GameManager : MonoBehaviour
     /** Exc pressed. Exit game. */
     if(Input.GetKeyDown(KeyCode.Escape))
       Application.Quit();
+
+    /** Toggle God Mode. */
+    if(Input.GetKeyDown(KeyCode.F10))
+      godMode = !godMode;
+
+    /** God Mode activated. */
+    if(godMode)
+      {
+      if(Input.GetKeyDown(KeyCode.P))
+        {
+        GameObject.Find("FPSController").gameObject.transform.position = lastCheckPoint;
+        }
+      }
     }
 
   /**************************************************************************
   * Methods 
   **************************************************************************/
+  /**************************************************************************
+  * keyCollected */ 
+  /**
+  * Checks what key was collected. 
+  **************************************************************************/
+  public void keyCollected(string color)
+    {
+    if(color == "pink")
+      hasPinkKey = true;
+
+    if(color == "yellow")
+      hasYellowKey = true;
+
+    if(color == "white")
+      hasWhiteKey = true;
+
+    if(color == "blurple")
+      hasTheObject = true;
+    }
+
   /**************************************************************************
   * loadGameOverScene */ 
   /**

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /******************************************************************************
-* SearchForPlayer */
+* EnemySight */
 /**
 * Uses RayCasts to search for the player.
 ******************************************************************************/
-public class SearchForPlayer : MonoBehaviour
+public class EnemySight : MonoBehaviour
   {
   public float fieldOfView = 45.0f;
 
@@ -21,7 +21,7 @@ public class SearchForPlayer : MonoBehaviour
 	void Update ()
     {
     if(canSee(GameObject.FindGameObjectWithTag("Player").gameObject))
-      Debug.Log("found");
+      Debug.Log("Player sighted!");
 	  }
 
   /**************************************************************************
