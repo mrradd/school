@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 /******************************************************************************
 * GameManager */
@@ -12,13 +13,15 @@ public class GameManager : MonoBehaviour
   {
   /** Instance. */ protected static GameManager mInstance;
 
+  /** God Mode. */            public bool    godMode      = false;
   /** Has pink key flag. */   public bool    hasPinkKey   = false;
   /** The main objective. */  public bool    hasTheObject = false;
   /** Has yellow key flag. */ public bool    hasYellowKey = false;
   /** Has pink key flag. */   public bool    hasWhiteKey  = false;
-  /** Checkpoint position.*/  public Vector3 lastCheckPoint; 
+  /** Checkpoint position.*/  public Vector3 lastCheckPoint;
+  /** Player lives. */        public int     playerLives  = 3;
 
-  /** God Mode. */ public bool godMode = false;
+  /** Initial spawn location. */ protected Vector3 mStartPoint;
 
   /** Returns an instance of this. */
   public static GameManager instance
@@ -38,13 +41,21 @@ public class GameManager : MonoBehaviour
   * Unity Methods 
   **************************************************************************/
   /**************************************************************************
-  * Start */ 
+  * Awake */ 
   /**
   **************************************************************************/
   public void Awake ()
     {
     mInstance = this;
-    lastCheckPoint = new Vector3(1031, 1001, 970);
+    }
+
+  /**************************************************************************
+  * Start */ 
+  /**
+  **************************************************************************/
+  public void Start ()
+    {
+    instance.mStartPoint = instance.lastCheckPoint = new Vector3(1031, 1001, 970);
     }
 
   /**************************************************************************
@@ -56,19 +67,38 @@ public class GameManager : MonoBehaviour
     /** Exc pressed. Exit game. */
     if(Input.GetKeyDown(KeyCode.Escape))
       Application.Quit();
-
-    /** Toggle God Mode. */
-    if(Input.GetKeyDown(KeyCode.F10))
-      godMode = !godMode;
-
-    /** God Mode activated. */
-    if(godMode)
+    
+    if(SceneManager.GetActiveScene().name == "MainGameScene")
       {
-      if(Input.GetKeyDown(KeyCode.P))
+      /** Toggle God Mode. */
+      if(Input.GetKeyDown(KeyCode.Alpha0))
+        godMode = !godMode;
+
+      /** God Mode activated. */
+      if(godMode)
         {
-        GameObject.Find("FPSController").gameObject.transform.position = lastCheckPoint;
+        /** Teleport player to last checkpoint. */
+        if(Input.GetKeyDown(KeyCode.P))
+          {
+          respawnFromLastCheckpoint();
+          }
         }
+
+      /** Player lost. */
+      if(playerLives < 1)
+        {
+        loadGameOverScene();
+        instance.playerLives = 3;
+        }
+
+      GameObject.Find("TxtLives").GetComponent<Text>().text         = "Lives: " + instance.playerLives;
+      GameObject.Find("TxtWhiteKey").GetComponent<Text>().enabled   = instance.hasWhiteKey;
+      GameObject.Find("TxtYellowKey").GetComponent<Text>().enabled  = instance.hasYellowKey;
+      GameObject.Find("TxtPinkKey").GetComponent<Text>().enabled    = instance.hasPinkKey;
+      GameObject.Find("TxtBlurpleOrb").GetComponent<Text>().enabled = instance.hasTheObject;
+      GameObject.Find("TxtGodMode").GetComponent<Text>().enabled    = instance.godMode;
       }
+
     }
 
   /**************************************************************************
@@ -83,16 +113,16 @@ public class GameManager : MonoBehaviour
   public bool checkForKey(string color)
     {
     if(color == "pink")
-      return hasPinkKey;
+      return instance.hasPinkKey;
 
     if(color == "yellow")
-      return hasYellowKey;
+      return instance.hasYellowKey;
 
     if(color == "white")
-      return hasWhiteKey;
+      return instance.hasWhiteKey;
 
     if(color == "blurple")
-      return hasTheObject;
+      return instance.hasTheObject;
 
     return false;
     }
@@ -106,16 +136,16 @@ public class GameManager : MonoBehaviour
   public void keyCollected(string color)
     {
     if(color == "pink")
-      hasPinkKey = true;
+      instance.hasPinkKey = true;
 
     if(color == "yellow")
-      hasYellowKey = true;
+      instance.hasYellowKey = true;
 
     if(color == "white")
-      hasWhiteKey = true;
+      instance.hasWhiteKey = true;
 
     if(color == "blurple")
-      hasTheObject = true;
+      instance.hasTheObject = true;
     }
 
   /**************************************************************************
@@ -156,5 +186,27 @@ public class GameManager : MonoBehaviour
   public void loadWinScene()
     {
     SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
+    }
+
+  /**************************************************************************
+  * respawnFromLastCheckpoint */ 
+  /**
+  * Moves the player to the last checkpoint.
+  **************************************************************************/
+  public void respawnFromLastCheckpoint()
+    {
+    GameObject.Find("FPSController").gameObject.transform.position = instance.lastCheckPoint;
+    }
+
+  /**************************************************************************
+  * restart */ 
+  /**
+  * Restart the game.
+  **************************************************************************/
+  public void restart()
+    {
+    instance.hasPinkKey = instance.hasTheObject = instance.hasWhiteKey = instance.hasYellowKey = false;
+    GameObject.Find("FPSController").gameObject.transform.position = instance.mStartPoint;
+    instance.playerLives = 3;
     }
   }

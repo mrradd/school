@@ -36,6 +36,7 @@ public class GuardSight : EnemySight
     if(!mAlerted)
       {
       mAlerted = true;
+      base.alerted();
       gameObject.GetComponent<AudioSource>().PlayOneShot(alertedSound);
       Debug.Log("Player sighted by Camera!");
       }

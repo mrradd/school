@@ -14,10 +14,8 @@ public class EnemyHearing : MonoBehaviour
   /** Heard player. */               protected bool    mAlerted = false;
   /** Player's previous position. */ protected Vector3 mPreviousPosition;
 
-
-
   /**************************************************************************
-  * Unity Methods 
+  * Unity Methods
   **************************************************************************/
   /**************************************************************************
   * OnTriggerEnter
@@ -26,6 +24,18 @@ public class EnemyHearing : MonoBehaviour
     {
     if(other.gameObject.tag == "Player")
       mPreviousPosition = other.gameObject.transform.position;
+    }
+
+  /**************************************************************************
+  * OnTriggerEXIT
+  **************************************************************************/
+  void OnTriggerExit(Collider other)
+    {
+    if(other.gameObject.tag == "Player")
+      {
+      mAlerted = false;
+      Debug.Log("Exitted hearing range.");
+      }
     }
 
   /**************************************************************************
@@ -71,6 +81,6 @@ public class EnemyHearing : MonoBehaviour
   **************************************************************************/
   public virtual void alerted()
     {
-    Debug.Log("Player heard!");
+    GameManager.instance.playerLives--;
     }
   }

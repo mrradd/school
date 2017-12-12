@@ -12,7 +12,8 @@ public class EnemySight : MonoBehaviour
   /** Range of vision angle. */    public float fieldOfView   = 45.0f;
   /** Range of vision distance. */ public float rangeOfVision = 15f;
 
-  /** Saw player. */ protected bool mAlerted = false;
+  /** Saw player. */         protected bool  mAlerted  = false;
+  /** Distance to player. */ protected float mDistance = 0f;
 
   /**************************************************************************
   * Unity Methods 
@@ -25,6 +26,11 @@ public class EnemySight : MonoBehaviour
     {
     if(canSee(GameObject.FindGameObjectWithTag("Player").gameObject))
       alerted();
+
+    if(mAlerted && mDistance > rangeOfVision)
+      {
+      mAlerted = false;
+      }
 	  }
 
   /**************************************************************************
@@ -37,7 +43,8 @@ public class EnemySight : MonoBehaviour
   **************************************************************************/
   public virtual void alerted()
     {
-    Debug.Log("Player sighted!");
+    GameManager.instance.playerLives--;
+
     }
 
   /**************************************************************************
@@ -45,11 +52,11 @@ public class EnemySight : MonoBehaviour
   /**
   * Searches for the passed in target.
   **************************************************************************/
-  public bool canSee ( GameObject target )
+  public bool canSee( GameObject target )
     {
     Vector3 targetPosition = target.transform.position;
 
-    float dist = Vector3.Distance(target.transform.position, transform.position);
+    mDistance = Vector3.Distance(target.transform.position, transform.position);
 
     /* Find the vector from the agent to the target We do this by subtracting
      * "destination minus origin", so that "origin plus vector equals destination." */
@@ -79,9 +86,8 @@ public class EnemySight : MonoBehaviour
       if (Physics.Raycast (rayToTarget, out hitInfo, Mathf.Infinity))
         {
         /* ... and that something is our target */
-        if (hitInfo.collider.gameObject == target && dist <= rangeOfVision)
+        if (hitInfo.collider.gameObject == target && mDistance <= rangeOfVision)
           {
-          Debug.Log("distance " + dist);
           return true;
           }
         }

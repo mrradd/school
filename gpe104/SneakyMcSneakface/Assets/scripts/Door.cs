@@ -14,8 +14,6 @@ public class Door : MonoBehaviour
   /** Door open sound. */   public AudioClip doorOpened;
   /** Exit for game. */     public bool      exit = false;
 
-
-
   /**************************************************************************
   * Unity Methods 
   **************************************************************************/
@@ -26,7 +24,7 @@ public class Door : MonoBehaviour
     {
     if(other.gameObject.tag == "Player")
       {
-      if(GameManager.instance.checkForKey(color))
+      if(GameManager.instance.checkForKey(color) || GameManager.instance.godMode)
         {
         Debug.Log("Has key " + color);
 
@@ -34,6 +32,9 @@ public class Door : MonoBehaviour
 
         gameObject.GetComponent<AudioSource>().PlayOneShot(doorOpened);
         Destroy(gameObject, 4f);
+
+        if(exit)
+          GameManager.instance.loadWinScene();
         }
       else
         {
