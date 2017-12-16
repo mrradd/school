@@ -21,10 +21,12 @@ public class CollisionSensor : MonoBehaviour
   **************************************************************************/
   void OnTriggerEnter(Collider other)
     {
-    if(other.gameObject.tag == "Player")
+    if(other.gameObject.tag == "Player" && !GameManager.instance.found)
       {
-      gameObject.GetComponent<AudioSource>().PlayOneShot(triggerSound);
       Debug.Log("Player triggered!");
+      gameObject.GetComponent<AudioSource>().PlayOneShot(triggerSound);
+      GameManager.instance.found = true;
+      GameManager.instance.loseLife();
       }
     }
   

@@ -33,12 +33,11 @@ public class GuardHearing : EnemyHearing
   **************************************************************************/
   public override void alerted()
     {
-    if(!mAlerted)
+    if(!GameManager.instance.found)
       {
-      mAlerted = true;
-      base.alerted();
       gameObject.GetComponent<AudioSource>().PlayOneShot(alertedSound);
       Debug.Log("Player sighted by Camera!");
+      base.alerted();
       }
     }
   }

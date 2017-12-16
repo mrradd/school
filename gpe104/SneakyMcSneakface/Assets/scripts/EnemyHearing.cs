@@ -20,7 +20,7 @@ public class EnemyHearing : MonoBehaviour
   /**************************************************************************
   * OnTriggerEnter
   **************************************************************************/
-  void OnTriggerEnter(Collider other)
+  public virtual void OnTriggerEnter(Collider other)
     {
     if(other.gameObject.tag == "Player")
       mPreviousPosition = other.gameObject.transform.position;
@@ -29,11 +29,10 @@ public class EnemyHearing : MonoBehaviour
   /**************************************************************************
   * OnTriggerEXIT
   **************************************************************************/
-  void OnTriggerExit(Collider other)
+  public virtual void OnTriggerExit(Collider other)
     {
     if(other.gameObject.tag == "Player")
       {
-      mAlerted = false;
       Debug.Log("Exitted hearing range.");
       }
     }
@@ -41,7 +40,7 @@ public class EnemyHearing : MonoBehaviour
   /**************************************************************************
   * OnTriggerStay
   **************************************************************************/
-  void OnTriggerStay(Collider other)
+  public virtual void OnTriggerStay(Collider other)
     {
 
     /** See of player within the trigger area. */
@@ -81,6 +80,7 @@ public class EnemyHearing : MonoBehaviour
   **************************************************************************/
   public virtual void alerted()
     {
-    GameManager.instance.playerLives--;
+    GameManager.instance.found = true;
+    GameManager.instance.loseLife();
     }
   }

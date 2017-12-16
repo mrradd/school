@@ -33,11 +33,10 @@ public class CameraSight : EnemySight
   **************************************************************************/
   public override void alerted()
     {
-    if(!mAlerted)
+    if(!GameManager.instance.found)
       {
-      mAlerted = true;
-      base.alerted();
       gameObject.GetComponent<AudioSource>().PlayOneShot(alertedSound);
+      base.alerted();
       Debug.Log("Player sighted by Camera!");
       }
     }

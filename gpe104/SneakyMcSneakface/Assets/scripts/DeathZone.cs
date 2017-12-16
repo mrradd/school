@@ -22,7 +22,8 @@ public class DeathZone : MonoBehaviour
     {
     if(other.gameObject.tag == "Player")
       {
-      GameObject.Find("FPSController").transform.position = GameManager.instance.lastCheckPoint;
+      GameManager.instance.respawnFromLastCheckpoint();
+      GameManager.instance.playerLives--;
       }
     }
 

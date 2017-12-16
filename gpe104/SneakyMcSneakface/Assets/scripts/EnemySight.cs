@@ -24,13 +24,8 @@ public class EnemySight : MonoBehaviour
   **************************************************************************/
 	public virtual void Update()
     {
-    if(canSee(GameObject.FindGameObjectWithTag("Player").gameObject))
+    if(GameObject.FindGameObjectWithTag("Player") != null && canSee(GameObject.FindGameObjectWithTag("Player").gameObject))
       alerted();
-
-    if(mAlerted && mDistance > rangeOfVision)
-      {
-      mAlerted = false;
-      }
 	  }
 
   /**************************************************************************
@@ -43,8 +38,8 @@ public class EnemySight : MonoBehaviour
   **************************************************************************/
   public virtual void alerted()
     {
-    GameManager.instance.playerLives--;
-
+    GameManager.instance.found = true;
+    GameManager.instance.loseLife();
     }
 
   /**************************************************************************
