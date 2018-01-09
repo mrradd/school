@@ -62,9 +62,8 @@ csc215/ASCIITree/ASCIITree/Debug/vc120.idb
 *.sdf
 *.sln
 *.idb
-csc215/Arrays/Debug/Arrays.exp
-csc203/playground/.metadata/*
-csc203/playground/playground/.settings/*
+
+
 
 #Unity
 #==========================
@@ -76,3 +75,12 @@ gpe104/*.zip
 */*/builds
 */*/obj
 */*/temp
+
+#School
+===========================
+csc215/Arrays/Debug/Arrays.exp
+csc203/playground/.metadata/*
+csc203/playground/playground/.settings/*
+csc202/*/*/obj
+csc202/*/*/bin
+csc202/*/*.vs
