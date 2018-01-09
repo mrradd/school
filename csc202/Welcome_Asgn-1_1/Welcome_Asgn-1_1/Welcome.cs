@@ -26,7 +26,7 @@ namespace Welcome_Asgn_1_1
         name = Console.ReadLine();
         }
 
-      Console.WriteLine(String.Format("Hello, {0}! Welcome to C#", name));
+      Console.WriteLine(String.Format("Hello, {0}! Welcome to C#.", name));
       Console.WriteLine("Press any key to exit...");
       Console.ReadKey();
       }
