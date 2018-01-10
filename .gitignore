@@ -63,13 +63,8 @@ csc215/ASCIITree/ASCIITree/Debug/vc120.idb
 *.sln
 *.idb
 
-
-
 #Unity
 #==========================
-gpe104/*/Library
-gpe104/builds
-gpe104/*.zip
 *.userprefs
 */*/UnityPackageManager
 */*/builds
@@ -84,3 +79,6 @@ csc203/playground/playground/.settings/*
 csc202/*/*/obj
 csc202/*/*/bin
 csc202/*/*.vs
+gpe104/*/Library
+gpe104/builds
+*.zip
