@@ -45,7 +45,7 @@ namespace IntegerMath
       this.tbInt1.Name = "tbInt1";
       this.tbInt1.Size = new System.Drawing.Size(100, 20);
       this.tbInt1.TabIndex = 0;
-      this.tbInt1.UseSystemPasswordChar = true;
+      this.tbInt1.TextChanged += new System.EventHandler(this.tbInt1_TextChanged);
       // 
       // lblInt1
       // 
@@ -75,6 +75,7 @@ namespace IntegerMath
       this.tbInt2.Name = "tbInt2";
       this.tbInt2.Size = new System.Drawing.Size(100, 20);
       this.tbInt2.TabIndex = 2;
+      this.tbInt2.TextChanged += new System.EventHandler(this.tbInt2_TextChanged);
       // 
       // btnGo
       // 
@@ -98,7 +99,7 @@ namespace IntegerMath
       this.Controls.Add(this.lblInt1);
       this.Controls.Add(this.tbInt1);
       this.Name = "Form1";
-      this.Text = "Form1";
+      this.Text = "Enter 2 Numbers";
       this.ResumeLayout(false);
       this.PerformLayout();
 

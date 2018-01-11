@@ -12,13 +12,13 @@ namespace IntegerMath
   {
   public partial class Form1 : Form
     {
-    private const int LABEL_HEIGHT = 13;
-    private const int LABEL_WIDTH  = 100;
+    /** Height of Label. */     private const int LABEL_HEIGHT = 13;
+    /** Width of Label. */      private const int LABEL_WIDTH  = 100;
+    /** X positoin of Label. */ private const int LABEL_X      = 50;
     
-    /** First integer. */  private int mInt1;
-    /** Second integer. */ private int mInt2;
-
-    /** Random number. */  private Random mRand = new Random();
+    /** First integer. */            private int    mInt1 = 1;
+    /** Second integer. */           private int    mInt2 = 2;
+    /** Random number generator. */  private Random mRand = new Random();
 
     /** List of dynamically generated labels. */
     private List<Label> mLabelList = new List<Label>();
@@ -36,30 +36,65 @@ namespace IntegerMath
     **************************************************************************/
     private void btnGo_Click(object sender, EventArgs e)
       {
-      Console.WriteLine("derp");
-      mInt1 = 20;
-      mInt2 = 33;
+      /** Random numbers. */
+      int r1 = mRand.Next(1,100);
+      int r2 = mRand.Next(1,100);
+      
+      /** Load the list with Label data if it does not already have any. */
       if(mLabelList.Count < 1)
         {
-        mLabelList.Add(createLabel(50, 100, LABEL_WIDTH, LABEL_HEIGHT, Maths.add(mInt1, mInt2)));
-        mLabelList.Add(createLabel(50, mLabelList[0].Location.Y + LABEL_HEIGHT, LABEL_WIDTH, LABEL_HEIGHT, Maths.subtract(mInt1, mInt2)));
-        mLabelList.Add(createLabel(50, mLabelList[1].Location.Y + LABEL_HEIGHT, LABEL_WIDTH, LABEL_HEIGHT, Maths.multiply(mInt1, mInt2)));
-        mLabelList.Add(createLabel(50, mLabelList[2].Location.Y + LABEL_HEIGHT, LABEL_WIDTH, LABEL_HEIGHT, Maths.divide(mInt1, mInt2)));
-        mLabelList.Add(createLabel(50, mLabelList[3].Location.Y + LABEL_HEIGHT, LABEL_WIDTH, LABEL_HEIGHT, Maths.mod(mInt1, mInt2)));
+        /** Calculate Y position based on previous element's position. */
+
+        /** Do math on user entered data. */
+        mLabelList.Add(createLabel(LABEL_X, 100,                            LABEL_WIDTH, LABEL_HEIGHT, Maths.add     (mInt1, mInt2)));
+        mLabelList.Add(createLabel(LABEL_X, calculateLabelY(mLabelList[0]), LABEL_WIDTH, LABEL_HEIGHT, Maths.subtract(mInt1, mInt2)));
+        mLabelList.Add(createLabel(LABEL_X, calculateLabelY(mLabelList[1]), LABEL_WIDTH, LABEL_HEIGHT, Maths.multiply(mInt1, mInt2)));
+        mLabelList.Add(createLabel(LABEL_X, calculateLabelY(mLabelList[2]), LABEL_WIDTH, LABEL_HEIGHT, Maths.divide  (mInt1, mInt2)));
+        mLabelList.Add(createLabel(LABEL_X, calculateLabelY(mLabelList[3]), LABEL_WIDTH, LABEL_HEIGHT, Maths.mod     (mInt1, mInt2)));
+        
+        /** Do math on random data. */
+        mLabelList.Add(createLabel(LABEL_X, calculateLabelY(mLabelList[4], 20), LABEL_WIDTH, LABEL_HEIGHT, Maths.add     (r1, r2)));
+        mLabelList.Add(createLabel(LABEL_X, calculateLabelY(mLabelList[5]),     LABEL_WIDTH, LABEL_HEIGHT, Maths.subtract(r1, r2)));
+        mLabelList.Add(createLabel(LABEL_X, calculateLabelY(mLabelList[6]),     LABEL_WIDTH, LABEL_HEIGHT, Maths.multiply(r1, r2)));
+        mLabelList.Add(createLabel(LABEL_X, calculateLabelY(mLabelList[7]),     LABEL_WIDTH, LABEL_HEIGHT, Maths.divide  (r1, r2)));
+        mLabelList.Add(createLabel(LABEL_X, calculateLabelY(mLabelList[8]),     LABEL_WIDTH, LABEL_HEIGHT, Maths.mod     (r1, r2)));
+        
+        /** Add labels to form. */
         this.PerformLayout();
         }
+
+      /** Update the existing data. */
       else
         {
-        int r1 = mRand.Next(1,100);
-        int r2 = mRand.Next(1,100);
-
-        mLabelList[0].Text = Maths.add(mInt1, mInt2);
+        /** Update User entered data. */
+        mLabelList[0].Text = Maths.add     (mInt1, mInt2);
         mLabelList[1].Text = Maths.subtract(mInt1, mInt2);
         mLabelList[2].Text = Maths.multiply(mInt1, mInt2);
-        mLabelList[3].Text = Maths.divide(mInt1, mInt2);
-        mLabelList[4].Text = Maths.mod(mInt1, mInt2);
+        mLabelList[3].Text = Maths.divide  (mInt1, mInt2);
+        mLabelList[4].Text = Maths.mod     (mInt1, mInt2);
 
+        /** Update random data. */
+        mLabelList[5].Text = Maths.add     (r1, r2);
+        mLabelList[6].Text = Maths.subtract(r1, r2);
+        mLabelList[7].Text = Maths.multiply(r1, r2);
+        mLabelList[8].Text = Maths.divide  (r1, r2);
+        mLabelList[9].Text = Maths.mod     (r1, r2);
         }
+      }
+
+    /**************************************************************************
+    * calculateLabelY */
+    /**
+    * Calculates the Label's Y position.
+    * 
+    * @param  label   Label object to set Y position relative to.
+    * @param  offset  Additional offset value to apply.
+    * @returns  Value to use for position.
+    **************************************************************************/
+    private int calculateLabelY(Label label){ return calculateLabelY(label, 0); }
+    private int calculateLabelY(Label label, int offset)
+      {
+      return label.Location.Y + LABEL_HEIGHT + offset;
       }
 
     /**************************************************************************
@@ -72,6 +107,7 @@ namespace IntegerMath
     * @param  w        Width.
     * @param  h        Height.
     * @param  message  Label message.
+    * @returns  New Label.
     **************************************************************************/
     private Label createLabel(int x, int y, int w, int h, string message)
       {
@@ -84,6 +120,32 @@ namespace IntegerMath
       this.Controls.Add(l);
       
       return l;
+      }
+
+    /**************************************************************************
+    * tbInt1_TextChanged */
+    /**
+    * Handles text changed.
+    **************************************************************************/
+    private void tbInt1_TextChanged(object sender, EventArgs e)
+      {
+      if(Int32.TryParse(tbInt1.Text, out mInt1))
+        return;
+      else
+        Console.WriteLine("bad int");
+      }
+
+    /**************************************************************************
+    * tbInt1_TextChanged */
+    /**
+    * Handles text changed.
+    **************************************************************************/
+    private void tbInt2_TextChanged(object sender, EventArgs e)
+      {
+      if(Int32.TryParse(tbInt2.Text, out mInt2))
+        return;
+      else
+        Console.WriteLine("bad int");
       }
     }
   }
