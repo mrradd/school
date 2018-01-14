@@ -36,7 +36,24 @@ namespace IntegerMath
     **************************************************************************/
     private void btnGo_Click(object sender, EventArgs e)
       {
-      /** Random numbers. */
+
+      /** Validate and set first number. */
+      if (!Int32.TryParse(tbInt1.Text, out mInt1))
+        {
+        tbInt1.Clear();
+        MessageBox.Show("First Number is not a valid integer");
+        return;
+        }
+      
+      /** Validate and set set number. */
+      if (!Int32.TryParse(tbInt2.Text, out mInt2))
+        {
+        tbInt2.Clear();
+        MessageBox.Show("Second Number is not a valid integer");
+        return;
+        }
+
+            /** Random numbers. */
       int r1 = mRand.Next(1,100);
       int r2 = mRand.Next(1,100);
       
@@ -120,32 +137,6 @@ namespace IntegerMath
       this.Controls.Add(l);
       
       return l;
-      }
-
-    /**************************************************************************
-    * tbInt1_TextChanged */
-    /**
-    * Handles text changed.
-    **************************************************************************/
-    private void tbInt1_TextChanged(object sender, EventArgs e)
-      {
-      if(Int32.TryParse(tbInt1.Text, out mInt1))
-        return;
-      else
-        Console.WriteLine("bad int");
-      }
-
-    /**************************************************************************
-    * tbInt1_TextChanged */
-    /**
-    * Handles text changed.
-    **************************************************************************/
-    private void tbInt2_TextChanged(object sender, EventArgs e)
-      {
-      if(Int32.TryParse(tbInt2.Text, out mInt2))
-        return;
-      else
-        Console.WriteLine("bad int");
       }
     }
   }

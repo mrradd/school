@@ -45,27 +45,26 @@ namespace IntegerMath
       this.tbInt1.Name = "tbInt1";
       this.tbInt1.Size = new System.Drawing.Size(100, 20);
       this.tbInt1.TabIndex = 0;
-      this.tbInt1.TextChanged += new System.EventHandler(this.tbInt1_TextChanged);
       // 
       // lblInt1
       // 
       this.lblInt1.AccessibleName = "lblInt1";
       this.lblInt1.AutoSize = true;
-      this.lblInt1.Location = new System.Drawing.Point(47, 14);
+      this.lblInt1.Location = new System.Drawing.Point(37, 14);
       this.lblInt1.Name = "lblInt1";
-      this.lblInt1.Size = new System.Drawing.Size(66, 13);
+      this.lblInt1.Size = new System.Drawing.Size(94, 13);
       this.lblInt1.TabIndex = 1;
-      this.lblInt1.Text = "First Number";
+      this.lblInt1.Text = "Enter First Number";
       // 
       // lblInt2
       // 
       this.lblInt2.AccessibleName = "lblInt2";
       this.lblInt2.AutoSize = true;
-      this.lblInt2.Location = new System.Drawing.Point(47, 43);
+      this.lblInt2.Location = new System.Drawing.Point(19, 40);
       this.lblInt2.Name = "lblInt2";
-      this.lblInt2.Size = new System.Drawing.Size(84, 13);
+      this.lblInt2.Size = new System.Drawing.Size(112, 13);
       this.lblInt2.TabIndex = 3;
-      this.lblInt2.Text = "Second Number";
+      this.lblInt2.Text = "Enter Second Number";
       // 
       // tbInt2
       // 
@@ -75,7 +74,6 @@ namespace IntegerMath
       this.tbInt2.Name = "tbInt2";
       this.tbInt2.Size = new System.Drawing.Size(100, 20);
       this.tbInt2.TabIndex = 2;
-      this.tbInt2.TextChanged += new System.EventHandler(this.tbInt2_TextChanged);
       // 
       // btnGo
       // 
