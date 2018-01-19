@@ -37,25 +37,28 @@
       // 
       // tbGuess
       // 
-      this.tbGuess.Location = new System.Drawing.Point(123, 51);
+      this.tbGuess.Location = new System.Drawing.Point(164, 51);
+      this.tbGuess.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
       this.tbGuess.Name = "tbGuess";
-      this.tbGuess.Size = new System.Drawing.Size(99, 20);
+      this.tbGuess.Size = new System.Drawing.Size(131, 19);
       this.tbGuess.TabIndex = 0;
       // 
       // lblEnterGuess
       // 
       this.lblEnterGuess.AutoSize = true;
-      this.lblEnterGuess.Location = new System.Drawing.Point(54, 54);
+      this.lblEnterGuess.Location = new System.Drawing.Point(72, 54);
+      this.lblEnterGuess.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblEnterGuess.Name = "lblEnterGuess";
-      this.lblEnterGuess.Size = new System.Drawing.Size(63, 13);
+      this.lblEnterGuess.Size = new System.Drawing.Size(89, 13);
       this.lblEnterGuess.TabIndex = 1;
       this.lblEnterGuess.Text = "Enter guess";
       // 
       // btnGuess
       // 
-      this.btnGuess.Location = new System.Drawing.Point(104, 86);
+      this.btnGuess.Location = new System.Drawing.Point(139, 86);
+      this.btnGuess.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
       this.btnGuess.Name = "btnGuess";
-      this.btnGuess.Size = new System.Drawing.Size(75, 23);
+      this.btnGuess.Size = new System.Drawing.Size(100, 23);
       this.btnGuess.TabIndex = 2;
       this.btnGuess.Text = "Guess";
       this.btnGuess.UseVisualStyleBackColor = true;
@@ -63,9 +66,10 @@
       // 
       // btnStart
       // 
-      this.btnStart.Location = new System.Drawing.Point(104, 126);
+      this.btnStart.Location = new System.Drawing.Point(139, 126);
+      this.btnStart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
       this.btnStart.Name = "btnStart";
-      this.btnStart.Size = new System.Drawing.Size(75, 23);
+      this.btnStart.Size = new System.Drawing.Size(100, 23);
       this.btnStart.TabIndex = 3;
       this.btnStart.Text = "Start";
       this.btnStart.UseVisualStyleBackColor = true;
@@ -74,23 +78,26 @@
       // lblResult
       // 
       this.lblResult.AutoSize = true;
-      this.lblResult.Location = new System.Drawing.Point(106, 18);
+      this.lblResult.Location = new System.Drawing.Point(129, 18);
+      this.lblResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblResult.Name = "lblResult";
-      this.lblResult.Size = new System.Drawing.Size(102, 13);
+      this.lblResult.Size = new System.Drawing.Size(139, 13);
       this.lblResult.TabIndex = 4;
       this.lblResult.Text = "Guess the number...";
       // 
       // Form1
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-      this.ClientSize = new System.Drawing.Size(284, 165);
+      this.ClientSize = new System.Drawing.Size(379, 165);
       this.Controls.Add(this.lblResult);
       this.Controls.Add(this.btnStart);
       this.Controls.Add(this.btnGuess);
       this.Controls.Add(this.lblEnterGuess);
       this.Controls.Add(this.tbGuess);
+      this.Font = new System.Drawing.Font("SWTOR Trajan", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
       this.Name = "Form1";
       this.Text = "Guess The Number";
       this.ResumeLayout(false);
