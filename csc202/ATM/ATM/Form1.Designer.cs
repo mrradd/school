@@ -1,0 +1,238 @@
+﻿namespace ATM
+{
+  partial class Form1
+  {
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    protected override void Dispose(bool disposing)
+    {
+      if(disposing && (components != null))
+      {
+        components.Dispose();
+      }
+      base.Dispose(disposing);
+    }
+
+    #region Windows Form Designer generated code
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+      this.pnlWelcome = new System.Windows.Forms.Panel();
+      this.tbWelcomeName = new System.Windows.Forms.TextBox();
+      this.tbWelcomeAccountNumber = new System.Windows.Forms.TextBox();
+      this.lblWelcomeTitle = new System.Windows.Forms.Label();
+      this.lblWelcomeName = new System.Windows.Forms.Label();
+      this.lblWelcomeAccountNumber = new System.Windows.Forms.Label();
+      this.label2 = new System.Windows.Forms.Label();
+      this.btnLogin = new System.Windows.Forms.Button();
+      this.pnlMenu = new System.Windows.Forms.Panel();
+      this.lblHeader = new System.Windows.Forms.Label();
+      this.btnDeposit = new System.Windows.Forms.Button();
+      this.btnWithdraw = new System.Windows.Forms.Button();
+      this.tbAmount = new System.Windows.Forms.TextBox();
+      this.label1 = new System.Windows.Forms.Label();
+      this.label3 = new System.Windows.Forms.Label();
+      this.textBox1 = new System.Windows.Forms.TextBox();
+      this.pnlWelcome.SuspendLayout();
+      this.pnlMenu.SuspendLayout();
+      this.SuspendLayout();
+      // 
+      // pnlWelcome
+      // 
+      this.pnlWelcome.Controls.Add(this.btnLogin);
+      this.pnlWelcome.Controls.Add(this.label2);
+      this.pnlWelcome.Controls.Add(this.lblWelcomeAccountNumber);
+      this.pnlWelcome.Controls.Add(this.lblWelcomeName);
+      this.pnlWelcome.Controls.Add(this.lblWelcomeTitle);
+      this.pnlWelcome.Controls.Add(this.tbWelcomeAccountNumber);
+      this.pnlWelcome.Controls.Add(this.tbWelcomeName);
+      this.pnlWelcome.Location = new System.Drawing.Point(161, 121);
+      this.pnlWelcome.Name = "pnlWelcome";
+      this.pnlWelcome.Size = new System.Drawing.Size(267, 178);
+      this.pnlWelcome.TabIndex = 0;
+      // 
+      // tbWelcomeName
+      // 
+      this.tbWelcomeName.Location = new System.Drawing.Point(108, 32);
+      this.tbWelcomeName.Name = "tbWelcomeName";
+      this.tbWelcomeName.Size = new System.Drawing.Size(133, 20);
+      this.tbWelcomeName.TabIndex = 0;
+      // 
+      // tbWelcomeAccountNumber
+      // 
+      this.tbWelcomeAccountNumber.Location = new System.Drawing.Point(108, 84);
+      this.tbWelcomeAccountNumber.Name = "tbWelcomeAccountNumber";
+      this.tbWelcomeAccountNumber.Size = new System.Drawing.Size(133, 20);
+      this.tbWelcomeAccountNumber.TabIndex = 1;
+      // 
+      // lblWelcomeTitle
+      // 
+      this.lblWelcomeTitle.AutoSize = true;
+      this.lblWelcomeTitle.Location = new System.Drawing.Point(51, 9);
+      this.lblWelcomeTitle.Name = "lblWelcomeTitle";
+      this.lblWelcomeTitle.Size = new System.Drawing.Size(162, 13);
+      this.lblWelcomeTitle.TabIndex = 2;
+      this.lblWelcomeTitle.Text = "Enter account number or name...";
+      // 
+      // lblWelcomeName
+      // 
+      this.lblWelcomeName.AutoSize = true;
+      this.lblWelcomeName.Location = new System.Drawing.Point(67, 35);
+      this.lblWelcomeName.Name = "lblWelcomeName";
+      this.lblWelcomeName.Size = new System.Drawing.Size(35, 13);
+      this.lblWelcomeName.TabIndex = 3;
+      this.lblWelcomeName.Text = "Name";
+      // 
+      // lblWelcomeAccountNumber
+      // 
+      this.lblWelcomeAccountNumber.AutoSize = true;
+      this.lblWelcomeAccountNumber.Location = new System.Drawing.Point(15, 87);
+      this.lblWelcomeAccountNumber.Name = "lblWelcomeAccountNumber";
+      this.lblWelcomeAccountNumber.Size = new System.Drawing.Size(87, 13);
+      this.lblWelcomeAccountNumber.TabIndex = 4;
+      this.lblWelcomeAccountNumber.Text = "Account Number";
+      // 
+      // label2
+      // 
+      this.label2.AutoSize = true;
+      this.label2.Location = new System.Drawing.Point(124, 60);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(16, 13);
+      this.label2.TabIndex = 5;
+      this.label2.Text = "or";
+      // 
+      // btnLogin
+      // 
+      this.btnLogin.Location = new System.Drawing.Point(96, 132);
+      this.btnLogin.Name = "btnLogin";
+      this.btnLogin.Size = new System.Drawing.Size(75, 23);
+      this.btnLogin.TabIndex = 6;
+      this.btnLogin.Text = "Login";
+      this.btnLogin.UseVisualStyleBackColor = true;
+      this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+      // 
+      // pnlMenu
+      // 
+      this.pnlMenu.Controls.Add(this.textBox1);
+      this.pnlMenu.Controls.Add(this.label3);
+      this.pnlMenu.Controls.Add(this.label1);
+      this.pnlMenu.Controls.Add(this.tbAmount);
+      this.pnlMenu.Controls.Add(this.btnWithdraw);
+      this.pnlMenu.Controls.Add(this.btnDeposit);
+      this.pnlMenu.Controls.Add(this.lblHeader);
+      this.pnlMenu.Location = new System.Drawing.Point(12, 12);
+      this.pnlMenu.Name = "pnlMenu";
+      this.pnlMenu.Size = new System.Drawing.Size(555, 410);
+      this.pnlMenu.TabIndex = 1;
+      // 
+      // lblHeader
+      // 
+      this.lblHeader.AutoSize = true;
+      this.lblHeader.Location = new System.Drawing.Point(222, 12);
+      this.lblHeader.Name = "lblHeader";
+      this.lblHeader.Size = new System.Drawing.Size(124, 13);
+      this.lblHeader.TabIndex = 0;
+      this.lblHeader.Text = "Name - Account Number";
+      // 
+      // btnDeposit
+      // 
+      this.btnDeposit.Location = new System.Drawing.Point(245, 175);
+      this.btnDeposit.Name = "btnDeposit";
+      this.btnDeposit.Size = new System.Drawing.Size(75, 23);
+      this.btnDeposit.TabIndex = 1;
+      this.btnDeposit.Text = "Deposit";
+      this.btnDeposit.UseVisualStyleBackColor = true;
+      this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
+      // 
+      // btnWithdraw
+      // 
+      this.btnWithdraw.Location = new System.Drawing.Point(245, 217);
+      this.btnWithdraw.Name = "btnWithdraw";
+      this.btnWithdraw.Size = new System.Drawing.Size(75, 23);
+      this.btnWithdraw.TabIndex = 2;
+      this.btnWithdraw.Text = "Withdraw";
+      this.btnWithdraw.UseVisualStyleBackColor = true;
+      this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
+      // 
+      // tbAmount
+      // 
+      this.tbAmount.Location = new System.Drawing.Point(234, 136);
+      this.tbAmount.Name = "tbAmount";
+      this.tbAmount.Size = new System.Drawing.Size(100, 20);
+      this.tbAmount.TabIndex = 3;
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(221, 139);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(13, 13);
+      this.label1.TabIndex = 4;
+      this.label1.Text = "$";
+      // 
+      // label3
+      // 
+      this.label3.AutoSize = true;
+      this.label3.Location = new System.Drawing.Point(186, 44);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(92, 13);
+      this.label3.TabIndex = 5;
+      this.label3.Text = "Current Balance $";
+      // 
+      // textBox1
+      // 
+      this.textBox1.Location = new System.Drawing.Point(276, 41);
+      this.textBox1.Name = "textBox1";
+      this.textBox1.ReadOnly = true;
+      this.textBox1.Size = new System.Drawing.Size(100, 20);
+      this.textBox1.TabIndex = 6;
+      // 
+      // Form1
+      // 
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.ClientSize = new System.Drawing.Size(579, 434);
+      this.Controls.Add(this.pnlMenu);
+      this.Controls.Add(this.pnlWelcome);
+      this.Name = "Form1";
+      this.Text = "Form1";
+      this.pnlWelcome.ResumeLayout(false);
+      this.pnlWelcome.PerformLayout();
+      this.pnlMenu.ResumeLayout(false);
+      this.pnlMenu.PerformLayout();
+      this.ResumeLayout(false);
+
+    }
+
+    #endregion
+
+    private System.Windows.Forms.Panel pnlWelcome;
+    private System.Windows.Forms.Button btnLogin;
+    private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.Label lblWelcomeAccountNumber;
+    private System.Windows.Forms.Label lblWelcomeName;
+    private System.Windows.Forms.Label lblWelcomeTitle;
+    private System.Windows.Forms.TextBox tbWelcomeAccountNumber;
+    private System.Windows.Forms.TextBox tbWelcomeName;
+    private System.Windows.Forms.Panel pnlMenu;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.TextBox tbAmount;
+    private System.Windows.Forms.Button btnWithdraw;
+    private System.Windows.Forms.Button btnDeposit;
+    private System.Windows.Forms.Label lblHeader;
+    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.Label label3;
+  }
+}
+
