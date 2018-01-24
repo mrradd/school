@@ -12,10 +12,19 @@ using System.Threading.Tasks;
 ******************************************************************************/
 namespace ATM
   {
-  class Transaction
+  public class Transaction
     {
-    /** Amount of money depositted or withdrawn always positive. */ decimal  amount;
-    /** Withdraw if true; deposit if false. */                      bool     isWithdraw;
-    /** Time stamp. */                                              DateTime timeStamp;
+    /** Amount of money depositted or withdrawn always positive. */ protected decimal  mAmount;
+    /** Withdraw if true; deposit if false. */                      protected bool     mIsWithdraw;
+    /** Time stamp. */                                              protected DateTime mTimeStamp;
+
+    /** CTOR */
+    public Transaction(){ }
+    public Transaction(decimal amount, bool isWithdraw, DateTime timeStamp)
+      {
+      this.mAmount     = amount;
+      this.mIsWithdraw = isWithdraw;
+      this.mTimeStamp  = timeStamp;
+      }
     } 
   }

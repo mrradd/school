@@ -12,10 +12,42 @@ using System.Threading.Tasks;
 ******************************************************************************/
 namespace ATM
   {
-  class Account
+  public class Account
     {
-    /** Name of account holder. */ string name;
-    /** Account's number. */       string accountNumber;
-    /** List of transactions. */   List<Transaction> transactions = new List<Transaction>();
+    /** Account number counter. */ protected static int mAccountNumberTracker = 0;
+
+    /** Account's number. */       protected string            mAccountNumber;
+    /** Balance. */                protected decimal           mBalance;
+    /** Name of account holder. */ protected string            mName;
+    /** List of transactions. */   protected List<Transaction> mTransactions = new List<Transaction>();
+
+    /**************************************************************************
+    * ACCESSORS
+    **************************************************************************/
+    /** Returns mAccountNumber. */
+    public string accountNumber { get {return mAccountNumber; } }
+
+    /** Returns/sets mBalance. */
+    public decimal balance
+      {
+      set { mBalance = value; }
+      get { return mBalance; }
+      }
+
+    /** Returns mName. */
+    public string name { get { return mName; } }
+
+    /** Increments the number tracker and returns a string of the new number. */
+    public static string newAccountNumber { get { return (++mAccountNumberTracker).ToString(); } }
+
+    /** CTOR */
+    public Account(){ }
+    public Account(string name, decimal balance, List<Transaction> transactions = null)
+      {
+      this.mName          = name;
+      this.mAccountNumber = Account.newAccountNumber;
+      this.mBalance       = balance;
+      this.mTransactions  = transactions != null ? transactions : new List<Transaction>();
+      }
     }
   }
