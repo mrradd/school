@@ -40,6 +40,9 @@ namespace ATM
     /** Increments the number tracker and returns a string of the new number. */
     public static string newAccountNumber { get { return (++mAccountNumberTracker).ToString(); } }
 
+    /** Returns mTransactions. */
+    public List<Transaction> transactions { get {return mTransactions; } }
+
     /** CTOR */
     public Account(){ }
     public Account(string name, decimal balance, List<Transaction> transactions = null)

@@ -30,17 +30,7 @@ namespace ATM
       mAccounts.Add(new Account("Bart Simpson", 25m));
       mAccounts.Add(new Account("Montgomery Burns", 25000000m));
 
-      lvTestAccounts.View = View.Details;
-      
-      for (int i = 0; i < mAccounts.Count; i++)
-        {
-        ListViewItem item = new ListViewItem(mAccounts[i].name,0);
-        item.SubItems.Add(mAccounts[i].accountNumber);
-        lvTestAccounts.Items.Add(item);
-        }
-      
-	    lvTestAccounts.Columns.Add("Name", -2, HorizontalAlignment.Left);
-	    lvTestAccounts.Columns.Add("Number", -2, HorizontalAlignment.Left);
+      populateAccountListView();
       }
 
     /**************************************************************************
@@ -60,11 +50,48 @@ namespace ATM
     **************************************************************************/
     private void btnLogin_Click(object sender, EventArgs e)
       {
-      pnlWelcome.Visible = false;
-      pnlMenu.Visible    = true;
+      bool newLogin = false;
+      
+      /** Try to find if the account currently exists. */
+      bool exists = false;
+      for(int i = 0; i < mAccounts.Count; i++)
+        {
+        if(tbWelcomeName.Text == mAccounts[i].name || tbWelcomeAccountNumber.Text == mAccounts[i].accountNumber)
+          {
+          mAccount = mAccounts[i];
+          exists   = true;
+          break;
+          }
+        }
 
-      //tbWelcomeName
-      //  tbWelcomeAccountNumber
+      /** If it doesn't exist, add a new record. */
+      if(!exists)
+        {
+        /** If a name was given, make a new account. */
+        if(tbWelcomeName.Text.Length > 0)
+          {
+          mAccount = new Account(tbWelcomeName.Text, 100m);
+          mAccounts.Add(mAccount);
+          MessageBox.Show($"A new account has been created for {mAccount.name}. Account number {mAccount.accountNumber}.");
+          newLogin = true;
+          }
+
+        /** A name wasn't given. */
+        else
+          {
+          MessageBox.Show("No account found. Enter a name, press login, and a new account will be created for you.");
+          }
+        }
+      
+      /** Login. Change panels, and update info. */
+      if(newLogin || exists)
+        {
+        pnlWelcome.Visible = false;
+
+        lblHeader.Text         = $"Hello, {mAccount.name} - {mAccount.accountNumber}";
+        tbCurrentBalance.Text  = mAccount.balance.ToString("C2");
+        pnlMenu.Visible        = true;
+        }
       }
 
     /**************************************************************************
@@ -74,7 +101,18 @@ namespace ATM
     **************************************************************************/
     private void btnWithdraw_Click(object sender, EventArgs e)
       {
+      decimal amt = 0m;
+      
+      if(!decimal.TryParse(tbAmount.Text, out amt))
+        {
+        MessageBox.Show("Invalid amount enterred");
+        return;
+        }
 
+      mAccount.transactions.Add(new Transaction(amt, true, new DateTime()));
+      populateTransactionListView();
+
+      //TODO CH  NEED TO UPDATE THE ACCOUNT BALANCE. MAKE A METHOD.
       }
 
     /**************************************************************************
@@ -87,6 +125,54 @@ namespace ATM
       pnlWelcome.Visible = true;
       pnlMenu.Visible    = false;
       mAccount           = null;
+
+      populateAccountListView();
       }
-  }
+
+    /**************************************************************************
+    * populateAccountListView */
+    /**
+    * Populates the Accounts list view with current account list.
+    **************************************************************************/
+    private void populateAccountListView()
+      {
+      /** Clear the list to rebuild it. */
+      lvTestAccounts.Clear();
+
+      lvTestAccounts.View = View.Details;
+      
+      for (int i = 0; i < mAccounts.Count; i++)
+        {
+        ListViewItem item = new ListViewItem(mAccounts[i].name,0);
+        item.SubItems.Add(mAccounts[i].accountNumber);
+        lvTestAccounts.Items.Add(item);
+        }
+      
+	    lvTestAccounts.Columns.Add("Name", -2, HorizontalAlignment.Left);
+	    lvTestAccounts.Columns.Add("Account Number", -2, HorizontalAlignment.Left);
+      }
+
+    /**************************************************************************
+    * populateTransactionListView */
+    /**
+    * Populates the Transactions list view with current info.
+    **************************************************************************/
+    private void populateTransactionListView()
+      {
+      /** Clear the list to rebuild it. */
+      lvTransactions.Clear();
+
+      lvTransactions.View = View.Details;
+      
+      for (int i = 0; i < mAccount.transactions.Count; i++)
+        {
+        ListViewItem item = new ListViewItem(mAccount.transactions[i].isWithdraw ? "Withdraw" : "Deposit" ,0);
+        item.SubItems.Add(mAccount.transactions[i].amount.ToString("C2"));
+        lvTransactions.Items.Add(item);
+        }
+      
+	    lvTransactions.Columns.Add("Type", -2, HorizontalAlignment.Left);
+	    lvTransactions.Columns.Add("Amount", -2, HorizontalAlignment.Left);
+      }
+    }
   }

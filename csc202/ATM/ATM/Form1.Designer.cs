@@ -29,6 +29,7 @@
     private void InitializeComponent()
     {
       this.pnlWelcome = new System.Windows.Forms.Panel();
+      this.lvTestAccounts = new System.Windows.Forms.ListView();
       this.btnLogin = new System.Windows.Forms.Button();
       this.label2 = new System.Windows.Forms.Label();
       this.lblWelcomeAccountNumber = new System.Windows.Forms.Label();
@@ -38,20 +39,23 @@
       this.tbWelcomeName = new System.Windows.Forms.TextBox();
       this.pnlMenu = new System.Windows.Forms.Panel();
       this.btnLogout = new System.Windows.Forms.Button();
-      this.textBox1 = new System.Windows.Forms.TextBox();
+      this.tbCurrentBalance = new System.Windows.Forms.TextBox();
       this.label3 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
       this.tbAmount = new System.Windows.Forms.TextBox();
       this.btnWithdraw = new System.Windows.Forms.Button();
       this.btnDeposit = new System.Windows.Forms.Button();
       this.lblHeader = new System.Windows.Forms.Label();
-      this.lvTestAccounts = new System.Windows.Forms.ListView();
+      this.label4 = new System.Windows.Forms.Label();
+      this.lvTransactions = new System.Windows.Forms.ListView();
+      this.label5 = new System.Windows.Forms.Label();
       this.pnlWelcome.SuspendLayout();
       this.pnlMenu.SuspendLayout();
       this.SuspendLayout();
       // 
       // pnlWelcome
       // 
+      this.pnlWelcome.Controls.Add(this.label4);
       this.pnlWelcome.Controls.Add(this.lvTestAccounts);
       this.pnlWelcome.Controls.Add(this.btnLogin);
       this.pnlWelcome.Controls.Add(this.label2);
@@ -60,10 +64,18 @@
       this.pnlWelcome.Controls.Add(this.lblWelcomeTitle);
       this.pnlWelcome.Controls.Add(this.tbWelcomeAccountNumber);
       this.pnlWelcome.Controls.Add(this.tbWelcomeName);
-      this.pnlWelcome.Location = new System.Drawing.Point(73, 73);
+      this.pnlWelcome.Location = new System.Drawing.Point(542, 25);
       this.pnlWelcome.Name = "pnlWelcome";
-      this.pnlWelcome.Size = new System.Drawing.Size(416, 253);
+      this.pnlWelcome.Size = new System.Drawing.Size(457, 253);
       this.pnlWelcome.TabIndex = 0;
+      // 
+      // lvTestAccounts
+      // 
+      this.lvTestAccounts.Location = new System.Drawing.Point(260, 32);
+      this.lvTestAccounts.Name = "lvTestAccounts";
+      this.lvTestAccounts.Size = new System.Drawing.Size(194, 218);
+      this.lvTestAccounts.TabIndex = 7;
+      this.lvTestAccounts.UseCompatibleStateImageBehavior = false;
       // 
       // btnLogin
       // 
@@ -127,23 +139,25 @@
       // 
       // pnlMenu
       // 
+      this.pnlMenu.Controls.Add(this.label5);
+      this.pnlMenu.Controls.Add(this.lvTransactions);
       this.pnlMenu.Controls.Add(this.btnLogout);
-      this.pnlMenu.Controls.Add(this.textBox1);
+      this.pnlMenu.Controls.Add(this.tbCurrentBalance);
       this.pnlMenu.Controls.Add(this.label3);
       this.pnlMenu.Controls.Add(this.label1);
       this.pnlMenu.Controls.Add(this.tbAmount);
       this.pnlMenu.Controls.Add(this.btnWithdraw);
       this.pnlMenu.Controls.Add(this.btnDeposit);
       this.pnlMenu.Controls.Add(this.lblHeader);
-      this.pnlMenu.Location = new System.Drawing.Point(165, 12);
+      this.pnlMenu.Location = new System.Drawing.Point(77, 12);
       this.pnlMenu.Name = "pnlMenu";
-      this.pnlMenu.Size = new System.Drawing.Size(220, 407);
+      this.pnlMenu.Size = new System.Drawing.Size(371, 407);
       this.pnlMenu.TabIndex = 1;
       this.pnlMenu.Visible = false;
       // 
       // btnLogout
       // 
-      this.btnLogout.Location = new System.Drawing.Point(71, 366);
+      this.btnLogout.Location = new System.Drawing.Point(3, 380);
       this.btnLogout.Name = "btnLogout";
       this.btnLogout.Size = new System.Drawing.Size(75, 23);
       this.btnLogout.TabIndex = 7;
@@ -151,18 +165,18 @@
       this.btnLogout.UseVisualStyleBackColor = true;
       this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
       // 
-      // textBox1
+      // tbCurrentBalance
       // 
-      this.textBox1.Location = new System.Drawing.Point(102, 42);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.ReadOnly = true;
-      this.textBox1.Size = new System.Drawing.Size(100, 20);
-      this.textBox1.TabIndex = 6;
+      this.tbCurrentBalance.Location = new System.Drawing.Point(190, 42);
+      this.tbCurrentBalance.Name = "tbCurrentBalance";
+      this.tbCurrentBalance.ReadOnly = true;
+      this.tbCurrentBalance.Size = new System.Drawing.Size(100, 20);
+      this.tbCurrentBalance.TabIndex = 6;
       // 
       // label3
       // 
       this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(12, 45);
+      this.label3.Location = new System.Drawing.Point(100, 45);
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(92, 13);
       this.label3.TabIndex = 5;
@@ -207,25 +221,43 @@
       // lblHeader
       // 
       this.lblHeader.AutoSize = true;
-      this.lblHeader.Location = new System.Drawing.Point(48, 13);
+      this.lblHeader.Location = new System.Drawing.Point(131, 13);
       this.lblHeader.Name = "lblHeader";
       this.lblHeader.Size = new System.Drawing.Size(124, 13);
       this.lblHeader.TabIndex = 0;
       this.lblHeader.Text = "Name - Account Number";
       // 
-      // lvTestAccounts
+      // label4
       // 
-      this.lvTestAccounts.Location = new System.Drawing.Point(260, 32);
-      this.lvTestAccounts.Name = "lvTestAccounts";
-      this.lvTestAccounts.Size = new System.Drawing.Size(153, 218);
-      this.lvTestAccounts.TabIndex = 7;
-      this.lvTestAccounts.UseCompatibleStateImageBehavior = false;
+      this.label4.AutoSize = true;
+      this.label4.Location = new System.Drawing.Point(328, 16);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(52, 13);
+      this.label4.TabIndex = 8;
+      this.label4.Text = "Accounts";
+      // 
+      // lvTransactions
+      // 
+      this.lvTransactions.Location = new System.Drawing.Point(189, 97);
+      this.lvTransactions.Name = "lvTransactions";
+      this.lvTransactions.Size = new System.Drawing.Size(179, 306);
+      this.lvTransactions.TabIndex = 8;
+      this.lvTransactions.UseCompatibleStateImageBehavior = false;
+      // 
+      // label5
+      // 
+      this.label5.AutoSize = true;
+      this.label5.Location = new System.Drawing.Point(245, 81);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(68, 13);
+      this.label5.TabIndex = 9;
+      this.label5.Text = "Transactions";
       // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(576, 427);
+      this.ClientSize = new System.Drawing.Size(1128, 427);
       this.Controls.Add(this.pnlWelcome);
       this.Controls.Add(this.pnlMenu);
       this.Name = "Form1";
@@ -254,10 +286,13 @@
     private System.Windows.Forms.Button btnWithdraw;
     private System.Windows.Forms.Button btnDeposit;
     private System.Windows.Forms.Label lblHeader;
-    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.TextBox tbCurrentBalance;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Button btnLogout;
     private System.Windows.Forms.ListView lvTestAccounts;
+    private System.Windows.Forms.Label label4;
+    private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.ListView lvTransactions;
   }
 }
 
