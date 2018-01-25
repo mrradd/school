@@ -52,5 +52,19 @@ namespace ATM
       this.mBalance       = balance;
       this.mTransactions  = transactions != null ? transactions : new List<Transaction>();
       }
+
+    /**************************************************************************
+    * makeTransaction */
+    /**
+    * Makes a Transaction record.
+    * 
+    * @param  amount      Amount the Transaction is for.
+    * @param  isWithdraw  Withdraw = true, Deposit = false.
+    **************************************************************************/
+    public void makeTransaction(decimal amount, bool isWithdraw)
+      {
+      mBalance += isWithdraw ? -amount : amount;
+      mTransactions.Add(new Transaction(amount, isWithdraw, DateTime.Now));
+      }
     }
   }

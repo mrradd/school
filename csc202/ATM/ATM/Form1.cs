@@ -30,7 +30,7 @@ namespace ATM
       mAccounts.Add(new Account("Bart Simpson", 25m));
       mAccounts.Add(new Account("Montgomery Burns", 25000000m));
 
-      populateAccountListView();
+      updateAccountListView();
       }
 
     /**************************************************************************
@@ -40,7 +40,17 @@ namespace ATM
     **************************************************************************/
     private void btnDeposit_Click(object sender, EventArgs e)
       {
+      decimal amt = 0m;
+      
+      if(!decimal.TryParse(tbAmount.Text, out amt))
+        {
+        MessageBox.Show("Invalid amount enterred");
+        return;
+        }
 
+      mAccount.makeTransaction(amt, false);
+      updateTransactions();
+      tbAmount.Clear();
       }
 
     /**************************************************************************
@@ -74,6 +84,8 @@ namespace ATM
           mAccounts.Add(mAccount);
           MessageBox.Show($"A new account has been created for {mAccount.name}. Account number {mAccount.accountNumber}.");
           newLogin = true;
+
+          updateAccountListView();
           }
 
         /** A name wasn't given. */
@@ -92,8 +104,26 @@ namespace ATM
         tbCurrentBalance.Text  = mAccount.balance.ToString("C2");
         pnlMenu.Visible        = true;
         }
-      }
 
+      tbWelcomeAccountNumber.Clear();
+      tbWelcomeName.Clear();
+      }
+    
+    /**************************************************************************
+    * btnLogout_Click */
+    /**
+    * Logs out, hides the menu screen, and displays the welcome screen.
+    **************************************************************************/
+    private void btnLogout_Click(object sender, EventArgs e)
+      {
+      pnlWelcome.Visible = true;
+      pnlMenu.Visible    = false;
+      mAccount           = null;
+
+      tbAmount.Clear();
+      tbCurrentBalance.Clear();
+      }
+    
     /**************************************************************************
     * btnWithdraw_Click */
     /**
@@ -109,24 +139,9 @@ namespace ATM
         return;
         }
 
-      mAccount.transactions.Add(new Transaction(amt, true, new DateTime()));
-      populateTransactionListView();
-
-      //TODO CH  NEED TO UPDATE THE ACCOUNT BALANCE. MAKE A METHOD.
-      }
-
-    /**************************************************************************
-    * btnLogout_Click */
-    /**
-    * Logs out, hides the menu screen, and displays the welcome screen.
-    **************************************************************************/
-    private void btnLogout_Click(object sender, EventArgs e)
-      {
-      pnlWelcome.Visible = true;
-      pnlMenu.Visible    = false;
-      mAccount           = null;
-
-      populateAccountListView();
+      mAccount.makeTransaction(amt, true);
+      updateTransactions();
+      tbAmount.Clear();
       }
 
     /**************************************************************************
@@ -134,7 +149,7 @@ namespace ATM
     /**
     * Populates the Accounts list view with current account list.
     **************************************************************************/
-    private void populateAccountListView()
+    private void updateAccountListView()
       {
       /** Clear the list to rebuild it. */
       lvTestAccounts.Clear();
@@ -153,26 +168,31 @@ namespace ATM
       }
 
     /**************************************************************************
-    * populateTransactionListView */
+    * updateTransactions */
     /**
     * Populates the Transactions list view with current info.
     **************************************************************************/
-    private void populateTransactionListView()
+    private void updateTransactions()
       {
       /** Clear the list to rebuild it. */
       lvTransactions.Clear();
 
       lvTransactions.View = View.Details;
       
+      /** Update current balance text box. */
+      tbCurrentBalance.Text = mAccount.balance.ToString("C2");
+
       for (int i = 0; i < mAccount.transactions.Count; i++)
         {
         ListViewItem item = new ListViewItem(mAccount.transactions[i].isWithdraw ? "Withdraw" : "Deposit" ,0);
         item.SubItems.Add(mAccount.transactions[i].amount.ToString("C2"));
+        item.SubItems.Add(mAccount.transactions[i].timeStamp.ToString());
         lvTransactions.Items.Add(item);
         }
       
-	    lvTransactions.Columns.Add("Type", -2, HorizontalAlignment.Left);
-	    lvTransactions.Columns.Add("Amount", -2, HorizontalAlignment.Left);
+	    lvTransactions.Columns.Add("Type", 70, HorizontalAlignment.Left);
+	    lvTransactions.Columns.Add("Amount", 90, HorizontalAlignment.Left);
+      lvTransactions.Columns.Add("Time", 145, HorizontalAlignment.Left);
       }
     }
   }
