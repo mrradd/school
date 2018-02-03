@@ -102,6 +102,7 @@ namespace ATM
 
         lblHeader.Text         = $"Hello, {mAccount.name} - {mAccount.accountNumber}";
         tbCurrentBalance.Text  = mAccount.balance.ToString("C2");
+        updateTransactions();
         pnlMenu.Visible        = true;
         }
 

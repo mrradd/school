@@ -21,6 +21,7 @@ namespace Inheritance
     protected string mClass;
     protected string mName;
 
+    /** Returns stringified data. */
     public virtual string display()
       {
       return $"Character:{{mName: {mName}, mClass: {mClass}, mAlive: {mAlive}}}";

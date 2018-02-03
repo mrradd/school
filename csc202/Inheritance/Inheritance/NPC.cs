@@ -20,6 +20,7 @@ namespace Inheritance
     protected bool   mIsGood;
     protected string mEmotion;
 
+    /** Returns stringified data. */
     public override string display()
       {
       return $"{base.display()} -> NPC:{{mIsGood: {mIsGood}, mEmotion: {mEmotion}}}";

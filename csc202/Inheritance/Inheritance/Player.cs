@@ -16,6 +16,7 @@ namespace Inheritance
     protected int mExperience;
     protected int mLivesRemaining;
 
+    /** Returns stringified data. */
     public override string display()
       {
       return $"{base.display()} -> Player:{{mExperience: {mExperience}, mLivesRemaining: {mLivesRemaining}}}";

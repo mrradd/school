@@ -29,291 +29,158 @@
     private void InitializeComponent()
     {
       this.pclCharacter = new System.Windows.Forms.Panel();
-      this.tbCharName = new System.Windows.Forms.TextBox();
-      this.panel2 = new System.Windows.Forms.Panel();
-      this.rbCharFighter = new System.Windows.Forms.RadioButton();
-      this.rbCharMonk = new System.Windows.Forms.RadioButton();
-      this.rbCharWizard = new System.Windows.Forms.RadioButton();
-      this.panel3 = new System.Windows.Forms.Panel();
-      this.rbCharDead = new System.Windows.Forms.RadioButton();
-      this.rbCharAlive = new System.Windows.Forms.RadioButton();
-      this.lblCharDisplay = new System.Windows.Forms.Label();
-      this.pnlFighter = new System.Windows.Forms.Panel();
-      this.lblPlayerDisplay = new System.Windows.Forms.Label();
-      this.panel5 = new System.Windows.Forms.Panel();
-      this.rbPlayerDead = new System.Windows.Forms.RadioButton();
-      this.rbPlayerAlive = new System.Windows.Forms.RadioButton();
-      this.panel6 = new System.Windows.Forms.Panel();
-      this.rbPlayerWizard = new System.Windows.Forms.RadioButton();
-      this.rbPlayerMonk = new System.Windows.Forms.RadioButton();
-      this.rbPlayerFighter = new System.Windows.Forms.RadioButton();
-      this.tbPlayerName = new System.Windows.Forms.TextBox();
-      this.tbPlayerExperience = new System.Windows.Forms.TextBox();
-      this.tbPlayerLives = new System.Windows.Forms.TextBox();
+      this.gbCharacterClass = new System.Windows.Forms.GroupBox();
+      this.rbCharacterWizard = new System.Windows.Forms.RadioButton();
+      this.rbCharacterFighter = new System.Windows.Forms.RadioButton();
+      this.rbCharacterMonk = new System.Windows.Forms.RadioButton();
+      this.gbCharacterAlive = new System.Windows.Forms.GroupBox();
+      this.rbCharacterAliveNo = new System.Windows.Forms.RadioButton();
+      this.rbCharacterAliveYes = new System.Windows.Forms.RadioButton();
       this.label1 = new System.Windows.Forms.Label();
-      this.label2 = new System.Windows.Forms.Label();
-      this.label3 = new System.Windows.Forms.Label();
+      this.lblCharDisplay = new System.Windows.Forms.Label();
+      this.tbCharName = new System.Windows.Forms.TextBox();
+      this.pnlFighter = new System.Windows.Forms.Panel();
+      this.gbPlayerClass = new System.Windows.Forms.GroupBox();
+      this.rbPlayerWizard = new System.Windows.Forms.RadioButton();
+      this.rbPlayerFighter = new System.Windows.Forms.RadioButton();
+      this.rbPlayerMonk = new System.Windows.Forms.RadioButton();
+      this.gbPlayerAlive = new System.Windows.Forms.GroupBox();
+      this.rbPlayerAliveNo = new System.Windows.Forms.RadioButton();
+      this.rbPlayerAliveYes = new System.Windows.Forms.RadioButton();
       this.label4 = new System.Windows.Forms.Label();
+      this.label3 = new System.Windows.Forms.Label();
+      this.label2 = new System.Windows.Forms.Label();
+      this.tbPlayerLives = new System.Windows.Forms.TextBox();
+      this.tbPlayerExperience = new System.Windows.Forms.TextBox();
+      this.lblPlayerDisplay = new System.Windows.Forms.Label();
+      this.tbPlayerName = new System.Windows.Forms.TextBox();
       this.pnlNPC = new System.Windows.Forms.Panel();
-      this.label5 = new System.Windows.Forms.Label();
-      this.lblNPCDisplay = new System.Windows.Forms.Label();
-      this.panel4 = new System.Windows.Forms.Panel();
-      this.rbNPCDead = new System.Windows.Forms.RadioButton();
-      this.rbNPCAlive = new System.Windows.Forms.RadioButton();
-      this.panel7 = new System.Windows.Forms.Panel();
-      this.rbNPCWizard = new System.Windows.Forms.RadioButton();
-      this.rbNPCMonk = new System.Windows.Forms.RadioButton();
-      this.rbNPCFighter = new System.Windows.Forms.RadioButton();
-      this.tbNPCName = new System.Windows.Forms.TextBox();
-      this.panel1 = new System.Windows.Forms.Panel();
-      this.rbNPCIsEvil = new System.Windows.Forms.RadioButton();
-      this.rbNPCIsGood = new System.Windows.Forms.RadioButton();
-      this.panel8 = new System.Windows.Forms.Panel();
+      this.gbNPCEmotion = new System.Windows.Forms.GroupBox();
       this.rbNPCSad = new System.Windows.Forms.RadioButton();
       this.rbNPCAngry = new System.Windows.Forms.RadioButton();
       this.rbNPCHappy = new System.Windows.Forms.RadioButton();
+      this.gbNPCIsGood = new System.Windows.Forms.GroupBox();
+      this.rbNPCIsGoodNo = new System.Windows.Forms.RadioButton();
+      this.rbNPCIsGoodYes = new System.Windows.Forms.RadioButton();
+      this.gbNPCClass = new System.Windows.Forms.GroupBox();
+      this.rbNPCWizard = new System.Windows.Forms.RadioButton();
+      this.rbNPCFighter = new System.Windows.Forms.RadioButton();
+      this.rbNPCMonk = new System.Windows.Forms.RadioButton();
+      this.gbNPCAlive = new System.Windows.Forms.GroupBox();
+      this.rbNPCAliveNo = new System.Windows.Forms.RadioButton();
+      this.rbNPCAliveYes = new System.Windows.Forms.RadioButton();
+      this.label5 = new System.Windows.Forms.Label();
+      this.lblNPCDisplay = new System.Windows.Forms.Label();
+      this.tbNPCName = new System.Windows.Forms.TextBox();
       this.pclCharacter.SuspendLayout();
-      this.panel2.SuspendLayout();
-      this.panel3.SuspendLayout();
+      this.gbCharacterClass.SuspendLayout();
+      this.gbCharacterAlive.SuspendLayout();
       this.pnlFighter.SuspendLayout();
-      this.panel5.SuspendLayout();
-      this.panel6.SuspendLayout();
+      this.gbPlayerClass.SuspendLayout();
+      this.gbPlayerAlive.SuspendLayout();
       this.pnlNPC.SuspendLayout();
-      this.panel4.SuspendLayout();
-      this.panel7.SuspendLayout();
-      this.panel1.SuspendLayout();
-      this.panel8.SuspendLayout();
+      this.gbNPCEmotion.SuspendLayout();
+      this.gbNPCIsGood.SuspendLayout();
+      this.gbNPCClass.SuspendLayout();
+      this.gbNPCAlive.SuspendLayout();
       this.SuspendLayout();
       // 
       // pclCharacter
       // 
       this.pclCharacter.BackColor = System.Drawing.Color.PaleGreen;
+      this.pclCharacter.Controls.Add(this.gbCharacterClass);
+      this.pclCharacter.Controls.Add(this.gbCharacterAlive);
       this.pclCharacter.Controls.Add(this.label1);
       this.pclCharacter.Controls.Add(this.lblCharDisplay);
-      this.pclCharacter.Controls.Add(this.panel3);
-      this.pclCharacter.Controls.Add(this.panel2);
       this.pclCharacter.Controls.Add(this.tbCharName);
       this.pclCharacter.Location = new System.Drawing.Point(14, 14);
       this.pclCharacter.Name = "pclCharacter";
       this.pclCharacter.Size = new System.Drawing.Size(642, 164);
       this.pclCharacter.TabIndex = 0;
       // 
-      // tbCharName
+      // gbCharacterClass
       // 
-      this.tbCharName.Location = new System.Drawing.Point(51, 3);
-      this.tbCharName.Name = "tbCharName";
-      this.tbCharName.Size = new System.Drawing.Size(233, 21);
-      this.tbCharName.TabIndex = 0;
-      this.tbCharName.Text = "Enter Name...";
+      this.gbCharacterClass.Controls.Add(this.rbCharacterWizard);
+      this.gbCharacterClass.Controls.Add(this.rbCharacterFighter);
+      this.gbCharacterClass.Controls.Add(this.rbCharacterMonk);
+      this.gbCharacterClass.Location = new System.Drawing.Point(356, 3);
+      this.gbCharacterClass.Name = "gbCharacterClass";
+      this.gbCharacterClass.Size = new System.Drawing.Size(81, 93);
+      this.gbCharacterClass.TabIndex = 10;
+      this.gbCharacterClass.TabStop = false;
+      this.gbCharacterClass.Text = "Class";
       // 
-      // panel2
+      // rbCharacterWizard
       // 
-      this.panel2.Controls.Add(this.rbCharWizard);
-      this.panel2.Controls.Add(this.rbCharMonk);
-      this.panel2.Controls.Add(this.rbCharFighter);
-      this.panel2.Location = new System.Drawing.Point(380, 3);
-      this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(80, 86);
-      this.panel2.TabIndex = 1;
+      this.rbCharacterWizard.AutoSize = true;
+      this.rbCharacterWizard.Location = new System.Drawing.Point(6, 70);
+      this.rbCharacterWizard.Name = "rbCharacterWizard";
+      this.rbCharacterWizard.Size = new System.Drawing.Size(64, 19);
+      this.rbCharacterWizard.TabIndex = 2;
+      this.rbCharacterWizard.TabStop = true;
+      this.rbCharacterWizard.Text = "Wizard";
+      this.rbCharacterWizard.UseVisualStyleBackColor = true;
+      this.rbCharacterWizard.CheckedChanged += new System.EventHandler(this.rbCharacterClass_CheckedChanged);
       // 
-      // rbCharFighter
+      // rbCharacterFighter
       // 
-      this.rbCharFighter.AutoSize = true;
-      this.rbCharFighter.Location = new System.Drawing.Point(5, 4);
-      this.rbCharFighter.Name = "rbCharFighter";
-      this.rbCharFighter.Size = new System.Drawing.Size(64, 19);
-      this.rbCharFighter.TabIndex = 0;
-      this.rbCharFighter.TabStop = true;
-      this.rbCharFighter.Text = "Fighter";
-      this.rbCharFighter.UseVisualStyleBackColor = true;
+      this.rbCharacterFighter.AutoSize = true;
+      this.rbCharacterFighter.Location = new System.Drawing.Point(6, 20);
+      this.rbCharacterFighter.Name = "rbCharacterFighter";
+      this.rbCharacterFighter.Size = new System.Drawing.Size(64, 19);
+      this.rbCharacterFighter.TabIndex = 0;
+      this.rbCharacterFighter.TabStop = true;
+      this.rbCharacterFighter.Text = "Fighter";
+      this.rbCharacterFighter.UseVisualStyleBackColor = true;
+      this.rbCharacterFighter.CheckedChanged += new System.EventHandler(this.rbCharacterClass_CheckedChanged);
       // 
-      // rbCharMonk
+      // rbCharacterMonk
       // 
-      this.rbCharMonk.AutoSize = true;
-      this.rbCharMonk.Location = new System.Drawing.Point(5, 31);
-      this.rbCharMonk.Name = "rbCharMonk";
-      this.rbCharMonk.Size = new System.Drawing.Size(56, 19);
-      this.rbCharMonk.TabIndex = 1;
-      this.rbCharMonk.TabStop = true;
-      this.rbCharMonk.Text = "Monk";
-      this.rbCharMonk.UseVisualStyleBackColor = true;
+      this.rbCharacterMonk.AutoSize = true;
+      this.rbCharacterMonk.Location = new System.Drawing.Point(6, 45);
+      this.rbCharacterMonk.Name = "rbCharacterMonk";
+      this.rbCharacterMonk.Size = new System.Drawing.Size(56, 19);
+      this.rbCharacterMonk.TabIndex = 1;
+      this.rbCharacterMonk.TabStop = true;
+      this.rbCharacterMonk.Text = "Monk";
+      this.rbCharacterMonk.UseVisualStyleBackColor = true;
+      this.rbCharacterMonk.CheckedChanged += new System.EventHandler(this.rbCharacterClass_CheckedChanged);
       // 
-      // rbCharWizard
+      // gbCharacterAlive
       // 
-      this.rbCharWizard.AutoSize = true;
-      this.rbCharWizard.Location = new System.Drawing.Point(3, 58);
-      this.rbCharWizard.Name = "rbCharWizard";
-      this.rbCharWizard.Size = new System.Drawing.Size(64, 19);
-      this.rbCharWizard.TabIndex = 2;
-      this.rbCharWizard.TabStop = true;
-      this.rbCharWizard.Text = "Wizard";
-      this.rbCharWizard.UseVisualStyleBackColor = true;
+      this.gbCharacterAlive.Controls.Add(this.rbCharacterAliveNo);
+      this.gbCharacterAlive.Controls.Add(this.rbCharacterAliveYes);
+      this.gbCharacterAlive.Location = new System.Drawing.Point(292, 3);
+      this.gbCharacterAlive.Name = "gbCharacterAlive";
+      this.gbCharacterAlive.Size = new System.Drawing.Size(58, 77);
+      this.gbCharacterAlive.TabIndex = 8;
+      this.gbCharacterAlive.TabStop = false;
+      this.gbCharacterAlive.Text = "Alive";
       // 
-      // panel3
+      // rbCharacterAliveNo
       // 
-      this.panel3.Controls.Add(this.rbCharDead);
-      this.panel3.Controls.Add(this.rbCharAlive);
-      this.panel3.Location = new System.Drawing.Point(292, 3);
-      this.panel3.Name = "panel3";
-      this.panel3.Size = new System.Drawing.Size(80, 63);
-      this.panel3.TabIndex = 3;
+      this.rbCharacterAliveNo.AutoSize = true;
+      this.rbCharacterAliveNo.Location = new System.Drawing.Point(6, 45);
+      this.rbCharacterAliveNo.Name = "rbCharacterAliveNo";
+      this.rbCharacterAliveNo.Size = new System.Drawing.Size(40, 19);
+      this.rbCharacterAliveNo.TabIndex = 1;
+      this.rbCharacterAliveNo.TabStop = true;
+      this.rbCharacterAliveNo.Text = "No";
+      this.rbCharacterAliveNo.UseVisualStyleBackColor = true;
+      this.rbCharacterAliveNo.CheckedChanged += new System.EventHandler(this.rbCharacterIsAlive_CheckedChanged);
       // 
-      // rbCharDead
+      // rbCharacterAliveYes
       // 
-      this.rbCharDead.AutoSize = true;
-      this.rbCharDead.Location = new System.Drawing.Point(5, 31);
-      this.rbCharDead.Name = "rbCharDead";
-      this.rbCharDead.Size = new System.Drawing.Size(51, 19);
-      this.rbCharDead.TabIndex = 1;
-      this.rbCharDead.TabStop = true;
-      this.rbCharDead.Text = "Dead";
-      this.rbCharDead.UseVisualStyleBackColor = true;
-      // 
-      // rbCharAlive
-      // 
-      this.rbCharAlive.AutoSize = true;
-      this.rbCharAlive.BackColor = System.Drawing.Color.PaleGreen;
-      this.rbCharAlive.Location = new System.Drawing.Point(5, 4);
-      this.rbCharAlive.Name = "rbCharAlive";
-      this.rbCharAlive.Size = new System.Drawing.Size(53, 19);
-      this.rbCharAlive.TabIndex = 0;
-      this.rbCharAlive.TabStop = true;
-      this.rbCharAlive.Text = "Alive";
-      this.rbCharAlive.UseVisualStyleBackColor = false;
-      // 
-      // lblCharDisplay
-      // 
-      this.lblCharDisplay.AutoSize = true;
-      this.lblCharDisplay.Location = new System.Drawing.Point(3, 132);
-      this.lblCharDisplay.Name = "lblCharDisplay";
-      this.lblCharDisplay.Size = new System.Drawing.Size(182, 15);
-      this.lblCharDisplay.TabIndex = 4;
-      this.lblCharDisplay.Text = "LOREM IPSEM DOLAR IMET";
-      // 
-      // pnlFighter
-      // 
-      this.pnlFighter.BackColor = System.Drawing.Color.Goldenrod;
-      this.pnlFighter.Controls.Add(this.label4);
-      this.pnlFighter.Controls.Add(this.label3);
-      this.pnlFighter.Controls.Add(this.label2);
-      this.pnlFighter.Controls.Add(this.tbPlayerLives);
-      this.pnlFighter.Controls.Add(this.tbPlayerExperience);
-      this.pnlFighter.Controls.Add(this.lblPlayerDisplay);
-      this.pnlFighter.Controls.Add(this.panel5);
-      this.pnlFighter.Controls.Add(this.panel6);
-      this.pnlFighter.Controls.Add(this.tbPlayerName);
-      this.pnlFighter.Location = new System.Drawing.Point(14, 184);
-      this.pnlFighter.Name = "pnlFighter";
-      this.pnlFighter.Size = new System.Drawing.Size(642, 166);
-      this.pnlFighter.TabIndex = 5;
-      // 
-      // lblPlayerDisplay
-      // 
-      this.lblPlayerDisplay.AutoSize = true;
-      this.lblPlayerDisplay.Location = new System.Drawing.Point(9, 138);
-      this.lblPlayerDisplay.Name = "lblPlayerDisplay";
-      this.lblPlayerDisplay.Size = new System.Drawing.Size(182, 15);
-      this.lblPlayerDisplay.TabIndex = 4;
-      this.lblPlayerDisplay.Text = "LOREM IPSEM DOLAR IMET";
-      // 
-      // panel5
-      // 
-      this.panel5.Controls.Add(this.rbPlayerDead);
-      this.panel5.Controls.Add(this.rbPlayerAlive);
-      this.panel5.Location = new System.Drawing.Point(289, 3);
-      this.panel5.Name = "panel5";
-      this.panel5.Size = new System.Drawing.Size(80, 63);
-      this.panel5.TabIndex = 3;
-      // 
-      // rbPlayerDead
-      // 
-      this.rbPlayerDead.AutoSize = true;
-      this.rbPlayerDead.Location = new System.Drawing.Point(5, 31);
-      this.rbPlayerDead.Name = "rbPlayerDead";
-      this.rbPlayerDead.Size = new System.Drawing.Size(51, 19);
-      this.rbPlayerDead.TabIndex = 1;
-      this.rbPlayerDead.TabStop = true;
-      this.rbPlayerDead.Text = "Dead";
-      this.rbPlayerDead.UseVisualStyleBackColor = true;
-      // 
-      // rbPlayerAlive
-      // 
-      this.rbPlayerAlive.AutoSize = true;
-      this.rbPlayerAlive.BackColor = System.Drawing.Color.Goldenrod;
-      this.rbPlayerAlive.Location = new System.Drawing.Point(5, 4);
-      this.rbPlayerAlive.Name = "rbPlayerAlive";
-      this.rbPlayerAlive.Size = new System.Drawing.Size(53, 19);
-      this.rbPlayerAlive.TabIndex = 0;
-      this.rbPlayerAlive.TabStop = true;
-      this.rbPlayerAlive.Text = "Alive";
-      this.rbPlayerAlive.UseVisualStyleBackColor = false;
-      // 
-      // panel6
-      // 
-      this.panel6.Controls.Add(this.rbPlayerWizard);
-      this.panel6.Controls.Add(this.rbPlayerMonk);
-      this.panel6.Controls.Add(this.rbPlayerFighter);
-      this.panel6.Location = new System.Drawing.Point(376, 3);
-      this.panel6.Name = "panel6";
-      this.panel6.Size = new System.Drawing.Size(80, 85);
-      this.panel6.TabIndex = 1;
-      // 
-      // rbPlayerWizard
-      // 
-      this.rbPlayerWizard.AutoSize = true;
-      this.rbPlayerWizard.Location = new System.Drawing.Point(3, 58);
-      this.rbPlayerWizard.Name = "rbPlayerWizard";
-      this.rbPlayerWizard.Size = new System.Drawing.Size(64, 19);
-      this.rbPlayerWizard.TabIndex = 2;
-      this.rbPlayerWizard.TabStop = true;
-      this.rbPlayerWizard.Text = "Wizard";
-      this.rbPlayerWizard.UseVisualStyleBackColor = true;
-      // 
-      // rbPlayerMonk
-      // 
-      this.rbPlayerMonk.AutoSize = true;
-      this.rbPlayerMonk.Location = new System.Drawing.Point(5, 31);
-      this.rbPlayerMonk.Name = "rbPlayerMonk";
-      this.rbPlayerMonk.Size = new System.Drawing.Size(56, 19);
-      this.rbPlayerMonk.TabIndex = 1;
-      this.rbPlayerMonk.TabStop = true;
-      this.rbPlayerMonk.Text = "Monk";
-      this.rbPlayerMonk.UseVisualStyleBackColor = true;
-      // 
-      // rbPlayerFighter
-      // 
-      this.rbPlayerFighter.AutoSize = true;
-      this.rbPlayerFighter.Location = new System.Drawing.Point(5, 4);
-      this.rbPlayerFighter.Name = "rbPlayerFighter";
-      this.rbPlayerFighter.Size = new System.Drawing.Size(64, 19);
-      this.rbPlayerFighter.TabIndex = 0;
-      this.rbPlayerFighter.TabStop = true;
-      this.rbPlayerFighter.Text = "Fighter";
-      this.rbPlayerFighter.UseVisualStyleBackColor = true;
-      // 
-      // tbPlayerName
-      // 
-      this.tbPlayerName.Location = new System.Drawing.Point(49, 3);
-      this.tbPlayerName.Name = "tbPlayerName";
-      this.tbPlayerName.Size = new System.Drawing.Size(233, 21);
-      this.tbPlayerName.TabIndex = 0;
-      this.tbPlayerName.Text = "Enter Name...";
-      // 
-      // tbPlayerExperience
-      // 
-      this.tbPlayerExperience.Location = new System.Drawing.Point(49, 34);
-      this.tbPlayerExperience.Name = "tbPlayerExperience";
-      this.tbPlayerExperience.Size = new System.Drawing.Size(170, 21);
-      this.tbPlayerExperience.TabIndex = 5;
-      this.tbPlayerExperience.Text = "Enter Experience Points...";
-      // 
-      // tbPlayerLives
-      // 
-      this.tbPlayerLives.Location = new System.Drawing.Point(49, 64);
-      this.tbPlayerLives.Name = "tbPlayerLives";
-      this.tbPlayerLives.Size = new System.Drawing.Size(170, 21);
-      this.tbPlayerLives.TabIndex = 6;
-      this.tbPlayerLives.Text = "Lives Remaining...";
+      this.rbCharacterAliveYes.AutoSize = true;
+      this.rbCharacterAliveYes.BackColor = System.Drawing.Color.PaleGreen;
+      this.rbCharacterAliveYes.Location = new System.Drawing.Point(6, 20);
+      this.rbCharacterAliveYes.Name = "rbCharacterAliveYes";
+      this.rbCharacterAliveYes.Size = new System.Drawing.Size(44, 19);
+      this.rbCharacterAliveYes.TabIndex = 0;
+      this.rbCharacterAliveYes.TabStop = true;
+      this.rbCharacterAliveYes.Text = "Yes";
+      this.rbCharacterAliveYes.UseVisualStyleBackColor = false;
+      this.rbCharacterAliveYes.CheckedChanged += new System.EventHandler(this.rbCharacterIsAlive_CheckedChanged);
       // 
       // label1
       // 
@@ -324,23 +191,124 @@
       this.label1.TabIndex = 5;
       this.label1.Text = "Name";
       // 
-      // label2
+      // lblCharDisplay
       // 
-      this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(5, 6);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(37, 15);
-      this.label2.TabIndex = 6;
-      this.label2.Text = "Name";
+      this.lblCharDisplay.AutoSize = true;
+      this.lblCharDisplay.Location = new System.Drawing.Point(3, 132);
+      this.lblCharDisplay.Name = "lblCharDisplay";
+      this.lblCharDisplay.Size = new System.Drawing.Size(182, 15);
+      this.lblCharDisplay.TabIndex = 4;
+      this.lblCharDisplay.Text = "LOREM IPSEM DOLAR IMET";
       // 
-      // label3
+      // tbCharName
       // 
-      this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(9, 40);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(34, 15);
-      this.label3.TabIndex = 7;
-      this.label3.Text = "EXP";
+      this.tbCharName.Location = new System.Drawing.Point(51, 3);
+      this.tbCharName.Name = "tbCharName";
+      this.tbCharName.Size = new System.Drawing.Size(233, 21);
+      this.tbCharName.TabIndex = 0;
+      this.tbCharName.Text = "Enter Name...";
+      this.tbCharName.TextChanged += new System.EventHandler(this.tbCharacterName_TextChanged);
+      // 
+      // pnlFighter
+      // 
+      this.pnlFighter.BackColor = System.Drawing.Color.Goldenrod;
+      this.pnlFighter.Controls.Add(this.gbPlayerClass);
+      this.pnlFighter.Controls.Add(this.gbPlayerAlive);
+      this.pnlFighter.Controls.Add(this.label4);
+      this.pnlFighter.Controls.Add(this.label3);
+      this.pnlFighter.Controls.Add(this.label2);
+      this.pnlFighter.Controls.Add(this.tbPlayerLives);
+      this.pnlFighter.Controls.Add(this.tbPlayerExperience);
+      this.pnlFighter.Controls.Add(this.lblPlayerDisplay);
+      this.pnlFighter.Controls.Add(this.tbPlayerName);
+      this.pnlFighter.Location = new System.Drawing.Point(14, 184);
+      this.pnlFighter.Name = "pnlFighter";
+      this.pnlFighter.Size = new System.Drawing.Size(642, 166);
+      this.pnlFighter.TabIndex = 5;
+      // 
+      // gbPlayerClass
+      // 
+      this.gbPlayerClass.Controls.Add(this.rbPlayerWizard);
+      this.gbPlayerClass.Controls.Add(this.rbPlayerFighter);
+      this.gbPlayerClass.Controls.Add(this.rbPlayerMonk);
+      this.gbPlayerClass.Location = new System.Drawing.Point(356, 0);
+      this.gbPlayerClass.Name = "gbPlayerClass";
+      this.gbPlayerClass.Size = new System.Drawing.Size(81, 93);
+      this.gbPlayerClass.TabIndex = 11;
+      this.gbPlayerClass.TabStop = false;
+      this.gbPlayerClass.Text = "Class";
+      // 
+      // rbPlayerWizard
+      // 
+      this.rbPlayerWizard.AutoSize = true;
+      this.rbPlayerWizard.Location = new System.Drawing.Point(6, 70);
+      this.rbPlayerWizard.Name = "rbPlayerWizard";
+      this.rbPlayerWizard.Size = new System.Drawing.Size(64, 19);
+      this.rbPlayerWizard.TabIndex = 2;
+      this.rbPlayerWizard.TabStop = true;
+      this.rbPlayerWizard.Text = "Wizard";
+      this.rbPlayerWizard.UseVisualStyleBackColor = true;
+      this.rbPlayerWizard.CheckedChanged += new System.EventHandler(this.rbPlayerClass_CheckedChanged);
+      // 
+      // rbPlayerFighter
+      // 
+      this.rbPlayerFighter.AutoSize = true;
+      this.rbPlayerFighter.Location = new System.Drawing.Point(6, 20);
+      this.rbPlayerFighter.Name = "rbPlayerFighter";
+      this.rbPlayerFighter.Size = new System.Drawing.Size(64, 19);
+      this.rbPlayerFighter.TabIndex = 0;
+      this.rbPlayerFighter.TabStop = true;
+      this.rbPlayerFighter.Text = "Fighter";
+      this.rbPlayerFighter.UseVisualStyleBackColor = true;
+      this.rbPlayerFighter.CheckedChanged += new System.EventHandler(this.rbPlayerClass_CheckedChanged);
+      // 
+      // rbPlayerMonk
+      // 
+      this.rbPlayerMonk.AutoSize = true;
+      this.rbPlayerMonk.Location = new System.Drawing.Point(6, 45);
+      this.rbPlayerMonk.Name = "rbPlayerMonk";
+      this.rbPlayerMonk.Size = new System.Drawing.Size(56, 19);
+      this.rbPlayerMonk.TabIndex = 1;
+      this.rbPlayerMonk.TabStop = true;
+      this.rbPlayerMonk.Text = "Monk";
+      this.rbPlayerMonk.UseVisualStyleBackColor = true;
+      this.rbPlayerMonk.CheckedChanged += new System.EventHandler(this.rbPlayerClass_CheckedChanged);
+      // 
+      // gbPlayerAlive
+      // 
+      this.gbPlayerAlive.Controls.Add(this.rbPlayerAliveNo);
+      this.gbPlayerAlive.Controls.Add(this.rbPlayerAliveYes);
+      this.gbPlayerAlive.Location = new System.Drawing.Point(292, 0);
+      this.gbPlayerAlive.Name = "gbPlayerAlive";
+      this.gbPlayerAlive.Size = new System.Drawing.Size(58, 77);
+      this.gbPlayerAlive.TabIndex = 7;
+      this.gbPlayerAlive.TabStop = false;
+      this.gbPlayerAlive.Text = "Alive";
+      // 
+      // rbPlayerAliveNo
+      // 
+      this.rbPlayerAliveNo.AutoSize = true;
+      this.rbPlayerAliveNo.Location = new System.Drawing.Point(6, 45);
+      this.rbPlayerAliveNo.Name = "rbPlayerAliveNo";
+      this.rbPlayerAliveNo.Size = new System.Drawing.Size(40, 19);
+      this.rbPlayerAliveNo.TabIndex = 1;
+      this.rbPlayerAliveNo.TabStop = true;
+      this.rbPlayerAliveNo.Text = "No";
+      this.rbPlayerAliveNo.UseVisualStyleBackColor = true;
+      this.rbPlayerAliveNo.CheckedChanged += new System.EventHandler(this.rbPlayerIsAlive_CheckedChanged);
+      // 
+      // rbPlayerAliveYes
+      // 
+      this.rbPlayerAliveYes.AutoSize = true;
+      this.rbPlayerAliveYes.BackColor = System.Drawing.Color.Goldenrod;
+      this.rbPlayerAliveYes.Location = new System.Drawing.Point(6, 20);
+      this.rbPlayerAliveYes.Name = "rbPlayerAliveYes";
+      this.rbPlayerAliveYes.Size = new System.Drawing.Size(44, 19);
+      this.rbPlayerAliveYes.TabIndex = 0;
+      this.rbPlayerAliveYes.TabStop = true;
+      this.rbPlayerAliveYes.Text = "Yes";
+      this.rbPlayerAliveYes.UseVisualStyleBackColor = false;
+      this.rbPlayerAliveYes.CheckedChanged += new System.EventHandler(this.rbPlayerIsAlive_CheckedChanged);
       // 
       // label4
       // 
@@ -351,20 +319,241 @@
       this.label4.TabIndex = 8;
       this.label4.Text = "Lives";
       // 
+      // label3
+      // 
+      this.label3.AutoSize = true;
+      this.label3.Location = new System.Drawing.Point(9, 40);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(34, 15);
+      this.label3.TabIndex = 7;
+      this.label3.Text = "EXP";
+      // 
+      // label2
+      // 
+      this.label2.AutoSize = true;
+      this.label2.Location = new System.Drawing.Point(5, 6);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(37, 15);
+      this.label2.TabIndex = 6;
+      this.label2.Text = "Name";
+      // 
+      // tbPlayerLives
+      // 
+      this.tbPlayerLives.Location = new System.Drawing.Point(49, 64);
+      this.tbPlayerLives.Name = "tbPlayerLives";
+      this.tbPlayerLives.Size = new System.Drawing.Size(170, 21);
+      this.tbPlayerLives.TabIndex = 6;
+      this.tbPlayerLives.Text = "Lives Remaining...";
+      this.tbPlayerLives.Leave += new System.EventHandler(this.tbPlayerLives_Leave);
+      // 
+      // tbPlayerExperience
+      // 
+      this.tbPlayerExperience.Location = new System.Drawing.Point(49, 34);
+      this.tbPlayerExperience.Name = "tbPlayerExperience";
+      this.tbPlayerExperience.Size = new System.Drawing.Size(170, 21);
+      this.tbPlayerExperience.TabIndex = 5;
+      this.tbPlayerExperience.Text = "Enter Experience Points...";
+      this.tbPlayerExperience.Leave += new System.EventHandler(this.tbPlayerExperience_Leave);
+      // 
+      // lblPlayerDisplay
+      // 
+      this.lblPlayerDisplay.AutoSize = true;
+      this.lblPlayerDisplay.Location = new System.Drawing.Point(9, 138);
+      this.lblPlayerDisplay.Name = "lblPlayerDisplay";
+      this.lblPlayerDisplay.Size = new System.Drawing.Size(182, 15);
+      this.lblPlayerDisplay.TabIndex = 4;
+      this.lblPlayerDisplay.Text = "LOREM IPSEM DOLAR IMET";
+      // 
+      // tbPlayerName
+      // 
+      this.tbPlayerName.Location = new System.Drawing.Point(49, 3);
+      this.tbPlayerName.Name = "tbPlayerName";
+      this.tbPlayerName.Size = new System.Drawing.Size(233, 21);
+      this.tbPlayerName.TabIndex = 0;
+      this.tbPlayerName.Text = "Enter Name...";
+      this.tbPlayerName.TextChanged += new System.EventHandler(this.tbPlayerName_TextChanged);
+      // 
       // pnlNPC
       // 
       this.pnlNPC.BackColor = System.Drawing.Color.Salmon;
-      this.pnlNPC.Controls.Add(this.panel8);
-      this.pnlNPC.Controls.Add(this.panel1);
+      this.pnlNPC.Controls.Add(this.gbNPCEmotion);
+      this.pnlNPC.Controls.Add(this.gbNPCIsGood);
+      this.pnlNPC.Controls.Add(this.gbNPCClass);
+      this.pnlNPC.Controls.Add(this.gbNPCAlive);
       this.pnlNPC.Controls.Add(this.label5);
       this.pnlNPC.Controls.Add(this.lblNPCDisplay);
-      this.pnlNPC.Controls.Add(this.panel4);
-      this.pnlNPC.Controls.Add(this.panel7);
       this.pnlNPC.Controls.Add(this.tbNPCName);
       this.pnlNPC.Location = new System.Drawing.Point(14, 358);
       this.pnlNPC.Name = "pnlNPC";
       this.pnlNPC.Size = new System.Drawing.Size(642, 164);
       this.pnlNPC.TabIndex = 6;
+      // 
+      // gbNPCEmotion
+      // 
+      this.gbNPCEmotion.Controls.Add(this.rbNPCSad);
+      this.gbNPCEmotion.Controls.Add(this.rbNPCAngry);
+      this.gbNPCEmotion.Controls.Add(this.rbNPCHappy);
+      this.gbNPCEmotion.Location = new System.Drawing.Point(511, 0);
+      this.gbNPCEmotion.Name = "gbNPCEmotion";
+      this.gbNPCEmotion.Size = new System.Drawing.Size(116, 93);
+      this.gbNPCEmotion.TabIndex = 14;
+      this.gbNPCEmotion.TabStop = false;
+      this.gbNPCEmotion.Text = "Emotion";
+      // 
+      // rbNPCSad
+      // 
+      this.rbNPCSad.AutoSize = true;
+      this.rbNPCSad.Location = new System.Drawing.Point(7, 65);
+      this.rbNPCSad.Name = "rbNPCSad";
+      this.rbNPCSad.Size = new System.Drawing.Size(44, 19);
+      this.rbNPCSad.TabIndex = 2;
+      this.rbNPCSad.TabStop = true;
+      this.rbNPCSad.Text = "Sad";
+      this.rbNPCSad.UseVisualStyleBackColor = true;
+      this.rbNPCSad.CheckedChanged += new System.EventHandler(this.rbNPCEmotion_CheckedChanged);
+      // 
+      // rbNPCAngry
+      // 
+      this.rbNPCAngry.AutoSize = true;
+      this.rbNPCAngry.Location = new System.Drawing.Point(7, 42);
+      this.rbNPCAngry.Name = "rbNPCAngry";
+      this.rbNPCAngry.Size = new System.Drawing.Size(58, 19);
+      this.rbNPCAngry.TabIndex = 1;
+      this.rbNPCAngry.TabStop = true;
+      this.rbNPCAngry.Text = "Angry";
+      this.rbNPCAngry.UseVisualStyleBackColor = true;
+      this.rbNPCAngry.CheckedChanged += new System.EventHandler(this.rbNPCEmotion_CheckedChanged);
+      // 
+      // rbNPCHappy
+      // 
+      this.rbNPCHappy.AutoSize = true;
+      this.rbNPCHappy.Location = new System.Drawing.Point(7, 17);
+      this.rbNPCHappy.Name = "rbNPCHappy";
+      this.rbNPCHappy.Size = new System.Drawing.Size(60, 19);
+      this.rbNPCHappy.TabIndex = 0;
+      this.rbNPCHappy.TabStop = true;
+      this.rbNPCHappy.Text = "Happy";
+      this.rbNPCHappy.UseVisualStyleBackColor = true;
+      this.rbNPCHappy.CheckedChanged += new System.EventHandler(this.rbNPCEmotion_CheckedChanged);
+      // 
+      // gbNPCIsGood
+      // 
+      this.gbNPCIsGood.Controls.Add(this.rbNPCIsGoodNo);
+      this.gbNPCIsGood.Controls.Add(this.rbNPCIsGoodYes);
+      this.gbNPCIsGood.Location = new System.Drawing.Point(443, 0);
+      this.gbNPCIsGood.Name = "gbNPCIsGood";
+      this.gbNPCIsGood.Size = new System.Drawing.Size(62, 74);
+      this.gbNPCIsGood.TabIndex = 13;
+      this.gbNPCIsGood.TabStop = false;
+      this.gbNPCIsGood.Text = "Is Good";
+      // 
+      // rbNPCIsGoodNo
+      // 
+      this.rbNPCIsGoodNo.AutoSize = true;
+      this.rbNPCIsGoodNo.Location = new System.Drawing.Point(6, 42);
+      this.rbNPCIsGoodNo.Name = "rbNPCIsGoodNo";
+      this.rbNPCIsGoodNo.Size = new System.Drawing.Size(40, 19);
+      this.rbNPCIsGoodNo.TabIndex = 1;
+      this.rbNPCIsGoodNo.TabStop = true;
+      this.rbNPCIsGoodNo.Text = "No";
+      this.rbNPCIsGoodNo.UseVisualStyleBackColor = true;
+      this.rbNPCIsGoodNo.CheckedChanged += new System.EventHandler(this.rbNPCIsGood_CheckedChanged);
+      // 
+      // rbNPCIsGoodYes
+      // 
+      this.rbNPCIsGoodYes.AutoSize = true;
+      this.rbNPCIsGoodYes.Location = new System.Drawing.Point(7, 17);
+      this.rbNPCIsGoodYes.Name = "rbNPCIsGoodYes";
+      this.rbNPCIsGoodYes.Size = new System.Drawing.Size(44, 19);
+      this.rbNPCIsGoodYes.TabIndex = 0;
+      this.rbNPCIsGoodYes.TabStop = true;
+      this.rbNPCIsGoodYes.Text = "Yes";
+      this.rbNPCIsGoodYes.UseVisualStyleBackColor = true;
+      this.rbNPCIsGoodYes.CheckedChanged += new System.EventHandler(this.rbNPCIsGood_CheckedChanged);
+      // 
+      // gbNPCClass
+      // 
+      this.gbNPCClass.Controls.Add(this.rbNPCWizard);
+      this.gbNPCClass.Controls.Add(this.rbNPCFighter);
+      this.gbNPCClass.Controls.Add(this.rbNPCMonk);
+      this.gbNPCClass.Location = new System.Drawing.Point(356, 0);
+      this.gbNPCClass.Name = "gbNPCClass";
+      this.gbNPCClass.Size = new System.Drawing.Size(81, 93);
+      this.gbNPCClass.TabIndex = 12;
+      this.gbNPCClass.TabStop = false;
+      this.gbNPCClass.Text = "Class";
+      // 
+      // rbNPCWizard
+      // 
+      this.rbNPCWizard.AutoSize = true;
+      this.rbNPCWizard.Location = new System.Drawing.Point(6, 65);
+      this.rbNPCWizard.Name = "rbNPCWizard";
+      this.rbNPCWizard.Size = new System.Drawing.Size(64, 19);
+      this.rbNPCWizard.TabIndex = 2;
+      this.rbNPCWizard.TabStop = true;
+      this.rbNPCWizard.Text = "Wizard";
+      this.rbNPCWizard.UseVisualStyleBackColor = true;
+      this.rbNPCWizard.CheckedChanged += new System.EventHandler(this.rbNPCClass__CheckedChanged);
+      // 
+      // rbNPCFighter
+      // 
+      this.rbNPCFighter.AutoSize = true;
+      this.rbNPCFighter.Location = new System.Drawing.Point(6, 20);
+      this.rbNPCFighter.Name = "rbNPCFighter";
+      this.rbNPCFighter.Size = new System.Drawing.Size(64, 19);
+      this.rbNPCFighter.TabIndex = 0;
+      this.rbNPCFighter.TabStop = true;
+      this.rbNPCFighter.Text = "Fighter";
+      this.rbNPCFighter.UseVisualStyleBackColor = true;
+      this.rbNPCFighter.CheckedChanged += new System.EventHandler(this.rbNPCClass__CheckedChanged);
+      // 
+      // rbNPCMonk
+      // 
+      this.rbNPCMonk.AutoSize = true;
+      this.rbNPCMonk.Location = new System.Drawing.Point(6, 42);
+      this.rbNPCMonk.Name = "rbNPCMonk";
+      this.rbNPCMonk.Size = new System.Drawing.Size(56, 19);
+      this.rbNPCMonk.TabIndex = 1;
+      this.rbNPCMonk.TabStop = true;
+      this.rbNPCMonk.Text = "Monk";
+      this.rbNPCMonk.UseVisualStyleBackColor = true;
+      this.rbNPCMonk.CheckedChanged += new System.EventHandler(this.rbNPCClass__CheckedChanged);
+      // 
+      // gbNPCAlive
+      // 
+      this.gbNPCAlive.Controls.Add(this.rbNPCAliveNo);
+      this.gbNPCAlive.Controls.Add(this.rbNPCAliveYes);
+      this.gbNPCAlive.Location = new System.Drawing.Point(292, 0);
+      this.gbNPCAlive.Name = "gbNPCAlive";
+      this.gbNPCAlive.Size = new System.Drawing.Size(58, 77);
+      this.gbNPCAlive.TabIndex = 8;
+      this.gbNPCAlive.TabStop = false;
+      this.gbNPCAlive.Text = "Alive";
+      // 
+      // rbNPCAliveNo
+      // 
+      this.rbNPCAliveNo.AutoSize = true;
+      this.rbNPCAliveNo.Location = new System.Drawing.Point(6, 42);
+      this.rbNPCAliveNo.Name = "rbNPCAliveNo";
+      this.rbNPCAliveNo.Size = new System.Drawing.Size(40, 19);
+      this.rbNPCAliveNo.TabIndex = 1;
+      this.rbNPCAliveNo.TabStop = true;
+      this.rbNPCAliveNo.Text = "No";
+      this.rbNPCAliveNo.UseVisualStyleBackColor = true;
+      this.rbNPCAliveNo.CheckedChanged += new System.EventHandler(this.rbNPCIsAlive_CheckedChanged);
+      // 
+      // rbNPCAliveYes
+      // 
+      this.rbNPCAliveYes.AutoSize = true;
+      this.rbNPCAliveYes.BackColor = System.Drawing.Color.Salmon;
+      this.rbNPCAliveYes.Location = new System.Drawing.Point(6, 20);
+      this.rbNPCAliveYes.Name = "rbNPCAliveYes";
+      this.rbNPCAliveYes.Size = new System.Drawing.Size(44, 19);
+      this.rbNPCAliveYes.TabIndex = 0;
+      this.rbNPCAliveYes.TabStop = true;
+      this.rbNPCAliveYes.Text = "Yes";
+      this.rbNPCAliveYes.UseVisualStyleBackColor = false;
+      this.rbNPCAliveYes.CheckedChanged += new System.EventHandler(this.rbNPCIsAlive_CheckedChanged);
       // 
       // label5
       // 
@@ -384,81 +573,6 @@
       this.lblNPCDisplay.TabIndex = 4;
       this.lblNPCDisplay.Text = "LOREM IPSEM DOLAR IMET";
       // 
-      // panel4
-      // 
-      this.panel4.Controls.Add(this.rbNPCDead);
-      this.panel4.Controls.Add(this.rbNPCAlive);
-      this.panel4.Location = new System.Drawing.Point(292, 3);
-      this.panel4.Name = "panel4";
-      this.panel4.Size = new System.Drawing.Size(80, 63);
-      this.panel4.TabIndex = 3;
-      // 
-      // rbNPCDead
-      // 
-      this.rbNPCDead.AutoSize = true;
-      this.rbNPCDead.Location = new System.Drawing.Point(5, 31);
-      this.rbNPCDead.Name = "rbNPCDead";
-      this.rbNPCDead.Size = new System.Drawing.Size(51, 19);
-      this.rbNPCDead.TabIndex = 1;
-      this.rbNPCDead.TabStop = true;
-      this.rbNPCDead.Text = "Dead";
-      this.rbNPCDead.UseVisualStyleBackColor = true;
-      // 
-      // rbNPCAlive
-      // 
-      this.rbNPCAlive.AutoSize = true;
-      this.rbNPCAlive.BackColor = System.Drawing.Color.Salmon;
-      this.rbNPCAlive.Location = new System.Drawing.Point(5, 4);
-      this.rbNPCAlive.Name = "rbNPCAlive";
-      this.rbNPCAlive.Size = new System.Drawing.Size(53, 19);
-      this.rbNPCAlive.TabIndex = 0;
-      this.rbNPCAlive.TabStop = true;
-      this.rbNPCAlive.Text = "Alive";
-      this.rbNPCAlive.UseVisualStyleBackColor = false;
-      // 
-      // panel7
-      // 
-      this.panel7.Controls.Add(this.rbNPCWizard);
-      this.panel7.Controls.Add(this.rbNPCMonk);
-      this.panel7.Controls.Add(this.rbNPCFighter);
-      this.panel7.Location = new System.Drawing.Point(380, 3);
-      this.panel7.Name = "panel7";
-      this.panel7.Size = new System.Drawing.Size(80, 87);
-      this.panel7.TabIndex = 1;
-      // 
-      // rbNPCWizard
-      // 
-      this.rbNPCWizard.AutoSize = true;
-      this.rbNPCWizard.Location = new System.Drawing.Point(3, 58);
-      this.rbNPCWizard.Name = "rbNPCWizard";
-      this.rbNPCWizard.Size = new System.Drawing.Size(64, 19);
-      this.rbNPCWizard.TabIndex = 2;
-      this.rbNPCWizard.TabStop = true;
-      this.rbNPCWizard.Text = "Wizard";
-      this.rbNPCWizard.UseVisualStyleBackColor = true;
-      // 
-      // rbNPCMonk
-      // 
-      this.rbNPCMonk.AutoSize = true;
-      this.rbNPCMonk.Location = new System.Drawing.Point(5, 31);
-      this.rbNPCMonk.Name = "rbNPCMonk";
-      this.rbNPCMonk.Size = new System.Drawing.Size(56, 19);
-      this.rbNPCMonk.TabIndex = 1;
-      this.rbNPCMonk.TabStop = true;
-      this.rbNPCMonk.Text = "Monk";
-      this.rbNPCMonk.UseVisualStyleBackColor = true;
-      // 
-      // rbNPCFighter
-      // 
-      this.rbNPCFighter.AutoSize = true;
-      this.rbNPCFighter.Location = new System.Drawing.Point(5, 4);
-      this.rbNPCFighter.Name = "rbNPCFighter";
-      this.rbNPCFighter.Size = new System.Drawing.Size(64, 19);
-      this.rbNPCFighter.TabIndex = 0;
-      this.rbNPCFighter.TabStop = true;
-      this.rbNPCFighter.Text = "Fighter";
-      this.rbNPCFighter.UseVisualStyleBackColor = true;
-      // 
       // tbNPCName
       // 
       this.tbNPCName.Location = new System.Drawing.Point(51, 3);
@@ -466,81 +580,7 @@
       this.tbNPCName.Size = new System.Drawing.Size(233, 21);
       this.tbNPCName.TabIndex = 0;
       this.tbNPCName.Text = "Enter Name...";
-      // 
-      // panel1
-      // 
-      this.panel1.Controls.Add(this.rbNPCIsEvil);
-      this.panel1.Controls.Add(this.rbNPCIsGood);
-      this.panel1.Location = new System.Drawing.Point(467, 3);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(80, 63);
-      this.panel1.TabIndex = 4;
-      // 
-      // rbNPCIsEvil
-      // 
-      this.rbNPCIsEvil.AutoSize = true;
-      this.rbNPCIsEvil.Location = new System.Drawing.Point(5, 31);
-      this.rbNPCIsEvil.Name = "rbNPCIsEvil";
-      this.rbNPCIsEvil.Size = new System.Drawing.Size(48, 19);
-      this.rbNPCIsEvil.TabIndex = 1;
-      this.rbNPCIsEvil.TabStop = true;
-      this.rbNPCIsEvil.Text = "Evil";
-      this.rbNPCIsEvil.UseVisualStyleBackColor = true;
-      // 
-      // rbNPCIsGood
-      // 
-      this.rbNPCIsGood.AutoSize = true;
-      this.rbNPCIsGood.BackColor = System.Drawing.Color.Salmon;
-      this.rbNPCIsGood.Location = new System.Drawing.Point(5, 4);
-      this.rbNPCIsGood.Name = "rbNPCIsGood";
-      this.rbNPCIsGood.Size = new System.Drawing.Size(52, 19);
-      this.rbNPCIsGood.TabIndex = 0;
-      this.rbNPCIsGood.TabStop = true;
-      this.rbNPCIsGood.Text = "Good";
-      this.rbNPCIsGood.UseVisualStyleBackColor = false;
-      // 
-      // panel8
-      // 
-      this.panel8.Controls.Add(this.rbNPCSad);
-      this.panel8.Controls.Add(this.rbNPCAngry);
-      this.panel8.Controls.Add(this.rbNPCHappy);
-      this.panel8.Location = new System.Drawing.Point(555, 3);
-      this.panel8.Name = "panel8";
-      this.panel8.Size = new System.Drawing.Size(80, 87);
-      this.panel8.TabIndex = 3;
-      // 
-      // rbNPCSad
-      // 
-      this.rbNPCSad.AutoSize = true;
-      this.rbNPCSad.Location = new System.Drawing.Point(3, 58);
-      this.rbNPCSad.Name = "rbNPCSad";
-      this.rbNPCSad.Size = new System.Drawing.Size(44, 19);
-      this.rbNPCSad.TabIndex = 2;
-      this.rbNPCSad.TabStop = true;
-      this.rbNPCSad.Text = "Sad";
-      this.rbNPCSad.UseVisualStyleBackColor = true;
-      // 
-      // rbNPCAngry
-      // 
-      this.rbNPCAngry.AutoSize = true;
-      this.rbNPCAngry.Location = new System.Drawing.Point(5, 31);
-      this.rbNPCAngry.Name = "rbNPCAngry";
-      this.rbNPCAngry.Size = new System.Drawing.Size(58, 19);
-      this.rbNPCAngry.TabIndex = 1;
-      this.rbNPCAngry.TabStop = true;
-      this.rbNPCAngry.Text = "Angry";
-      this.rbNPCAngry.UseVisualStyleBackColor = true;
-      // 
-      // rbNPCHappy
-      // 
-      this.rbNPCHappy.AutoSize = true;
-      this.rbNPCHappy.Location = new System.Drawing.Point(5, 4);
-      this.rbNPCHappy.Name = "rbNPCHappy";
-      this.rbNPCHappy.Size = new System.Drawing.Size(60, 19);
-      this.rbNPCHappy.TabIndex = 0;
-      this.rbNPCHappy.TabStop = true;
-      this.rbNPCHappy.Text = "Happy";
-      this.rbNPCHappy.UseVisualStyleBackColor = true;
+      this.tbNPCName.TextChanged += new System.EventHandler(this.tbNPCName_TextChanged);
       // 
       // Form1
       // 
@@ -557,26 +597,26 @@
       this.Load += new System.EventHandler(this.Form1_Load);
       this.pclCharacter.ResumeLayout(false);
       this.pclCharacter.PerformLayout();
-      this.panel2.ResumeLayout(false);
-      this.panel2.PerformLayout();
-      this.panel3.ResumeLayout(false);
-      this.panel3.PerformLayout();
+      this.gbCharacterClass.ResumeLayout(false);
+      this.gbCharacterClass.PerformLayout();
+      this.gbCharacterAlive.ResumeLayout(false);
+      this.gbCharacterAlive.PerformLayout();
       this.pnlFighter.ResumeLayout(false);
       this.pnlFighter.PerformLayout();
-      this.panel5.ResumeLayout(false);
-      this.panel5.PerformLayout();
-      this.panel6.ResumeLayout(false);
-      this.panel6.PerformLayout();
+      this.gbPlayerClass.ResumeLayout(false);
+      this.gbPlayerClass.PerformLayout();
+      this.gbPlayerAlive.ResumeLayout(false);
+      this.gbPlayerAlive.PerformLayout();
       this.pnlNPC.ResumeLayout(false);
       this.pnlNPC.PerformLayout();
-      this.panel4.ResumeLayout(false);
-      this.panel4.PerformLayout();
-      this.panel7.ResumeLayout(false);
-      this.panel7.PerformLayout();
-      this.panel1.ResumeLayout(false);
-      this.panel1.PerformLayout();
-      this.panel8.ResumeLayout(false);
-      this.panel8.PerformLayout();
+      this.gbNPCEmotion.ResumeLayout(false);
+      this.gbNPCEmotion.PerformLayout();
+      this.gbNPCIsGood.ResumeLayout(false);
+      this.gbNPCIsGood.PerformLayout();
+      this.gbNPCClass.ResumeLayout(false);
+      this.gbNPCClass.PerformLayout();
+      this.gbNPCAlive.ResumeLayout(false);
+      this.gbNPCAlive.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -584,24 +624,10 @@
     #endregion
 
     private System.Windows.Forms.Panel pclCharacter;
-    private System.Windows.Forms.Panel panel2;
-    private System.Windows.Forms.RadioButton rbCharWizard;
-    private System.Windows.Forms.RadioButton rbCharMonk;
-    private System.Windows.Forms.RadioButton rbCharFighter;
     private System.Windows.Forms.TextBox tbCharName;
-    private System.Windows.Forms.Panel panel3;
-    private System.Windows.Forms.RadioButton rbCharDead;
-    private System.Windows.Forms.RadioButton rbCharAlive;
     private System.Windows.Forms.Label lblCharDisplay;
     private System.Windows.Forms.Panel pnlFighter;
     private System.Windows.Forms.Label lblPlayerDisplay;
-    private System.Windows.Forms.Panel panel5;
-    private System.Windows.Forms.RadioButton rbPlayerDead;
-    private System.Windows.Forms.RadioButton rbPlayerAlive;
-    private System.Windows.Forms.Panel panel6;
-    private System.Windows.Forms.RadioButton rbPlayerWizard;
-    private System.Windows.Forms.RadioButton rbPlayerMonk;
-    private System.Windows.Forms.RadioButton rbPlayerFighter;
     private System.Windows.Forms.TextBox tbPlayerName;
     private System.Windows.Forms.TextBox tbPlayerExperience;
     private System.Windows.Forms.Label label1;
@@ -610,23 +636,37 @@
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.TextBox tbPlayerLives;
     private System.Windows.Forms.Panel pnlNPC;
-    private System.Windows.Forms.Panel panel8;
+    private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.Label lblNPCDisplay;
+    private System.Windows.Forms.TextBox tbNPCName;
+    private System.Windows.Forms.GroupBox gbCharacterClass;
+    private System.Windows.Forms.RadioButton rbCharacterWizard;
+    private System.Windows.Forms.RadioButton rbCharacterFighter;
+    private System.Windows.Forms.RadioButton rbCharacterMonk;
+    private System.Windows.Forms.GroupBox gbCharacterAlive;
+    private System.Windows.Forms.RadioButton rbCharacterAliveNo;
+    private System.Windows.Forms.RadioButton rbCharacterAliveYes;
+    private System.Windows.Forms.GroupBox gbPlayerClass;
+    private System.Windows.Forms.RadioButton rbPlayerWizard;
+    private System.Windows.Forms.RadioButton rbPlayerFighter;
+    private System.Windows.Forms.RadioButton rbPlayerMonk;
+    private System.Windows.Forms.GroupBox gbPlayerAlive;
+    private System.Windows.Forms.RadioButton rbPlayerAliveNo;
+    private System.Windows.Forms.RadioButton rbPlayerAliveYes;
+    private System.Windows.Forms.GroupBox gbNPCEmotion;
     private System.Windows.Forms.RadioButton rbNPCSad;
     private System.Windows.Forms.RadioButton rbNPCAngry;
     private System.Windows.Forms.RadioButton rbNPCHappy;
-    private System.Windows.Forms.Panel panel1;
-    private System.Windows.Forms.RadioButton rbNPCIsEvil;
-    private System.Windows.Forms.RadioButton rbNPCIsGood;
-    private System.Windows.Forms.Label label5;
-    private System.Windows.Forms.Label lblNPCDisplay;
-    private System.Windows.Forms.Panel panel4;
-    private System.Windows.Forms.RadioButton rbNPCDead;
-    private System.Windows.Forms.RadioButton rbNPCAlive;
-    private System.Windows.Forms.Panel panel7;
+    private System.Windows.Forms.GroupBox gbNPCIsGood;
+    private System.Windows.Forms.RadioButton rbNPCIsGoodNo;
+    private System.Windows.Forms.RadioButton rbNPCIsGoodYes;
+    private System.Windows.Forms.GroupBox gbNPCClass;
     private System.Windows.Forms.RadioButton rbNPCWizard;
-    private System.Windows.Forms.RadioButton rbNPCMonk;
     private System.Windows.Forms.RadioButton rbNPCFighter;
-    private System.Windows.Forms.TextBox tbNPCName;
+    private System.Windows.Forms.RadioButton rbNPCMonk;
+    private System.Windows.Forms.GroupBox gbNPCAlive;
+    private System.Windows.Forms.RadioButton rbNPCAliveNo;
+    private System.Windows.Forms.RadioButton rbNPCAliveYes;
   }
 }
 
