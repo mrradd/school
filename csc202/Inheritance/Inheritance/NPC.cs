@@ -17,20 +17,20 @@ namespace Inheritance
     public static readonly string HAPPY = "HAPPY";
     public static readonly string SAD   = "SAD";
 
-    protected bool   mIsGood;
-    protected string mEmotion;
+    public bool   isGood;
+    public string emotion;
 
     /** Returns stringified data. */
-    public override string display()
+    public override string stringify
       {
-      return $"{base.display()} -> NPC:{{mIsGood: {mIsGood}, mEmotion: {mEmotion}}}";
+      get { return $"{base.stringify}-> NPC:{{isGood: {isGood}, emotion: {emotion}}}"; }
       }
 
     public NPC(){ }
     public NPC(string name, string clazz, bool alive, bool isGood, string emotion) : base(name, clazz, alive)
       {
-      mIsGood  = isGood;
-      mEmotion = emotion;
+      this.isGood  = isGood;
+      this.emotion = emotion;
       }
     }
   }

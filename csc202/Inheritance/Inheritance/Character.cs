@@ -17,22 +17,22 @@ namespace Inheritance
     public static readonly string MONK    = "MONK";
     public static readonly string WIZARD  = "WIZARD";
 
-    protected bool   mAlive;
-    protected string mClass;
-    protected string mName;
+    public bool   alive;
+    public string clazz;
+    public string name;
 
     /** Returns stringified data. */
-    public virtual string display()
+    public virtual string stringify
       {
-      return $"Character:{{mName: {mName}, mClass: {mClass}, mAlive: {mAlive}}}";
+      get { return $"Character:{{name: {name}, class: {clazz}, alive: {alive}}}\n"; }
       }
 
     public Character(){ }
     public Character(string name, string clazz, bool alive)
       {
-      mName   = name;
-      mClass  = clazz;
-      mAlive  = alive;
+      this.name   = name;
+      this.clazz  = clazz;
+      this.alive  = alive;
       }
     }
   }

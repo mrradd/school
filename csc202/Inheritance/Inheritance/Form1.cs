@@ -12,14 +12,22 @@ namespace Inheritance
   {
   public partial class Form1 : Form
     {
+    Character character = new Character();
+    NPC       npc       = new NPC();
+    Player    player    = new Player();
+
     public Form1()
       {
       InitializeComponent();
+      
+      /** Initialize the labels. */
+      lblCharacterDisplay.Text = character.stringify;
+      lblNPCDisplay.Text       = npc      .stringify;
+      lblPlayerDisplay.Text    = player   .stringify;
       }
 
     private void Form1_Load(object sender, EventArgs e)
       {
-
       }
 
     /**************************************************************************
@@ -32,7 +40,10 @@ namespace Inheritance
     **************************************************************************/
     private void rbCharacterClass_CheckedChanged(object sender, EventArgs e)
       {
-
+      character.clazz = sender == rbCharacterFighter ? Character.FIGHTER :
+                        sender == rbCharacterMonk    ? Character.MONK    : Character.WIZARD;
+      
+      lblCharacterDisplay.Text = character.stringify;
       }
 
     /**************************************************************************
@@ -42,7 +53,8 @@ namespace Inheritance
     **************************************************************************/
     private void rbCharacterIsAlive_CheckedChanged(object sender, EventArgs e)
       {
-
+      character.alive = sender == rbCharacterAliveYes;
+      lblCharacterDisplay.Text = character.stringify;
       }
 
     /**************************************************************************
@@ -52,7 +64,8 @@ namespace Inheritance
     **************************************************************************/
     private void tbCharacterName_TextChanged(object sender, EventArgs e)
       {
-
+      character.name = tbCharacterName.Text;
+      lblCharacterDisplay.Text = character.stringify;
       }
 
     /**************************************************************************
@@ -65,7 +78,9 @@ namespace Inheritance
     **************************************************************************/
     private void rbNPCClass__CheckedChanged(object sender, EventArgs e)
       {
-
+      npc.clazz = sender == rbNPCFighter ? Character.FIGHTER :
+                  sender == rbNPCMonk    ? Character.MONK    : Character.WIZARD;
+      lblNPCDisplay.Text = npc.stringify;
       }
 
     /**************************************************************************
@@ -75,7 +90,8 @@ namespace Inheritance
     **************************************************************************/
     private void rbNPCEmotion_CheckedChanged(object sender, EventArgs e)
       {
-
+      npc.emotion = sender == rbNPCHappy ? NPC.HAPPY : sender == rbNPCSad ? NPC.SAD : NPC.ANGRY;
+      lblNPCDisplay.Text = npc.stringify;
       }
 
     /**************************************************************************
@@ -85,7 +101,8 @@ namespace Inheritance
     **************************************************************************/
     private void rbNPCIsAlive_CheckedChanged(object sender, EventArgs e)
       {
-
+      npc.alive = sender == rbNPCAliveYes;
+      lblNPCDisplay.Text = npc.stringify;
       }
 
     /**************************************************************************
@@ -95,7 +112,8 @@ namespace Inheritance
     **************************************************************************/
     private void rbNPCIsGood_CheckedChanged(object sender, EventArgs e)
       {
-
+      npc.isGood = sender == rbNPCIsGoodYes;
+      lblNPCDisplay.Text = npc.stringify;
       }
 
     /**************************************************************************
@@ -105,7 +123,8 @@ namespace Inheritance
     **************************************************************************/
     private void tbNPCName_TextChanged(object sender, EventArgs e)
       {
-
+      npc.name = tbNPCName.Text;
+      lblNPCDisplay.Text = npc.stringify;
       }
 
     /**************************************************************************
@@ -118,7 +137,9 @@ namespace Inheritance
     **************************************************************************/
     private void rbPlayerClass_CheckedChanged(object sender, EventArgs e)
       {
-
+      player.clazz = sender == rbPlayerFighter ? Character.FIGHTER :
+                     sender == rbPlayerMonk    ? Character.MONK    : Character.WIZARD;
+      lblPlayerDisplay.Text = player.stringify;
       }
 
     /**************************************************************************
@@ -128,7 +149,8 @@ namespace Inheritance
     **************************************************************************/
     private void rbPlayerIsAlive_CheckedChanged(object sender, EventArgs e)
       {
-
+      player.alive = sender == rbPlayerAliveYes;
+      lblPlayerDisplay.Text = player.stringify;
       }
 
     /**************************************************************************
@@ -138,7 +160,16 @@ namespace Inheritance
     **************************************************************************/
     private void tbPlayerExperience_Leave(object sender, EventArgs e)
       {
+      int xp;
+      
+      if(!int.TryParse(tbPlayerExperience.Text, out xp))
+        {
+        MessageBox.Show("Invalid value for Experience...");
+        return;
+        }
 
+      player.experience = xp;
+      lblPlayerDisplay.Text = player.stringify;
       }
 
     /**************************************************************************
@@ -148,7 +179,16 @@ namespace Inheritance
     **************************************************************************/
     private void tbPlayerLives_Leave(object sender, EventArgs e)
       {
+      int lives;
+      
+      if(!int.TryParse(tbPlayerLives.Text, out lives))
+        {
+        MessageBox.Show("Invalid value for Lives...");
+        return;
+        }
 
+      player.livesRemaining = lives;
+      lblPlayerDisplay.Text = player.stringify;
       }
 
     /**************************************************************************
@@ -158,7 +198,8 @@ namespace Inheritance
     **************************************************************************/
     private void tbPlayerName_TextChanged(object sender, EventArgs e)
       {
-
+      player.name = tbPlayerName.Text;
+      lblPlayerDisplay.Text = player.stringify;
       }
     }
   }

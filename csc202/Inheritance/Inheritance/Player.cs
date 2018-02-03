@@ -13,20 +13,20 @@ namespace Inheritance
   {
   public class Player : Character
     {
-    protected int mExperience;
-    protected int mLivesRemaining;
+    public int experience;
+    public int livesRemaining;
 
     /** Returns stringified data. */
-    public override string display()
+    public override string stringify
       {
-      return $"{base.display()} -> Player:{{mExperience: {mExperience}, mLivesRemaining: {mLivesRemaining}}}";
+      get { return $"{base.stringify}-> Player:{{experience: {experience}, livesRemaining: {livesRemaining}}}"; }
       }
 
     public Player(){ }
     public Player(string name, string clazz, bool alive, int exp, int lives) : base(name, clazz, alive)
       {
-      mExperience     = exp;
-      mLivesRemaining = lives;
+      experience     = exp;
+      livesRemaining = lives;
       }
     }
   }
