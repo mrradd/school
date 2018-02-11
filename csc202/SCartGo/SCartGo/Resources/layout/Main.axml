@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/linearLayout1"
+    tools:gridSpec="1|8|#0093eeff|K:#ee8700ff:16,l:72,l:16,r|S:#83ee00ff:16,0,l:16,56,l:16,0,r">
+    <LinearLayout
+        p1:orientation="horizontal"
+        p1:layout_width="match_parent"
+        p1:layout_height="30.0dp"
+        p1:id="@+id/linearLayout2">
+        <TextView
+            p1:text="Total "
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            p1:id="@+id/tvTotalLabel"
+            p1:textAlignment="textStart" />
+        <TextView
+            p1:text="9999999.99"
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_width="177.5dp"
+            p1:layout_height="match_parent"
+            p1:id="@+id/tvTotal" />
+    </LinearLayout>
+    <Button
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/btnNewItem"
+        p1:text="Add New Item" />
+    <Button
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/btnTotalUp"
+        p1:text="Total Up" />
+    <ScrollView
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="match_parent"
+        p1:id="@+id/scrollView1">
+        <LinearLayout
+            p1:orientation="vertical"
+            p1:layout_width="match_parent"
+            p1:layout_height="match_parent"
+            p1:id="@+id/hlItemList"
+            p1:minWidth="25px"
+            p1:minHeight="25px" />
+    </ScrollView>
+</LinearLayout>
