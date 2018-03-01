@@ -13,7 +13,6 @@ public class EnemySight : MonoBehaviour
   /** Range of vision distance. */ public float rangeOfVision = 15f;
 
   /** Saw player. */         protected bool  mAlerted  = false;
-  /** Distance to player. */ protected float mDistance = 0f;
 
   /**************************************************************************
   * Unity Methods 
@@ -50,8 +49,6 @@ public class EnemySight : MonoBehaviour
   public bool canSee( GameObject target )
     {
     Vector3 targetPosition = target.transform.position;
-
-    mDistance = Vector3.Distance(target.transform.position, transform.position);
 
     /* Find the vector from the agent to the target We do this by subtracting
      * "destination minus origin", so that "origin plus vector equals destination." */
